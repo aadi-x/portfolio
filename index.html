@@ -232,15 +232,16 @@ section[id] {
 .hero {
   min-height: calc(100vh - 80px);
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
   gap: clamp(24px, 3.5vw, 44px);
 }
 
 .hero h1 {
-  font: 800 clamp(54px, 7vw, 103px) / 0.88 Syne;
-  letter-spacing: -0.075em;
+  font: 800 clamp(44px, 6vw, 92px) / 0.9 Syne;
+  letter-spacing: -0.065em;
   margin: 15px 0 22px;
+  white-space: nowrap;
 }
 
 .intro, .section-intro {
@@ -269,8 +270,6 @@ section[id] {
   height: 470px;
   border: 1px solid var(--line);
   border-radius: 205px 205px 25px;
-  background: linear-gradient(145deg, #555, #171717);
-  transform: rotate(7deg);
   animation: frame 5s ease-in-out infinite;
 }
 
@@ -299,7 +298,9 @@ section[id] {
   box-shadow: var(--shadow);
   font-size: 10px;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   animation: float 4.5s ease-in-out infinite;
+  z-index: 3;
 }
 
 .float strong {
@@ -308,8 +309,8 @@ section[id] {
 }
 
 .f1 {
-  right: 50px;
-  top: 58px;
+  right: 14px;
+  top: 60px;
   white-space: nowrap;
 }
 
@@ -317,6 +318,7 @@ section[id] {
   left: 10px;
   bottom: 42px;
   animation-delay: -2s;
+  white-space: nowrap;
 }
 
 .dot {
@@ -696,7 +698,7 @@ section[id] {
 
 .art {
   height: 160px;
-  background: radial-gradient(circle at 50% 42%, #777, #2a2a2a 37%, #111 70%);
+  background: radial-gradient(circle at 50% 42%, #262626, #161616 55%, #0d0d0d 85%);
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -709,24 +711,13 @@ section[id] {
   letter-spacing: 0.12em;
   padding: 3px 9px;
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(4px);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.35);
+  background: rgba(12, 12, 12, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--accent);
+  border: 1px solid var(--line);
   text-transform: uppercase;
   z-index: 2;
-}
-
-.live-art-app {
-  background: radial-gradient(circle at 75% 30%, rgba(59, 130, 246, 0.35), transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.25), transparent 50%),
-              linear-gradient(135deg, #1f1f1f, #111111);
-}
-
-.live-art-game {
-  background: radial-gradient(circle at 75% 30%, rgba(236, 72, 153, 0.35), transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.25), transparent 50%),
-              linear-gradient(135deg, #1f1f1f, #111111);
 }
 
 .projects-portal-bridge {
@@ -983,104 +974,7 @@ footer {
   }
 }
 
-/* Hero Shimmer Headline */
-.hero h1 {
-  background: linear-gradient(135deg, #ffffff 20%, #a8a8a8 60%, #ffffff 90%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: background-position 0.6s ease;
-}
 
-.hero h1:hover {
-  background-position: right center;
-}
-
-.hero h1 .accent {
-  -webkit-text-fill-color: initial;
-  color: var(--accent);
-}
-
-.portrait {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  will-change: transform;
-  max-width: 440px;
-  margin: 0 auto;
-}
-
-.portrait-glow {
-  position: absolute;
-  inset: -12%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 68%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  transition: transform 0.25s ease-out, opacity 0.25s ease;
-  opacity: 0.85;
-}
-
-.portrait picture {
-  display: contents;
-}
-
-.portrait img {
-  position: absolute;
-  z-index: 1;
-}
-
-.portrait .float {
-  z-index: 4;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
-}
-
-.portrait:hover .float {
-  animation-play-state: paused;
-}
-
-.portrait:hover .f1 {
-  transform: translate3d(2px, -3px, 20px);
-}
-
-.portrait:hover .f2 {
-  transform: translate3d(-3px, 3px, 20px);
-}
-
-/* Hero Live Particle Canvas */
-.hero {
-  position: relative;
-}
-
-.hero-particles {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.7;
-}
-
-.hero > div {
-  position: relative;
-  z-index: 2;
-}
-
-/* Live Dynamic Word Rotator */
-.rotator-word {
-  display: inline-block;
-  color: var(--ink);
-  font-weight: 700;
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 1px;
-  vertical-align: baseline;
-  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s;
-}
-
-.rotator-word.changing {
-  opacity: 0;
-  transform: translateY(-5px);
-}
 
 /* Scroll-Down Bouncing Indicator */
 .hero-scroll-wrap {
@@ -1335,7 +1229,6 @@ footer {
 }
 
 [data-theme="light"] .portrait:before {
-  background: linear-gradient(145deg, #D7BDB0, #4A3E39);
   border-color: rgba(112, 91, 79, 0.35);
 }
 
@@ -1373,12 +1266,17 @@ footer {
 
 @media (min-width: 801px) and (max-width: 1150px) {
   .hero {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: 24px;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 5.2vw, 64px);
+    white-space: nowrap;
   }
   .f1 {
-    right: 36px;
+    right: 10px;
     top: 48px;
+    white-space: nowrap;
   }
 }
 
@@ -2496,13 +2394,12 @@ footer {
 <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 <main>
 <section id="home" class="shell hero">
-<canvas class="hero-particles" id="hero-particles" aria-hidden="true"></canvas>
 <div>
 <span class="eyebrow"><span class="status-pulse" aria-hidden="true"></span>Available for creative collaborations</span>
 <h1>ADITYA<br>
 <em class="accent">WALVEKAR</em>
 </h1>
-<p class="intro">Designer × Developer × Creator. I turn <span class="rotator-word" id="rotator-word">visual ideas</span> into work that feels clear, memorable and built for what’s next.</p>
+<p class="intro">Designer × Developer × Creator. I turn visual ideas and emerging technology into work that feels clear, memorable and built for what’s next.</p>
 <div class="hero-actions">
 <a class="button primary" href="#projects">Explore my work ↓</a>
 <a class="button" href="#about">About me</a>
@@ -2515,7 +2412,6 @@ footer {
 </div>
 </div>
 <div class="portrait" id="hero-portrait">
-<div class="portrait-glow" aria-hidden="true"></div>
 <picture>
   <source srcset="aditya-portrait.webp" type="image/webp">
   <img src="aditya-portrait.png" alt="Portrait of Aditya Walvekar" width="335" height="420" fetchpriority="high">
@@ -2703,7 +2599,7 @@ footer {
 
 <div class="projects featured motion">
   <article class="project">
-    <div class="art live-art-app">
+    <div class="art">
       <span class="art-badge">● LIVE WEB APP</span>
     </div>
     <div class="copy">
@@ -2721,7 +2617,7 @@ footer {
   </article>
 
   <article class="project">
-    <div class="art live-art-game">
+    <div class="art">
       <span class="art-badge">● PLAYABLE GAME</span>
     </div>
     <div class="copy">
@@ -3309,185 +3205,7 @@ function handleScrollTelemetry() {
 
 window.addEventListener('scroll', handleScrollTelemetry, { passive: true });
 handleScrollTelemetry();
-
-// 4. Hero Particle Constellation Cyber-Canvas
-(function initHeroParticles() {
-  const canvas = document.querySelector('#hero-particles');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  let particles = [];
-  const particleCount = window.innerWidth < 768 ? 32 : 60;
-  let mouse = { x: -1000, y: -1000, radius: 125 };
-
-  function resize() {
-    const parent = canvas.parentElement;
-    width = canvas.width = parent.offsetWidth;
-    height = canvas.height = parent.offsetHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  class Particle {
-    constructor() {
-      this.reset(true);
-    }
-    reset(initial = false) {
-      this.x = initial ? Math.random() * width : (Math.random() > 0.5 ? 0 : width);
-      this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.5;
-      this.vy = (Math.random() - 0.5) * 0.5;
-      this.radius = Math.random() * 1.5 + 0.8;
-      this.baseAlpha = Math.random() * 0.45 + 0.2;
-      this.alpha = this.baseAlpha;
-    }
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-
-      if (this.x < 0) this.x = width;
-      if (this.x > width) this.x = 0;
-      if (this.y < 0) this.y = height;
-      if (this.y > height) this.y = 0;
-
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
-      const dist = Math.hypot(dx, dy);
-      if (dist < mouse.radius) {
-        const force = (mouse.radius - dist) / mouse.radius;
-        const angle = Math.atan2(dy, dx);
-        this.x -= Math.cos(angle) * force * 2.2;
-        this.y -= Math.sin(angle) * force * 2.2;
-        this.alpha = Math.min(0.9, this.baseAlpha + force * 0.4);
-      } else {
-        this.alpha += (this.baseAlpha - this.alpha) * 0.05;
-      }
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(240, 240, 240, ${this.alpha})`;
-      ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
-      ctx.shadowBlur = 5;
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    }
-  }
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-  }
-
-  const heroSection = canvas.closest('.hero');
-  if (heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-    heroSection.addEventListener('mouseleave', () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
-    });
-  }
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function render() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.hypot(dx, dy);
-        const maxDist = 95;
-        if (dist < maxDist) {
-          const lineAlpha = (1 - dist / maxDist) * 0.15;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-        }
-      }
-    }
-
-    particles.forEach(p => {
-      if (!prefersReduced) p.update();
-      p.draw();
-    });
-
-    if (!prefersReduced) {
-      requestAnimationFrame(render);
-    }
-  }
-
-  render();
-})();
-
-// 5. Live Dynamic Word Rotator
-(function initWordRotator() {
-  const rotatorEl = document.querySelector('#rotator-word');
-  if (!rotatorEl) return;
-  const words = [
-    'visual ideas',
-    'intelligent AI',
-    'creative code',
-    'scalable systems',
-    'digital worlds'
-  ];
-  let currentIndex = 0;
-
-  setInterval(() => {
-    rotatorEl.classList.add('changing');
-    setTimeout(() => {
-      currentIndex = (currentIndex + 1) % words.length;
-      rotatorEl.textContent = words[currentIndex];
-      rotatorEl.classList.remove('changing');
-    }, 280);
-  }, 2800);
-})();
-
-// 6. Hero Portrait Interactive 3D Parallax Tilt
-const heroPortrait = document.querySelector('#hero-portrait');
-if (heroPortrait) {
-  const glow = heroPortrait.querySelector('.portrait-glow');
-  let targetTiltX = 0, targetTiltY = 0;
-  let currentTiltX = 0, currentTiltY = 0;
-  let tiltRaf = null;
-
-  function animatePortraitTilt() {
-    currentTiltX += (targetTiltX - currentTiltX) * 0.12;
-    currentTiltY += (targetTiltY - currentTiltY) * 0.12;
-    heroPortrait.style.transform = `perspective(1000px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
-    if (glow) glow.style.transform = `translate(${(currentTiltY * 2.4).toFixed(1)}px, ${(-currentTiltX * 2.4).toFixed(1)}px)`;
-
-    if (Math.abs(targetTiltX - currentTiltX) > 0.02 || Math.abs(targetTiltY - currentTiltY) > 0.02) {
-      tiltRaf = requestAnimationFrame(animatePortraitTilt);
-    } else {
-      tiltRaf = null;
-    }
-  }
-
-  heroPortrait.addEventListener('mousemove', (e) => {
-    const rect = heroPortrait.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    targetTiltX = -y * 10;
-    targetTiltY = x * 10;
-    if (!tiltRaf) tiltRaf = requestAnimationFrame(animatePortraitTilt);
-  });
-
-  heroPortrait.addEventListener('mouseleave', () => {
-    targetTiltX = 0;
-    targetTiltY = 0;
-    if (!tiltRaf) tiltRaf = requestAnimationFrame(animatePortraitTilt);
-  });
-}
-
-// 7. Magnetic Button Pull
+// 4. Magnetic Button Pull
 if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.button.primary, .hero-scroll-btn').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
@@ -3502,7 +3220,7 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
   });
 }
 
-// 8. Live Number Counters for Credential Badges
+// 5. Live Number Counters for Credential Badges
 const countObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -3530,7 +3248,7 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.badge-count').forEach(badge => countObserver.observe(badge));
 
-// 5. Card Interactive Spotlight Tracker
+// 6. Card Interactive Spotlight Tracker
 const spotlightCards = document.querySelectorAll('.project, .skill, .cert-card, .intern-card, .achieve-card, .persona, .panel, .cta');
 spotlightCards.forEach(card => {
   card.addEventListener('mousemove', (e) => {
@@ -3542,7 +3260,7 @@ spotlightCards.forEach(card => {
   });
 });
 
-// 6. Fluid Custom Cursor
+// 7. Fluid Custom Cursor
 if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const dot = document.createElement('div');
   dot.className = 'cursor-dot cursor-hidden';
