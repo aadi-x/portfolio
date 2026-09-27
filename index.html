@@ -487,7 +487,13 @@ section[id] {
   transform: scale(1.018);
 }
 
-.skills, .projects {
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.projects {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
@@ -512,8 +518,10 @@ section[id] {
 }
 
 .skill {
-  min-height: 180px;
-  padding: 20px;
+  min-height: 220px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .skill:before, .project:before {
@@ -529,25 +537,155 @@ section[id] {
 }
 
 .skill:hover, .project:hover {
-  transform: translateY(-7px);
+  transform: translateY(-5px);
   border-color: var(--accent);
   box-shadow: var(--shadow);
 }
 
-.skill span, .tag {
+.skill-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.skill-head span:first-child, .tag {
   font: 500 10px "DM Mono";
   color: var(--accent);
 }
 
+.skill-category {
+  font: 600 9px "DM Mono";
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
 .skill h3 {
-  font: 700 19px Syne;
-  margin: 35px 0 10px;
+  font: 700 20px Syne;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
 }
 
 .skill p, .project p {
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--muted);
   line-height: 1.65;
+}
+
+.skill p {
+  margin: 0 0 16px;
+  flex-grow: 1;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.skill-tag {
+  display: inline-block;
+  font: 500 9.5px "DM Mono";
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  transition: 0.2s;
+}
+
+.skill:hover .skill-tag {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .skill-tag {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .skill:hover .skill-tag {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: var(--accent);
+}
+
+/* Achievements Component */
+.achievements-section {
+  margin-top: 24px;
+  padding: 26px 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.6), rgba(14, 14, 14, 0.85));
+  box-shadow: var(--shadow);
+}
+
+[data-theme="light"] .achievements-section {
+  background: linear-gradient(135deg, rgba(245, 235, 225, 0.8), rgba(237, 238, 233, 0.95));
+}
+
+.achieve-heading {
+  font: 700 22px Syne;
+  margin: 6px 0 18px;
+  letter-spacing: -0.03em;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.achieve-card {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: 0.3s;
+}
+
+.achieve-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+.achieve-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.achieve-tag {
+  font: 600 10px "DM Mono";
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.achieve-status {
+  font: 500 9px "DM Mono";
+  color: var(--muted);
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.achieve-card h4 {
+  font: 700 17px Syne;
+  margin: 0 0 6px;
+}
+
+.achieve-card p {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
 }
 
 .art {
@@ -1139,12 +1277,15 @@ footer {
   .skills {
     grid-template-columns: repeat(2, 1fr);
   }
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .skill {
-    min-height: 155px;
-    padding: 16px;
+    min-height: 180px;
+    padding: 20px;
   }
   .skill h3 {
-    margin: 24px 0 8px;
+    margin: 0 0 8px;
   }
   .projects {
     grid-template-columns: 1fr;
@@ -1211,6 +1352,12 @@ footer {
   }
   .skills {
     grid-template-columns: 1fr;
+  }
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  .achievements-section {
+    padding: 20px 16px;
   }
   .cta {
     padding: 20px 16px;
@@ -1388,16 +1535,16 @@ footer {
 <article class="panel bio">I’m Aditya Walvekar, a <em class="accent">multidisciplinary designer and emerging AI/ML developer</em> who turns early ideas into clear, well-crafted digital experiences.</article>
 <article class="panel journey">
 <div>
-<small>PROFILE</small>
-<p>Project-driven creator with practical experience across AI/ML, Python, data analytics and visual communication.</p>
+<small>EDUCATION & FOCUS</small>
+<p>B.Tech in Artificial Intelligence & Machine Learning at Sanjeevan Institute of Technology (2024–Present).</p>
 </div>
 <div>
-<small>WHAT I BRING</small>
-<p>Design sensibility plus technical curiosity: shaping experiences, building logic and communicating outcomes clearly.</p>
+<small>CORE FOUNDATIONS</small>
+<p>Python, C/C++, Data Structures & Algorithms, Machine Learning pipelines, NLP, and Data Analytics.</p>
 </div>
 <div>
-<small>CURRENT DIRECTION</small>
-<p>Growing through internships and self-directed work while building useful, human-centred technology and creative projects.</p>
+<small>HONOURS & ROLES</small>
+<p>Google Student Ambassador 2026 · AWS Student Builder Group Member 2026.</p>
 </div>
 </article>
 </div>
@@ -1446,25 +1593,99 @@ footer {
 </div>
 <div class="skills motion">
 <article class="skill">
-<span>01</span>
-<h3>Graphic<br>Design</h3>
-<p>Posters, identities, social media and visual systems.</p>
+  <div class="skill-head">
+    <span>01</span>
+    <span class="skill-category">ARTIFICIAL INTELLIGENCE</span>
+  </div>
+  <h3>Machine Learning<br>& NLP</h3>
+  <p>End-to-end ML classification pipelines, text preprocessing, TF-IDF feature extraction, and real-time Streamlit app deployment.</p>
+  <div class="skill-tags">
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">Scikit-learn</span>
+    <span class="skill-tag">NLP</span>
+    <span class="skill-tag">NLTK</span>
+    <span class="skill-tag">TF-IDF</span>
+    <span class="skill-tag">Naive Bayes</span>
+    <span class="skill-tag">Streamlit</span>
+  </div>
 </article>
+
 <article class="skill">
-<span>02</span>
-<h3>Video<br>Editing</h3>
-<p>Cinematic edits, reels, pacing and story.</p>
+  <div class="skill-head">
+    <span>02</span>
+    <span class="skill-category">DATA SCIENCE</span>
+  </div>
+  <h3>Data Analytics<br>& Insights</h3>
+  <p>Exploratory data analysis (EDA), data cleaning, statistical modeling, and deriving actionable visual insights from complex datasets.</p>
+  <div class="skill-tags">
+    <span class="skill-tag">Pandas</span>
+    <span class="skill-tag">NumPy</span>
+    <span class="skill-tag">Matplotlib</span>
+    <span class="skill-tag">Seaborn</span>
+    <span class="skill-tag">EDA</span>
+    <span class="skill-tag">Data Visualization</span>
+  </div>
 </article>
+
 <article class="skill">
-<span>03</span>
-<h3>AI / ML<br>Systems</h3>
-<p>Python, data, ML foundations and Streamlit.</p>
+  <div class="skill-head">
+    <span>03</span>
+    <span class="skill-category">SOFTWARE ENGINEERING</span>
+  </div>
+  <h3>Core Programming<br>& Algorithms</h3>
+  <p>Solid foundation in object-oriented programming, data structures, algorithmic problem solving, and modern Git workflows.</p>
+  <div class="skill-tags">
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">C</span>
+    <span class="skill-tag">C++</span>
+    <span class="skill-tag">DSA</span>
+    <span class="skill-tag">Problem Solving</span>
+    <span class="skill-tag">Git</span>
+    <span class="skill-tag">GitHub</span>
+  </div>
 </article>
+
 <article class="skill">
-<span>04</span>
-<h3>Code &<br>Games</h3>
-<p>C++, web, DSA, Git and gaming culture.</p>
+  <div class="skill-head">
+    <span>04</span>
+    <span class="skill-category">CREATIVE & MEDIA</span>
+  </div>
+  <h3>Visual Design<br>& Motion Media</h3>
+  <p>Professional brand identity, social creatives, commercial product visualization at Suyash Graphics, and dynamic video editing.</p>
+  <div class="skill-tags">
+    <span class="skill-tag">Photoshop</span>
+    <span class="skill-tag">Illustrator</span>
+    <span class="skill-tag">CorelDRAW</span>
+    <span class="skill-tag">Premiere Pro</span>
+    <span class="skill-tag">After Effects</span>
+    <span class="skill-tag">Canva</span>
+  </div>
 </article>
+</div>
+
+<div class="achievements-section motion">
+  <div class="achievement-header">
+    <span class="eyebrow">Leadership & Recognition</span>
+    <h3 class="achieve-heading">Student Ambassadorships & Builder Programs</h3>
+  </div>
+  <div class="achievements-grid">
+    <div class="achieve-card">
+      <div class="achieve-top">
+        <span class="achieve-tag">GOOGLE ECOSYSTEM</span>
+        <span class="achieve-status">ACTIVE · 2026</span>
+      </div>
+      <h4>Google Student Ambassador</h4>
+      <p>Campus technology advocate driving community learning, developer outreach, and hands-on workshops across Google developer tools.</p>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-top">
+        <span class="achieve-tag">AMAZON WEB SERVICES</span>
+        <span class="achieve-status">ACTIVE · 2026</span>
+      </div>
+      <h4>AWS Student Builder</h4>
+      <p>Member of the AWS Student Builder Group exploring cloud architectures, AI services, scalable compute, and serverless engineering.</p>
+    </div>
+  </div>
 </div>
 </section>
 <section id="projects" class="shell">
@@ -1572,7 +1793,9 @@ footer {
 <span class="hobby">Reading books</span>
 <span class="hobby">Watching podcasts</span>
 <span class="hobby">Farming</span>
-<span class="hobby">Exploring new things</span>
+<span class="hobby">Exploring new tech</span>
+<span class="hobby">Gaming & World Building</span>
+<span class="hobby">Storytelling & Video Edits</span>
 </article>
 <article class="panel">
 <span class="eyebrow">Reading shelf</span>
