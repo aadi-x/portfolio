@@ -1,48 +1,1356 @@
 <!doctype html>
 <html lang="en">
 <head>
-<style>
-/* Mobile-first finishing pass */
-.menu-toggle{display:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);width:42px;height:42px;border-radius:50%;font:700 18px Manrope;cursor:pointer}
-@media(max-width:800px){
-  .shell{width:min(100% - 28px,1180px)!important}.nav{height:68px!important;position:sticky!important;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px)}
-  .menu-toggle{display:grid!important;place-items:center;margin-left:auto}.links{display:none!important;position:absolute;z-index:30;left:0;right:0;top:66px;padding:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);grid-template-columns:1fr 1fr;gap:2px}.links.is-open{display:grid!important}.links a{padding:12px 10px;border-radius:10px;color:var(--ink);font-size:12px}.links a:hover,.links a:focus-visible{background:var(--surface);outline:0}
-  .actions{gap:6px}.nav>.actions>a.cv{display:inline-flex!important;align-items:center;padding:10px 12px;font-size:10px;white-space:nowrap}.theme{height:38px!important;width:38px!important;flex:0 0 38px}.hero{min-height:0!important;gap:8px!important;padding:28px 0 38px!important}.hero h1{font-size:clamp(45px,14vw,62px)!important;margin-top:12px}.hero .intro{font-size:13px;line-height:1.7}.hero-actions{margin-top:22px;flex-wrap:wrap}.portrait{grid-row:auto!important;height:340px!important;margin-top:8px}.portrait:before{width:230px!important;height:280px!important}.portrait img{width:205px!important;height:265px!important}.float{padding:10px 11px!important;font-size:9px}.float strong{font-size:11px}.f1{right:0!important;top:34px!important}.f2{left:0!important;bottom:20px!important}
-  section{padding:52px 0!important}.top{gap:12px;margin-bottom:24px}.title{font-size:clamp(32px,10vw,43px)!important}.panel{padding:20px!important}.bio{font-size:20px!important}.skill{min-height:155px!important;padding:16px!important}.skill h3{margin:24px 0 8px!important}.personalities{height:515px!important;border-radius:16px}.personalities>img{object-position:center 24%!important;transform:scale(1.08)}.persona-heading{top:18px!important;left:18px!important}.personas{gap:7px!important}.persona{min-height:70px!important;padding:10px!important}.persona strong{font-size:12px!important}.persona small{font-size:9px!important}.copy{padding:16px!important}.art{height:125px!important}.cta{padding:24px!important}.hobby,.book{font-size:11px}.contact h2{font-size:clamp(38px,12vw,58px)!important}footer{font-size:9px!important;padding-bottom:22px!important}
-}
-@media(max-width:390px){.nav>.actions>a.cv{font-size:0!important;padding:10px!important;width:38px!important;justify-content:center}.nav>.actions>a.cv:after{content:'CV';font-size:10px}.actions{gap:4px}.hero-actions .button{padding:11px 13px!important}.personalities{height:500px!important}}
-</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Aditya Walvekar — designer, developer and creator.">
-<meta name="theme-color" content="#06141b">
+<meta name="description" content="Portfolio of Aditya Walvekar — designer, developer and creator specializing in AI/ML, Python, and UI/UX.">
+<meta name="author" content="Aditya Walvekar">
+<meta name="theme-color" content="#090909">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aditya Walvekar — Portfolio">
+<meta property="og:description" content="Designer, developer and creator. Explore projects, design portfolio, and interactive worlds.">
+<meta property="og:image" content="aditya-portrait.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aditya Walvekar — Portfolio">
+<meta name="twitter:description" content="Designer, developer and creator. Explore projects, design portfolio, and interactive worlds.">
+<meta name="twitter:image" content="aditya-portrait.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
 <title>Aditya Walvekar — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#051F20;--surface:#0B2B26;--card:#0B2B26ea;--ink:#DAF1DE;--muted:#8EB69B;--line:#23534799;--accent:#8EB69B;--deep:#163832;--shadow:0 24px 70px #020F1080}[data-theme=light]{--bg:#EDEEE9;--surface:#F5EBE1;--card:#F5EBE1f2;--ink:#25221F;--muted:#5D5048;--line:#D6CCC2;--accent:#6B554B;--deep:#D7BDB0;--shadow:0 18px 52px #6B554B26}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,Arial,sans-serif;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 10% 10%,#253745d9,transparent 28%),radial-gradient(circle at 88% 48%,#4a5c6a88,transparent 27%),linear-gradient(125deg,var(--bg),var(--surface));animation:ambient 14s ease-in-out infinite alternate}@keyframes ambient{to{transform:scale(1.06);filter:hue-rotate(8deg)}}a{color:inherit;text-decoration:none}.shell{width:min(1180px,calc(100% - 40px));margin:auto}.nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:18px}.logo{font:800 23px Syne;letter-spacing:-.04em}.accent,.logo b,.eyebrow{color:var(--accent)}.links{display:flex;gap:18px;color:var(--muted);font-size:12px}.links a:hover{color:var(--ink)}.actions{display:flex;gap:9px}.button,.theme,.filter{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:12px 16px;font:700 12px Manrope;cursor:pointer;transition:.25s}.button:hover,.theme:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:var(--shadow)}.primary{background:var(--accent);color:#06141b;border-color:var(--accent)}.theme{width:42px;padding:0;font-size:17px}.eyebrow{font:500 10px "DM Mono";letter-spacing:.14em;text-transform:uppercase}section{padding:88px 0}.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:40px}.hero h1{font:800 clamp(54px,7vw,103px)/.88 Syne;letter-spacing:-.075em;margin:15px 0 22px}.intro,.section-intro{max-width:560px;color:var(--muted);font-size:14px;line-height:1.8}.hero-actions{display:flex;gap:12px;margin-top:28px}.portrait{height:560px;position:relative;display:grid;place-items:center}.portrait:before{content:"";width:395px;height:470px;border:1px solid var(--line);border-radius:205px 205px 25px;background:linear-gradient(145deg,#4a5c6ab0,#11212d40);transform:rotate(7deg);animation:frame 5s ease-in-out infinite}.portrait img{position:absolute;width:335px;height:420px;object-fit:cover;object-position:top;border-radius:165px 165px 20px;box-shadow:0 0 0 12px #ccd0cf12,0 0 78px #9ba8ab55;animation:float 5s ease-in-out infinite}.float{position:absolute;padding:13px 15px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);font-size:10px;backdrop-filter:blur(12px);animation:float 4.5s ease-in-out infinite}.float strong{display:block;font-size:13px}.f1{right:3px;top:80px}.f2{left:0;bottom:48px;animation-delay:-2s}.dot{color:var(--accent);text-shadow:0 0 12px var(--accent)}@keyframes frame{50%{transform:rotate(3deg) scale(1.025)}}@keyframes float{50%{transform:translateY(-10px)}}.top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:32px}.title{font:700 clamp(35px,4.2vw,53px)/1 Syne;letter-spacing:-.06em;margin:10px 0}.about,.hobbies,.split{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}.panel{padding:28px;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.bio{font:600 24px/1.45 Syne;letter-spacing:-.035em}.journey div,.role{border-left:1px solid var(--line);padding-left:17px;margin-bottom:17px}.journey small,.role small{font:500 10px "DM Mono";color:var(--accent)}.journey p,.role p{margin:5px 0;color:var(--muted);font-size:12px;line-height:1.6}.personalities{height:535px;position:relative;margin-top:23px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#06141b;box-shadow:var(--shadow)}.personalities>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:.9;filter:saturate(.78);transition:.6s}.personalities:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#06141baa,transparent 48%,#06141b30),linear-gradient(0deg,#06141be8,transparent 58%)}.persona-heading{position:absolute;z-index:1;top:25px;left:28px;font:700 clamp(26px,3vw,42px)/1 Syne;letter-spacing:-.05em}.persona-heading span{display:block;color:var(--accent);font:500 10px "DM Mono";letter-spacing:.14em;margin-bottom:10px}.personas{position:absolute;z-index:2;left:22px;right:22px;bottom:20px;display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.persona{min-height:78px;text-align:left;color:var(--ink);border:1px solid #ccd0cf40;border-radius:12px;padding:13px;background:#06141bc2;backdrop-filter:blur(10px);cursor:pointer;transition:.35s}.persona .n{display:block;color:var(--accent);font:500 9px "DM Mono"}.persona strong{font:700 13px Syne;display:block;margin-top:7px}.persona small{display:block;max-height:0;opacity:0;overflow:hidden;color:#ccd0cf;font-size:10px;transition:.3s}.persona:hover,.persona:focus-visible{transform:translateY(-7px);border-color:var(--accent);box-shadow:0 0 28px #9ba8ab66;outline:0}.persona:hover small,.persona:focus-visible small{max-height:36px;opacity:1;margin-top:5px}.personalities:has(.persona:hover)>img{filter:saturate(1.05) contrast(1.08);transform:scale(1.018)}.skills,.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.skill,.project{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden;transition:.3s}.skill{min-height:180px;padding:20px}.skill:hover,.project:hover{transform:translateY(-7px);border-color:var(--accent);box-shadow:var(--shadow)}.skill span,.tag{font:500 10px "DM Mono";color:var(--accent)}.skill h3{font:700 19px Syne;margin:35px 0 10px}.skill p,.project p{font-size:11px;color:var(--muted);line-height:1.65}.art{height:150px;background:radial-gradient(circle at 50% 40%,#9ba8ab,#4a5c6a 36%,#11212d 68%);transition:.4s}.project:hover .art{filter:hue-rotate(12deg);transform:scale(1.04)}.copy{padding:18px}.project h3{font:700 19px Syne;margin:8px 0}.project a{font-size:11px;font-weight:800}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px}.filter{font:500 10px "DM Mono";color:var(--muted);background:transparent}.filter.active,.filter:hover{background:var(--ink);color:var(--bg)}.cta{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:34px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,#253745,#11212d);box-shadow:var(--shadow);transition:.3s}.cta:hover{transform:translateY(-4px);border-color:var(--accent)}.cta h2{font:700 clamp(30px,4vw,49px)/1 Syne;margin:8px 0}.cta p{max-width:385px;color:var(--muted);font-size:13px;line-height:1.7}.hobby,.book{display:inline-block;background:var(--surface);color:var(--muted);font-size:12px;margin:4px;transition:.25s}.hobby{padding:10px 12px;border:1px solid var(--line);border-radius:999px}.book{padding:11px 13px;border-left:2px solid var(--accent);border-radius:5px 10px 10px 5px}.hobby:hover,.book:hover{transform:translateY(-3px);color:var(--ink);box-shadow:var(--shadow)}.learning-title{white-space:nowrap}.contact{text-align:center;border-top:1px solid var(--line)}.contact h2{font:700 clamp(45px,7vw,82px)/.95 Syne;letter-spacing:-.07em;margin:15px 0}.socials{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.socials a{border:1px solid var(--line);border-radius:999px;padding:10px 13px;color:var(--muted);font:500 10px "DM Mono";transition:.2s}.socials a:hover{background:var(--accent);color:#06141b;border-color:var(--accent)}footer{display:flex;justify-content:space-between;padding:20px 0 28px;border-top:1px solid var(--line);color:var(--muted);font:500 10px "DM Mono"}.motion{opacity:0;transform:translateY(26px);transition:opacity .75s,transform .75s}.motion.in{opacity:1;transform:none}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}@media(max-width:800px){.links,.nav>.actions>a{display:none}.hero,.about,.split,.hobbies{grid-template-columns:1fr}.portrait{height:430px;grid-row:1}.portrait:before{width:280px;height:340px}.portrait img{width:240px;height:305px}.f1{right:0;top:40px}.f2{left:0;bottom:25px}.top,.cta{display:block}.section-intro{margin-top:18px}.skills{grid-template-columns:repeat(2,1fr)}.projects{grid-template-columns:1fr}.personalities{height:570px}.personalities>img{object-position:center 22%}.personas{grid-template-columns:repeat(2,1fr);left:12px;right:12px;bottom:12px}.persona:last-child{grid-column:1/-1}.persona-heading{top:20px;left:20px}.cta .button{margin-top:12px}.learning-title{white-space:normal}.hero h1{font-size:57px}section{padding:65px 0}footer{display:block;line-height:2}}@keyframes aura{50%{transform:translate3d(-4%,3%,0) scale(1.08);opacity:.75}}@keyframes sweep{to{transform:translateX(180%)}}body:after{content:"";position:fixed;inset:-30%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(142,182,155,.12),transparent 42%);animation:aura 13s ease-in-out infinite}.skill:before,.project:before{content:"";display:block;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:translateX(-120%)}.skill:hover:before,.project:hover:before{animation:sweep .8s ease}.button.primary{box-shadow:0 0 0 1px rgba(218,241,222,.22),0 10px 30px rgba(142,182,155,.25)}[data-theme=light] body:before{background:radial-gradient(circle at 10% 10%,#D7BDB0aa,transparent 30%),radial-gradient(circle at 88% 48%,#D6CCC2aa,transparent 28%),linear-gradient(125deg,#EDEEE9,#F5EBE1)}[data-theme=light] body:after{background:radial-gradient(circle,rgba(215,189,176,.30),transparent 45%)}[data-theme=light] .personalities{background:#163832}[data-theme=light] .persona{background:#051F20cc;color:#DAF1DE}[data-theme=light] .persona small{color:#DAF1DE}[data-theme=light] .cta{background:linear-gradient(120deg,#D7BDB0,#E3D5CA);color:#25221F}[data-theme=light] .cta p{color:#5D5048}:root{--bg:#090909;--surface:#151515;--card:rgba(21,21,21,.94);--ink:#f2f2f2;--muted:#aaa;--line:rgba(255,255,255,.14);--accent:#d8d8d8;--deep:#252525;--shadow:0 24px 70px rgba(0,0,0,.62)}body:before{background:radial-gradient(circle at 12% 12%,#303030,transparent 26%),radial-gradient(circle at 88% 52%,#181818,transparent 28%),linear-gradient(125deg,#090909,#151515)}body:after{background:rgba(255,255,255,.045)}.primary,.socials a:hover{color:#0b0b0b}.portrait:before{background:linear-gradient(145deg,#555,#171717)}.portrait img{box-shadow:0 0 0 12px rgba(255,255,255,.04),0 0 78px rgba(255,255,255,.14)}.personalities{background:#090909}.personalities:after{background:linear-gradient(90deg,rgba(9,9,9,.78),transparent 48%,rgba(9,9,9,.25)),linear-gradient(0deg,rgba(9,9,9,.9),transparent 58%)}.persona{background:rgba(12,12,12,.8);border-color:rgba(255,255,255,.2)}.art{background:radial-gradient(circle at 50% 42%,#777,#2a2a2a 37%,#111 70%)}.cta{background:linear-gradient(120deg,#252525,#121212)}[data-theme=light] .art{background:radial-gradient(circle at 50% 42%,#D6CCC2,#E3D5CA 37%,#F5EBE1 70%)}[data-theme=light] .cta{background:linear-gradient(120deg,#D7BDB0,#E3D5CA)}[data-theme=light] .primary,[data-theme=light] .socials a:hover{color:#25221F}[data-theme=light]{--bg:#EDEEE9;--surface:#F5EBE1;--card:rgba(245,235,225,.96);--ink:#25221F;--muted:#665951;--line:rgba(112,91,79,.25);--accent:#6B554B;--deep:#D7BDB0;--shadow:0 18px 52px rgba(87,68,57,.15)}[data-theme=light] body:before{background:radial-gradient(circle at 10% 10%,rgba(215,189,176,.82),transparent 30%),radial-gradient(circle at 88% 48%,rgba(214,204,194,.76),transparent 28%),linear-gradient(125deg,#EDEEE9,#F5EBE1)}[data-theme=light] body:after{background:radial-gradient(circle,rgba(215,189,176,.27),transparent 45%)}[data-theme=light] .project,[data-theme=light] .skill,[data-theme=light] .panel,[data-theme=light] .button,[data-theme=light] .theme{background:#F5EBE1;color:#25221F;border-color:rgba(112,91,79,.25)}[data-theme=light] .project p,[data-theme=light] .skill p,[data-theme=light] .journey p,[data-theme=light] .role p{color:#665951}[data-theme=light] .art{background:radial-gradient(circle at 50% 42%,#D6CCC2,#E3D5CA 39%,#D7BDB0 73%)}[data-theme=light] .cta{background:linear-gradient(120deg,#D7BDB0,#E3D5CA);color:#25221F;border-color:rgba(112,91,79,.25)}[data-theme=light] .cta p{color:#5D5048}[data-theme=light] .filter{border-color:rgba(112,91,79,.25);color:#665951}[data-theme=light] .filter.active,[data-theme=light] .filter:hover{background:#25221F;color:#F5EBE1}[data-theme=light] .personalities{background:#25221F}[data-theme=light] .persona{background:rgba(37,34,31,.84);color:#F5EBE1;border-color:rgba(245,235,225,.25)}[data-theme=light] .persona small{color:#E3D5CA}[data-theme=light] .hobby,[data-theme=light] .book{background:#F5EBE1;color:#665951}[data-theme=light] .primary,[data-theme=light] .socials a:hover{color:#F5EBE1;background:#6B554B;border-color:#6B554B}</style>
+:root {
+  --bg: #090909;
+  --surface: #151515;
+  --card: rgba(21, 21, 21, 0.94);
+  --ink: #f2f2f2;
+  --muted: #aaa;
+  --line: rgba(255, 255, 255, 0.14);
+  --accent: #d8d8d8;
+  --deep: #252525;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.62);
+}
+
+[data-theme="light"] {
+  --bg: #EDEEE9;
+  --surface: #F5EBE1;
+  --card: rgba(245, 235, 225, 0.96);
+  --ink: #25221F;
+  --muted: #665951;
+  --line: rgba(112, 91, 79, 0.25);
+  --accent: #6B554B;
+  --deep: #D7BDB0;
+  --shadow: 0 18px 52px rgba(87, 68, 57, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Manrope, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at 12% 12%, #303030, transparent 26%), radial-gradient(circle at 88% 52%, #181818, transparent 28%), linear-gradient(125deg, #090909, #151515);
+  animation: ambient 14s ease-in-out infinite alternate;
+}
+
+body:after {
+  content: "";
+  position: fixed;
+  inset: -30%;
+  pointer-events: none;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.045);
+  animation: aura 13s ease-in-out infinite;
+}
+
+@keyframes ambient {
+  to {
+    transform: scale(1.06);
+    filter: hue-rotate(8deg);
+  }
+}
+
+@keyframes aura {
+  50% {
+    transform: translate3d(-4%, 3%, 0) scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+@keyframes frame {
+  50% {
+    transform: rotate(3deg) scale(1.025);
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes sweep {
+  to {
+    transform: translateX(180%);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: auto;
+}
+
+.nav {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.logo {
+  font: 800 23px Syne;
+  letter-spacing: -0.04em;
+}
+
+.accent, .logo b, .eyebrow {
+  color: var(--accent);
+}
+
+.links {
+  display: flex;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.links a:hover {
+  color: var(--ink);
+}
+
+.nav-backdrop,
+.nav-group-title,
+.nav-divider {
+  display: none;
+}
+
+.cv-label-short {
+  display: none;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 9px;
+}
+
+.button, .theme, .filter {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font: 700 12px Manrope;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.button:hover, .theme:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.primary {
+  background: var(--accent);
+  color: #0b0b0b;
+  border-color: var(--accent);
+}
+
+.button.primary {
+  box-shadow: 0 0 0 1px rgba(218, 241, 222, 0.22), 0 10px 30px rgba(142, 182, 155, 0.25);
+}
+
+.theme {
+  width: 42px;
+  padding: 0;
+  font-size: 17px;
+}
+
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font: 700 18px Manrope;
+  cursor: pointer;
+}
+
+.eyebrow {
+  font: 500 10px "DM Mono";
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+section {
+  padding: 88px 0;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+.hero {
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero h1 {
+  font: 800 clamp(54px, 7vw, 103px) / 0.88 Syne;
+  letter-spacing: -0.075em;
+  margin: 15px 0 22px;
+}
+
+.intro, .section-intro {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.portrait {
+  height: 560px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.portrait:before {
+  content: "";
+  width: 395px;
+  height: 470px;
+  border: 1px solid var(--line);
+  border-radius: 205px 205px 25px;
+  background: linear-gradient(145deg, #555, #171717);
+  transform: rotate(7deg);
+  animation: frame 5s ease-in-out infinite;
+}
+
+.portrait picture,
+.personalities picture {
+  display: contents;
+}
+
+.portrait img {
+  position: absolute;
+  width: 335px;
+  height: 420px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 165px 165px 20px;
+  box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.04), 0 0 78px rgba(255, 255, 255, 0.14);
+  animation: float 5s ease-in-out infinite;
+}
+
+.float {
+  position: absolute;
+  padding: 13px 15px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  font-size: 10px;
+  backdrop-filter: blur(12px);
+  animation: float 4.5s ease-in-out infinite;
+}
+
+.float strong {
+  display: block;
+  font-size: 13px;
+}
+
+.f1 {
+  right: 3px;
+  top: 80px;
+}
+
+.f2 {
+  left: 0;
+  bottom: 48px;
+  animation-delay: -2s;
+}
+
+.dot {
+  color: var(--accent);
+  text-shadow: 0 0 12px var(--accent);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 32px;
+}
+
+.title {
+  font: 700 clamp(35px, 4.2vw, 53px) / 1 Syne;
+  letter-spacing: -0.06em;
+  margin: 10px 0;
+}
+
+.about, .hobbies, .split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 20px;
+}
+
+.panel {
+  padding: 28px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.bio {
+  font: 600 24px / 1.45 Syne;
+  letter-spacing: -0.035em;
+}
+
+.journey div, .role {
+  border-left: 1px solid var(--line);
+  padding-left: 17px;
+  margin-bottom: 17px;
+}
+
+.journey small, .role small {
+  font: 500 10px "DM Mono";
+  color: var(--accent);
+}
+
+.journey p, .role p {
+  margin: 5px 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.personalities {
+  height: 535px;
+  position: relative;
+  margin-top: 23px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #090909;
+  box-shadow: var(--shadow);
+}
+
+.personalities > img,
+.personalities picture img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0.9;
+  filter: saturate(0.78);
+  transition: 0.6s;
+}
+
+.personalities:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(9, 9, 9, 0.78), transparent 48%, rgba(9, 9, 9, 0.25)), linear-gradient(0deg, rgba(9, 9, 9, 0.9), transparent 58%);
+}
+
+.persona-heading {
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  left: 28px;
+  font: 700 clamp(26px, 3vw, 42px) / 1 Syne;
+  letter-spacing: -0.05em;
+}
+
+.persona-heading span {
+  display: block;
+  color: var(--accent);
+  font: 500 10px "DM Mono";
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+}
+
+.personas {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 9px;
+}
+
+.persona {
+  min-height: 78px;
+  text-align: left;
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 13px;
+  background: rgba(12, 12, 12, 0.8);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: 0.35s;
+}
+
+.persona .n {
+  display: block;
+  color: var(--accent);
+  font: 500 9px "DM Mono";
+}
+
+.persona strong {
+  font: 700 13px Syne;
+  display: block;
+  margin-top: 7px;
+}
+
+.persona small {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  color: #ccd0cf;
+  font-size: 10px;
+  transition: 0.3s;
+}
+
+.persona:hover, .persona:focus-visible {
+  transform: translateY(-7px);
+  border-color: var(--accent);
+  box-shadow: 0 0 28px #9ba8ab66;
+  outline: 0;
+}
+
+.persona:hover small, .persona:focus-visible small {
+  max-height: 36px;
+  opacity: 1;
+  margin-top: 5px;
+}
+
+.personalities:has(.persona:hover) > img,
+.personalities:has(.persona:hover) picture img {
+  filter: saturate(1.05) contrast(1.08);
+  transform: scale(1.018);
+}
+
+.skills, .projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.skill, .project {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.project {
+  position: relative;
+  cursor: pointer;
+}
+
+.project:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.skill {
+  min-height: 180px;
+  padding: 20px;
+}
+
+.skill:before, .project:before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: translateX(-120%);
+}
+
+.skill:hover:before, .project:hover:before {
+  animation: sweep 0.8s ease;
+}
+
+.skill:hover, .project:hover {
+  transform: translateY(-7px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.skill span, .tag {
+  font: 500 10px "DM Mono";
+  color: var(--accent);
+}
+
+.skill h3 {
+  font: 700 19px Syne;
+  margin: 35px 0 10px;
+}
+
+.skill p, .project p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.art {
+  height: 150px;
+  background: radial-gradient(circle at 50% 42%, #777, #2a2a2a 37%, #111 70%);
+  transition: 0.4s;
+}
+
+.project:hover .art {
+  filter: hue-rotate(12deg);
+  transform: scale(1.04);
+}
+
+.copy {
+  padding: 18px;
+}
+
+.project h3 {
+  font: 700 19px Syne;
+  margin: 8px 0;
+}
+
+.project a {
+  font-size: 11px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.project a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 17px;
+}
+
+.filter {
+  font: 500 10px "DM Mono";
+  color: var(--muted);
+  background: transparent;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+}
+
+.filter.active, .filter:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(120deg, #252525, #121212);
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.cta h2 {
+  font: 700 clamp(30px, 4vw, 49px) / 1 Syne;
+  margin: 8px 0;
+}
+
+.cta p {
+  max-width: 385px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.hobby, .book {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 12px;
+  margin: 4px;
+  min-height: 40px;
+  transition: 0.25s;
+}
+
+.hobby {
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.book {
+  padding: 10px 16px;
+  border-left: 2px solid var(--accent);
+  border-radius: 5px 10px 10px 5px;
+}
+
+.hobby:hover, .book:hover {
+  transform: translateY(-3px);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.learning-title {
+  white-space: nowrap;
+}
+
+.contact {
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.contact h2 {
+  font: 700 clamp(45px, 7vw, 82px) / 0.95 Syne;
+  letter-spacing: -0.07em;
+  margin: 15px 0;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  color: var(--muted);
+  font: 500 11px "DM Mono";
+  transition: 0.2s;
+}
+
+.socials a:hover {
+  background: var(--accent);
+  color: #0b0b0b;
+  border-color: var(--accent);
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font: 500 10px "DM Mono";
+}
+
+.motion {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.75s, transform 0.75s;
+}
+
+.motion.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] body:before {
+  background: radial-gradient(circle at 10% 10%, rgba(215, 189, 176, 0.82), transparent 30%), radial-gradient(circle at 88% 48%, rgba(214, 204, 194, 0.76), transparent 28%), linear-gradient(125deg, #EDEEE9, #F5EBE1);
+}
+
+[data-theme="light"] body:after {
+  background: radial-gradient(circle, rgba(215, 189, 176, 0.27), transparent 45%);
+}
+
+[data-theme="light"] .project,
+[data-theme="light"] .skill,
+[data-theme="light"] .panel,
+[data-theme="light"] .button,
+[data-theme="light"] .theme {
+  background: #F5EBE1;
+  color: #25221F;
+  border-color: rgba(112, 91, 79, 0.25);
+}
+
+[data-theme="light"] .project p,
+[data-theme="light"] .skill p,
+[data-theme="light"] .journey p,
+[data-theme="light"] .role p {
+  color: #665951;
+}
+
+[data-theme="light"] .art {
+  background: radial-gradient(circle at 50% 42%, #D6CCC2, #E3D5CA 39%, #D7BDB0 73%);
+}
+
+[data-theme="light"] .cta {
+  background: linear-gradient(120deg, #D7BDB0, #E3D5CA);
+  color: #25221F;
+  border-color: rgba(112, 91, 79, 0.25);
+}
+
+[data-theme="light"] .cta p {
+  color: #5D5048;
+}
+
+[data-theme="light"] .filter {
+  border-color: rgba(112, 91, 79, 0.25);
+  color: #665951;
+}
+
+[data-theme="light"] .filter.active,
+[data-theme="light"] .filter:hover {
+  background: #25221F;
+  color: #F5EBE1;
+}
+
+[data-theme="light"] .personalities {
+  background: #25221F;
+}
+
+[data-theme="light"] .persona {
+  background: rgba(37, 34, 31, 0.84);
+  color: #F5EBE1;
+  border-color: rgba(245, 235, 225, 0.25);
+}
+
+[data-theme="light"] .persona small {
+  color: #E3D5CA;
+}
+
+[data-theme="light"] .hobby,
+[data-theme="light"] .book {
+  background: #F5EBE1;
+  color: #665951;
+}
+
+[data-theme="light"] .primary,
+[data-theme="light"] .socials a:hover {
+  color: #F5EBE1;
+  background: #6B554B;
+  border-color: #6B554B;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile Responsive System */
+@media (max-width: 800px) {
+  .shell {
+    width: 100%;
+    max-width: 1180px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 auto;
+  }
+  .hero > *, .about > *, .split > *, .panel, .project, .skill, .cta {
+    min-width: 0;
+  }
+  .nav {
+    height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 35;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .logo {
+    order: 1;
+  }
+  .actions {
+    order: 2;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .menu-toggle {
+    order: 3;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border-radius: 50%;
+    margin-left: 0;
+    font-size: 19px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, border-color 0.2s;
+  }
+  .menu-toggle:active {
+    transform: scale(0.92);
+  }
+  .theme {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+  }
+  .nav > .actions > a.cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  /* Backdrop Overlay */
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .nav-backdrop.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Navigation Drawer */
+  .links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 76px;
+    left: 14px;
+    right: 14px;
+    max-height: calc(100vh - 92px);
+    overflow-y: auto;
+    z-index: 32;
+    padding: 16px 12px;
+    background: color-mix(in srgb, var(--card) 96%, transparent);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.22s;
+    gap: 3px;
+  }
+  .links.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    visibility: visible;
+  }
+  .nav-group-title {
+    display: block;
+    font: 600 10px "DM Mono";
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 12px 4px;
+  }
+  .nav-divider {
+    display: block;
+    height: 1px;
+    background: var(--line);
+    margin: 8px 6px;
+    opacity: 0.8;
+  }
+  .links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 46px;
+    transition: background 0.18s, color 0.18s;
+  }
+  .links a:hover,
+  .links a:focus-visible,
+  .links a:active {
+    background: var(--surface);
+    color: var(--accent);
+    outline: 0;
+  }
+  .nav-arrow {
+    font-size: 13px;
+    color: var(--accent);
+    opacity: 0.85;
+  }
+
+  .hero, .about, .split, .hobbies {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero {
+    min-height: 0;
+    gap: 16px;
+    padding: 24px 0 32px;
+  }
+  .eyebrow {
+    letter-spacing: 0.11em;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 10vw, 52px);
+    line-height: 0.94;
+    letter-spacing: -0.05em;
+    margin: 12px 0 16px;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+  .hero .intro {
+    font-size: 13px;
+    line-height: 1.68;
+    overflow-wrap: break-word;
+  }
+  .hero-actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .hero-actions .button {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+  .portrait {
+    grid-row: auto;
+    height: 380px;
+    margin-top: 14px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    max-width: 100%;
+  }
+  .portrait:before {
+    width: 230px;
+    height: 290px;
+  }
+  .portrait img {
+    width: 205px;
+    height: 270px;
+  }
+  .float {
+    z-index: 3;
+    padding: 10px 13px;
+    font-size: 10px;
+    border-radius: 12px;
+  }
+  .float strong {
+    font-size: 12px;
+  }
+  .f1 {
+    right: 14px;
+    top: 36px;
+  }
+  .f2 {
+    left: 14px;
+    bottom: 24px;
+  }
+  section {
+    padding: 52px 0;
+  }
+  .top, .cta {
+    display: block;
+  }
+  .top {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .title {
+    font-size: clamp(26px, 8.5vw, 40px);
+    line-height: 1.05;
+    overflow-wrap: break-word;
+  }
+  .section-intro {
+    margin-top: 18px;
+    overflow-wrap: break-word;
+  }
+  .panel {
+    padding: 20px;
+  }
+  .bio {
+    font-size: clamp(16px, 4.6vw, 20px);
+    line-height: 1.5;
+  }
+  .personalities {
+    height: 480px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .personalities > img,
+  .personalities picture img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    opacity: 0.9;
+  }
+  .persona-heading {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 24px 20px 0;
+    z-index: 2;
+  }
+  .personas {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding: 12px 18px 20px;
+    z-index: 2;
+    scrollbar-width: none;
+  }
+  .personas::-webkit-scrollbar {
+    display: none;
+  }
+  .persona {
+    flex: 0 0 185px;
+    scroll-snap-align: start;
+    min-height: 86px;
+    padding: 13px;
+    border-radius: 14px;
+    background: rgba(12, 12, 12, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .persona:last-child {
+    grid-column: auto;
+    margin-right: 8px;
+  }
+  .persona strong {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+  .persona small {
+    display: block;
+    max-height: 40px;
+    opacity: 0.85;
+    margin-top: 6px;
+    color: #ccd0cf;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skill {
+    min-height: 155px;
+    padding: 16px;
+  }
+  .skill h3 {
+    margin: 24px 0 8px;
+  }
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .art {
+    height: 125px;
+  }
+  .copy {
+    padding: 16px;
+  }
+  .cta {
+    padding: 24px;
+  }
+  .cta h2 {
+    font-size: clamp(24px, 7.5vw, 40px);
+    line-height: 1.05;
+    overflow-wrap: break-word;
+  }
+  .cta .button {
+    margin-top: 12px;
+  }
+  .hobby, .book {
+    font-size: 11px;
+  }
+  .learning-title {
+    white-space: normal;
+  }
+  .contact h2 {
+    font-size: clamp(28px, 9vw, 50px);
+    line-height: 1.02;
+    overflow-wrap: break-word;
+  }
+  footer {
+    display: block;
+    line-height: 2;
+    font-size: 9px;
+    padding-bottom: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cv-label-full {
+    display: none;
+  }
+  .cv-label-short {
+    display: inline;
+    font-weight: 700;
+  }
+  .nav > .actions > a.cv {
+    padding: 10px 12px;
+    font-size: 11px;
+    gap: 4px;
+  }
+  .actions {
+    gap: 6px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 9.6vw, 38px);
+    letter-spacing: -0.04em;
+  }
+  .hero .intro {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+  .skills {
+    grid-template-columns: 1fr;
+  }
+  .cta {
+    padding: 20px 16px;
+  }
+  .cta p {
+    font-size: 12.5px;
+  }
+  .portrait {
+    height: 340px;
+    margin-top: 8px;
+  }
+  .portrait:before {
+    width: 200px;
+    height: 255px;
+  }
+  .portrait img {
+    width: 180px;
+    height: 235px;
+  }
+  .f1 {
+    right: 4px;
+    top: 18px;
+    padding: 7px 10px;
+    font-size: 9px;
+  }
+  .f1 strong {
+    font-size: 10.5px;
+  }
+  .f2 {
+    left: 4px;
+    bottom: 12px;
+    padding: 7px 10px;
+    font-size: 9px;
+  }
+  .f2 strong {
+    font-size: 10.5px;
+  }
+  .personalities {
+    height: 460px;
+  }
+  .persona {
+    flex: 0 0 170px;
+  }
+}
+
+@media (max-width: 390px) {
+  .shell {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .actions {
+    gap: 5px;
+  }
+  .hero h1 {
+    font-size: clamp(25px, 9.2vw, 30px);
+    letter-spacing: -0.03em;
+  }
+  .hero .intro {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .hero-actions {
+    gap: 8px;
+  }
+  .hero-actions .button {
+    padding: 10px 14px;
+    font-size: 11.5px;
+  }
+  .portrait {
+    height: 305px;
+  }
+  .portrait:before {
+    width: 175px;
+    height: 225px;
+  }
+  .portrait img {
+    width: 155px;
+    height: 205px;
+  }
+  .float {
+    padding: 6px 9px;
+    font-size: 8.5px;
+    border-radius: 10px;
+  }
+  .float strong {
+    font-size: 10px;
+  }
+  .f1 {
+    right: 0;
+    top: 8px;
+  }
+  .f2 {
+    left: 0;
+    bottom: 6px;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .portrait:before {
+    width: 155px;
+    height: 205px;
+  }
+  .portrait img {
+    width: 140px;
+    height: 190px;
+  }
+}
+</style>
 </head>
 <body>
 <header class="shell nav">
-<a class="logo" href="#home">AW<b>.</b>
-</a>
-<button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
-<nav class="links" id="site-links">
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#hobbies">Hobbies</a>
-<a href="#experience">Experience</a>
-<a href="graphics.html">Creative work</a>
-<a href="games.html">Games & OTT</a>
-<a href="live-projects.html">Live projects</a>
+<a class="logo" href="#home">AW<b>.</b></a>
+<nav class="links" id="site-links" aria-label="Primary Navigation">
+  <span class="nav-group-title">Navigation</span>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#skills" class="nav-link">Skills</a>
+  <a href="#projects" class="nav-link">Projects</a>
+  <a href="#hobbies" class="nav-link">Hobbies</a>
+  <a href="#experience" class="nav-link">Experience</a>
+  <div class="nav-divider" role="separator"></div>
+  <span class="nav-group-title">Explore Portals</span>
+  <a href="graphics.html" class="nav-link">Creative work <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="games.html" class="nav-link">Games & OTT <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="live-projects.html" class="nav-link">Live projects <span class="nav-arrow" aria-hidden="true">↗</span></a>
 </nav>
 <div class="actions">
-<button class="theme" id="theme" aria-label="Toggle colour theme">☼</button>
-<a class="button cv" href="Aditya-Walvekar-CV.pdf" download>Download CV ↗</a>
+  <button class="theme" id="theme" aria-label="Toggle colour theme">☼</button>
+  <a class="button cv" href="Aditya-Walvekar-CV.pdf" download aria-label="Download CV">
+    <span class="cv-label-full">Download CV</span>
+    <span class="cv-label-short">CV</span>
+    <span class="cv-icon" aria-hidden="true">↗</span>
+  </a>
 </div>
+<button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
 </header>
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 <main>
 <section id="home" class="shell hero">
 <div>
@@ -57,7 +1365,10 @@
 </div>
 </div>
 <div class="portrait">
-<img src="aditya-portrait.png" alt="Portrait of Aditya Walvekar">
+<picture>
+  <source srcset="aditya-portrait.webp" type="image/webp">
+  <img src="aditya-portrait.png" alt="Portrait of Aditya Walvekar" width="335" height="420" fetchpriority="high">
+</picture>
 <div class="float f1">
 <span class="dot">●</span> CREATIVE SYSTEM<strong>ONLINE / 2022</strong>
 </div>
@@ -91,7 +1402,10 @@
 </article>
 </div>
 <div class="personalities motion">
-<img src="five-personalities.png" alt="Five visual sides of Aditya">
+<picture>
+  <source srcset="five-personalities.webp" type="image/webp">
+  <img src="five-personalities.png" alt="Five visual sides of Aditya" width="1536" height="1024" loading="lazy">
+</picture>
 <div class="persona-heading">
 <span>Beyond the portfolio</span>Five sides of me.</div>
 <div class="personas">
@@ -115,7 +1429,7 @@
 <strong>Casual Gamer</strong>
 <small>Games, strategy and screen stories ↗</small>
 </a>
-<button class="persona" type="button" aria-label="Personal life — private">
+<button class="persona" type="button" id="persona-private" aria-label="Personal life — private and grounded">
 <span class="n">05</span>
 <strong>Personal Life</strong>
 <small>Private and grounded.</small>
@@ -161,11 +1475,11 @@
 </div>
 <a class="button" href="https://www.linkedin.com/in/aditya-walvekar" target="_blank" rel="noopener noreferrer">See LinkedIn ↗</a>
 </div>
-<div class="filters">
-<button class="filter active" data-filter="all">All work</button>
-<button class="filter" data-filter="ai">AI / ML</button>
-<button class="filter" data-filter="python">Python</button>
-<button class="filter" data-filter="data">Data Analytics</button>
+<div class="filters" role="group" aria-label="Filter projects by category">
+<button class="filter active" data-filter="all" aria-pressed="true">All work</button>
+<button class="filter" data-filter="ai" aria-pressed="false">AI / ML</button>
+<button class="filter" data-filter="python" aria-pressed="false">Python</button>
+<button class="filter" data-filter="data" aria-pressed="false">Data Analytics</button>
 </div>
 <div class="projects motion">
 <article class="project" data-kind="ai python">
@@ -344,7 +1658,62 @@
 <span>© 2026 ADITYA WALVEKAR</span>
 <span>DESIGNED WITH INTENT · BUILT FOR WHAT’S NEXT</span>
 </footer>
-<script>const theme=document.querySelector('#theme');theme.addEventListener('click',()=>{const light=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=light?'dark':'light';theme.textContent=light?'☼':'◐';localStorage.theme=document.documentElement.dataset.theme});if(localStorage.theme){document.documentElement.dataset.theme=localStorage.theme;theme.textContent=localStorage.theme==='light'?'◐':'☼'}const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.motion').forEach(x=>observer.observe(x));const filters=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('[data-kind]')];filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));f.classList.add('active');cards.forEach(c=>c.hidden=f.dataset.filter!=='all'&&!c.dataset.kind.includes(f.dataset.filter))}));</script>
-<script>const menuButton=document.querySelector('#menu-toggle'),siteLinks=document.querySelector('#site-links');menuButton.addEventListener('click',()=>{const open=siteLinks.classList.toggle('is-open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'×':'☰'});siteLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{siteLinks.classList.remove('is-open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰'}));</script>
+<script>const theme=document.querySelector('#theme');theme.addEventListener('click',()=>{const light=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=light?'dark':'light';theme.textContent=light?'☼':'◐';localStorage.theme=document.documentElement.dataset.theme});if(localStorage.theme){document.documentElement.dataset.theme=localStorage.theme;theme.textContent=localStorage.theme==='light'?'◐':'☼'}const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.motion').forEach(x=>observer.observe(x));const filters=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('[data-kind]')];filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false')});f.classList.add('active');f.setAttribute('aria-pressed','true');cards.forEach(c=>c.hidden=f.dataset.filter!=='all'&&!c.dataset.kind.includes(f.dataset.filter))}));</script>
+<script>
+const menuButton = document.querySelector('#menu-toggle');
+const siteLinks = document.querySelector('#site-links');
+const navBackdrop = document.querySelector('#nav-backdrop');
+
+function setMenuState(open) {
+  siteLinks.classList.toggle('is-open', open);
+  if (navBackdrop) navBackdrop.classList.toggle('is-active', open);
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  menuButton.textContent = open ? '✕' : '☰';
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+menuButton.addEventListener('click', () => {
+  const isOpen = siteLinks.classList.contains('is-open');
+  setMenuState(!isOpen);
+});
+
+if (navBackdrop) {
+  navBackdrop.addEventListener('click', () => setMenuState(false));
+}
+
+siteLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => setMenuState(false));
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && siteLinks.classList.contains('is-open')) {
+    setMenuState(false);
+    menuButton.focus();
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 800 && siteLinks.classList.contains('is-open')) {
+    setMenuState(false);
+  }
+});
+
+const privateBtn = document.querySelector('#persona-private');
+if (privateBtn) {
+  privateBtn.addEventListener('click', () => {
+    const small = privateBtn.querySelector('small');
+    if (small) {
+      const orig = small.textContent;
+      small.textContent = 'Grounded & off-screen.';
+      small.style.color = 'var(--accent)';
+      setTimeout(() => {
+        small.textContent = orig;
+        small.style.color = '';
+      }, 2400);
+    }
+  });
+}
+</script>
 </body>
 </html>

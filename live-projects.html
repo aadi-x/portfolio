@@ -1,1 +1,228 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Live Projects — Aditya Walvekar</title><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"><style>:root{--bg:#090909;--card:#151515;--ink:#f2f2f2;--muted:#aaa;--line:#ffffff24;--accent:#d8d8d8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 10%,#303030,transparent 27%),var(--bg);color:var(--ink);font-family:Manrope,Arial}.shell{width:min(1100px,calc(100% - 40px));margin:auto}.nav{height:82px;display:flex;align-items:center;justify-content:space-between}.logo{font:800 23px Syne}.logo b{color:var(--accent)}a{color:inherit;text-decoration:none}.back,.link{padding:12px 16px;border:1px solid var(--line);border-radius:999px;font:700 12px Manrope;transition:.25s}.back:hover,.link:hover{background:var(--accent);color:#090909;transform:translateY(-3px)}main{padding:70px 0}.eyebrow{font-size:10px;letter-spacing:.15em;color:var(--accent)}h1{font:800 clamp(55px,9vw,112px)/.9 Syne;letter-spacing:-.08em;margin:16px 0 30px}.intro{max-width:590px;color:var(--muted);line-height:1.8}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}.card{min-height:360px;padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#1c1c1c,#101010);display:flex;flex-direction:column;justify-content:end;box-shadow:0 25px 60px #0008;transition:.35s}.card:hover{transform:translateY(-8px);border-color:#ffffff70}.tag{font-size:10px;letter-spacing:.14em;color:var(--accent)}h2{font:700 34px Syne;letter-spacing:-.05em;margin:10px 0}.card p{color:var(--muted);line-height:1.7;font-size:13px;max-width:380px}.link{width:max-content;margin-top:14px}@media(max-width:650px){.grid{grid-template-columns:1fr}main{padding-top:42px}}</style></head><body><header class="shell nav"><a class="logo" href="index.html">AW<b>.</b></a><a class="back" href="index.html">← Back to portfolio</a></header><main class="shell"><span class="eyebrow">BUILT TO BE USED</span><h1>Live<br>projects.</h1><p class="intro">A small collection of working web experiences—open them, play with them and explore the work beyond the portfolio.</p><div class="grid"><article class="card"><span class="tag">LIVE WEB APP</span><h2>Habit Tracker App</h2><p>A focused habit-building interface designed for daily consistency.</p><a class="link" href="https://aadi-x.github.io/habit-studio/" target="_blank" rel="noopener noreferrer">Open live project ↗</a></article><article class="card"><span class="tag">LIVE GAME</span><h2>Rocnet Game</h2><p>An interactive web game built for quick play and experimentation.</p><a class="link" href="https://aadi-x.github.io/rocnet-game/" target="_blank" rel="noopener noreferrer">Open live project ↗</a></article></div></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Working web applications and interactive games built by Aditya Walvekar — Habit Tracker App and Rocnet Game.">
+<meta name="author" content="Aditya Walvekar">
+<meta name="theme-color" content="#090909">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Live Projects — Aditya Walvekar">
+<meta property="og:description" content="A collection of working web experiences and games — open, play, and explore.">
+<meta property="og:image" content="aditya-portrait.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Live Projects — Aditya Walvekar">
+<meta name="twitter:description" content="A collection of working web experiences and games — open, play, and explore.">
+<meta name="twitter:image" content="aditya-portrait.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
+<title>Live Projects — Aditya Walvekar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #090909;
+  --card: #151515;
+  --ink: #f2f2f2;
+  --muted: #aaa;
+  --line: rgba(255, 255, 255, 0.14);
+  --accent: #d8d8d8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 10% 10%, #303030, transparent 27%), var(--bg);
+  color: var(--ink);
+  font-family: Manrope, Arial, sans-serif;
+}
+
+.shell {
+  width: min(1100px, calc(100% - 40px));
+  margin: auto;
+}
+
+.nav {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font: 800 23px Syne;
+}
+
+.logo b {
+  color: var(--accent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.back, .link {
+  padding: 10px 18px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: 700 12px Manrope;
+  transition: 0.25s;
+}
+
+.back:hover, .link:hover {
+  background: var(--accent);
+  color: #090909;
+  transform: translateY(-2px);
+}
+
+main {
+  padding: 70px 0;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+h1 {
+  font: 800 clamp(55px, 9vw, 112px) / 0.9 Syne;
+  letter-spacing: -0.08em;
+  margin: 16px 0 30px;
+}
+
+.intro {
+  max-width: 590px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.card {
+  position: relative;
+  min-height: 360px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #1c1c1c, #101010);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  transition: 0.35s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.44);
+}
+
+.card:focus-within {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.card .link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  z-index: 1;
+}
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+h2 {
+  font: 700 34px Syne;
+  letter-spacing: -0.05em;
+  margin: 10px 0;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 13px;
+  max-width: 380px;
+}
+
+.link {
+  width: max-content;
+  margin-top: 14px;
+}
+
+@media (max-width: 650px) {
+  .shell {
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: clamp(38px, 12vw, 64px);
+    overflow-wrap: break-word;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    min-height: 240px;
+    padding: 22px;
+  }
+  main {
+    padding-top: 42px;
+  }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: clamp(30px, 10vw, 42px);
+  }
+  h2 {
+    font-size: 26px;
+  }
+}
+</style>
+</head>
+<body>
+<header class="shell nav">
+  <a class="logo" href="index.html">AW<b>.</b></a>
+  <a class="back" href="index.html">← Back to portfolio</a>
+</header>
+<main class="shell">
+  <span class="eyebrow">BUILT TO BE USED</span>
+  <h1>Live<br>projects.</h1>
+  <p class="intro">A small collection of working web experiences—open them, play with them and explore the work beyond the portfolio.</p>
+  <div class="grid">
+    <article class="card">
+      <span class="tag">LIVE WEB APP</span>
+      <h2>Habit Tracker App</h2>
+      <p>A focused habit-building interface designed for daily consistency.</p>
+      <a class="link" href="https://aadi-x.github.io/habit-studio/" target="_blank" rel="noopener noreferrer">Open live project ↗</a>
+    </article>
+    <article class="card">
+      <span class="tag">LIVE GAME</span>
+      <h2>Rocnet Game</h2>
+      <p>An interactive web game built for quick play and experimentation.</p>
+      <a class="link" href="https://aadi-x.github.io/rocnet-game/" target="_blank" rel="noopener noreferrer">Open live project ↗</a>
+    </article>
+  </div>
+</main>
+</body>
+</html>
