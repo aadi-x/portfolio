@@ -3,226 +3,761 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Working web applications and interactive games built by Aditya Walvekar — Habit Tracker App and Rocnet Game.">
+<meta name="description" content="Working web applications, live interactive games, and applied engineering projects across 6 industry internships built by Aditya Walvekar.">
 <meta name="author" content="Aditya Walvekar">
 <meta name="theme-color" content="#090909">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Live Projects — Aditya Walvekar">
-<meta property="og:description" content="A collection of working web experiences and games — open, play, and explore.">
+<meta property="og:title" content="Projects & Internship Works — Aditya Walvekar">
+<meta property="og:description" content="Explore live web applications, arcade games, and applied AI, machine learning, Python and data science engineering builds.">
 <meta property="og:image" content="aditya-portrait.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Live Projects — Aditya Walvekar">
-<meta name="twitter:description" content="A collection of working web experiences and games — open, play, and explore.">
+<meta name="twitter:title" content="Projects & Internship Works — Aditya Walvekar">
+<meta name="twitter:description" content="Explore live web applications, arcade games, and applied AI, machine learning, Python and data science engineering builds.">
 <meta name="twitter:image" content="aditya-portrait.webp">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
-<title>Live Projects — Aditya Walvekar</title>
+<title>Projects &amp; Internship Works — Aditya Walvekar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #090909;
-  --card: #151515;
+  --surface: #131313;
+  --card: #181818;
+  --card-hover: #1f1f1f;
   --ink: #f2f2f2;
-  --muted: #aaa;
-  --line: rgba(255, 255, 255, 0.14);
+  --muted: #a0a0a0;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-hover: rgba(255, 255, 255, 0.28);
   --accent: #d8d8d8;
+  --accent-glow: rgba(255, 255, 255, 0.06);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background: radial-gradient(circle at 10% 10%, #303030, transparent 27%), var(--bg);
+  background: radial-gradient(circle at 12% 10%, #262626, transparent 28%),
+              radial-gradient(circle at 92% 70%, #1e1e1e, transparent 25%),
+              var(--bg);
   color: var(--ink);
   font-family: Manrope, Arial, sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
 }
 
 .shell {
-  width: min(1100px, calc(100% - 40px));
-  margin: auto;
+  width: min(1140px, calc(100% - 40px));
+  margin: 0 auto;
 }
 
+/* Header & Nav */
 .nav {
-  height: 82px;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid var(--line);
 }
 
 .logo {
   font: 800 23px Syne;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
 }
 
 .logo b {
   color: var(--accent);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.back, .link {
+.nav-btn {
   padding: 10px 18px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   border: 1px solid var(--line);
   border-radius: 999px;
   font: 700 12px Manrope;
-  transition: 0.25s;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  transition: 0.25s ease;
 }
 
-.back:hover, .link:hover {
+.nav-btn:hover {
   background: var(--accent);
   color: #090909;
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 
+/* Main Hero */
 main {
-  padding: 70px 0;
+  padding: 60px 0 90px;
 }
 
-.eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.15em;
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 10.5px "DM Mono";
+  letter-spacing: 0.16em;
   color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 h1 {
-  font: 800 clamp(55px, 9vw, 112px) / 0.9 Syne;
-  letter-spacing: -0.08em;
-  margin: 16px 0 30px;
+  font: 800 clamp(44px, 7.5vw, 84px) / 0.95 Syne;
+  letter-spacing: -0.06em;
+  margin-bottom: 22px;
+  color: var(--ink);
 }
 
-.intro {
-  max-width: 590px;
+.hero-intro {
+  max-width: 660px;
   color: var(--muted);
-  line-height: 1.8;
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.75;
+  margin-bottom: 40px;
 }
 
-.grid {
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 38px;
+}
+
+.filter-btn {
+  font: 600 11.5px "DM Mono";
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 18px;
+  min-height: 44px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.22s ease;
+}
+
+.filter-btn:hover {
+  color: var(--ink);
+  border-color: var(--line-hover);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.filter-btn.active {
+  background: var(--ink);
+  color: #090909;
+  border-color: var(--ink);
+}
+
+.filter-btn .count {
+  font-size: 10px;
+  opacity: 0.75;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.filter-btn.active .count {
+  background: rgba(0, 0, 0, 0.18);
+  opacity: 1;
+}
+
+/* Projects Grid */
+.projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  margin-top: 48px;
+  gap: 24px;
 }
 
-.card {
+.project-card {
   position: relative;
-  min-height: 360px;
-  padding: 30px;
+  background: linear-gradient(145deg, var(--card), #101010);
   border: 1px solid var(--line);
-  border-radius: 22px;
-  background: linear-gradient(145deg, #1c1c1c, #101010);
+  border-radius: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-  transition: 0.35s;
-  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.44);
-}
-
-.card:focus-within {
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.card .link::after {
+.project-card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
 }
 
-.tag {
-  font-size: 10px;
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-hover);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.65);
+}
+
+.project-card:hover::before {
+  transform: translateX(100%);
+}
+
+.project-card.is-hidden {
+  display: none !important;
+}
+
+/* Card Elements */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-num {
+  font: 600 11px "DM Mono";
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.card-badge {
+  font: 600 9.5px "DM Mono";
   letter-spacing: 0.14em;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
   color: var(--accent);
+  text-transform: uppercase;
 }
 
-h2 {
-  font: 700 34px Syne;
-  letter-spacing: -0.05em;
-  margin: 10px 0;
+.card-badge.live {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #4ade80;
 }
 
-.card p {
+.project-card h2 {
+  font: 700 clamp(22px, 3vw, 27px) Syne;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.card-role {
+  font: 500 11.5px "DM Mono";
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.card-desc {
+  font-size: 13.5px;
   color: var(--muted);
   line-height: 1.7;
-  font-size: 13px;
-  max-width: 380px;
+  margin-bottom: 20px;
+  flex-grow: 1;
 }
 
-.link {
-  width: max-content;
-  margin-top: 14px;
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 24px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
 }
 
-@media (max-width: 650px) {
-  .shell {
-    width: 100%;
-    padding: 0 16px;
-    margin: 0 auto;
-  }
-  h1 {
-    font-size: clamp(38px, 12vw, 64px);
-    overflow-wrap: break-word;
-  }
-  .grid {
+.tag-item {
+  font: 500 10px "DM Mono";
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #b8b8b8;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 10px 18px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 999px;
+  font: 700 12px Manrope;
+  text-decoration: none;
+  transition: 0.24s ease;
+}
+
+.action-btn.primary {
+  background: var(--ink);
+  color: #090909;
+  border: 1px solid var(--ink);
+}
+
+.action-btn.primary:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.action-btn.secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--line-hover);
+  transform: translateY(-2px);
+}
+
+/* Bottom Portals & Verification Callout */
+.bottom-banner {
+  margin-top: 60px;
+  padding: 38px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(28, 28, 28, 0.8), rgba(16, 16, 16, 0.95));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  box-shadow: var(--shadow);
+}
+
+.bottom-banner-text h3 {
+  font: 700 24px Syne;
+  letter-spacing: -0.03em;
+  margin: 6px 0 8px;
+}
+
+.bottom-banner-text p {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.65;
+  max-width: 580px;
+}
+
+.bottom-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 36px 0;
+  text-align: center;
+  font: 500 11px "DM Mono";
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .projects-grid {
     grid-template-columns: 1fr;
   }
-  .card {
-    min-height: 240px;
-    padding: 22px;
+  .bottom-banner {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  main {
-    padding-top: 42px;
+  .bottom-banner-actions {
+    width: 100%;
+  }
+  .bottom-banner-actions .action-btn {
+    flex: 1;
   }
 }
 
-@media (max-width: 380px) {
-  h1 {
-    font-size: clamp(30px, 10vw, 42px);
+@media (max-width: 600px) {
+  .shell {
+    width: calc(100% - 30px);
   }
-  h2 {
-    font-size: 26px;
+  h1 {
+    font-size: clamp(38px, 11vw, 54px);
+  }
+  .project-card {
+    padding: 22px;
+  }
+  .card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .card-actions .action-btn {
+    width: 100%;
+  }
+  .nav-btn span {
+    display: none;
   }
 }
 </style>
 </head>
 <body>
+
 <header class="shell nav">
-  <a class="logo" href="index.html">AW<b>.</b></a>
-  <a class="back" href="index.html">← Back to portfolio</a>
+  <a class="logo" href="index.html" aria-label="Aditya Walvekar Portfolio Home">AW<b>.</b></a>
+  <div class="nav-right">
+    <a class="nav-btn" href="index.html#certifications">
+      <span>Verified Credentials</span> 📜
+    </a>
+    <a class="nav-btn" href="index.html">
+      ← <span>Back to portfolio</span>
+    </a>
+  </div>
 </header>
+
 <main class="shell">
-  <span class="eyebrow">BUILT TO BE USED</span>
-  <h1>Live<br>projects.</h1>
-  <p class="intro">A small collection of working web experiences—open them, play with them and explore the work beyond the portfolio.</p>
-  <div class="grid">
-    <article class="card">
-      <span class="tag">LIVE WEB APP</span>
+  <span class="hero-eyebrow">PORTFOLIO ARCHIVE · SELECTED WORK</span>
+  <h1>Projects &amp;<br>internship works.</h1>
+  <p class="hero-intro">
+    A unified showcase of live web applications, playable games, and applied engineering projects completed across 6 industry internships in AI, Machine Learning, Python development, and Data Analytics.
+  </p>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" role="group" aria-label="Filter projects by category">
+    <button class="filter-btn active" data-filter="all" aria-pressed="true">
+      All Projects <span class="count">8</span>
+    </button>
+    <button class="filter-btn" data-filter="live" aria-pressed="false">
+      ⚡ Live Apps &amp; Games <span class="count">2</span>
+    </button>
+    <button class="filter-btn" data-filter="ai" aria-pressed="false">
+      🤖 AI &amp; Machine Learning <span class="count">4</span>
+    </button>
+    <button class="filter-btn" data-filter="data" aria-pressed="false">
+      🐍 Python &amp; Data Science <span class="count">2</span>
+    </button>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid" id="projects-container">
+
+    <!-- 01 Habit Tracker App -->
+    <article class="project-card" data-category="live">
+      <div class="card-top">
+        <span class="card-num">01</span>
+        <span class="card-badge live">● LIVE WEB APP</span>
+      </div>
       <h2>Habit Tracker App</h2>
-      <p>A focused habit-building interface designed for daily consistency.</p>
-      <a class="link" href="https://aadi-x.github.io/habit-studio/" target="_blank" rel="noopener noreferrer">Open live project ↗</a>
+      <span class="card-role">Autonomous Web Application · Productivity Suite</span>
+      <p class="card-desc">
+        A focused habit-building dashboard engineered for daily consistency. Features streak tracking, progress calculation, completion stats, and reliable offline data synchronization via local storage.
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">HTML5</span>
+        <span class="tag-item">CSS3</span>
+        <span class="tag-item">JavaScript</span>
+        <span class="tag-item">LocalStorage API</span>
+        <span class="tag-item">Responsive UI</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://aadi-x.github.io/habit-studio/" target="_blank" rel="noopener noreferrer">
+          Launch Live App ↗
+        </a>
+      </div>
     </article>
-    <article class="card">
-      <span class="tag">LIVE GAME</span>
+
+    <!-- 02 Rocnet Game -->
+    <article class="project-card" data-category="live">
+      <div class="card-top">
+        <span class="card-num">02</span>
+        <span class="card-badge live">● LIVE GAME</span>
+      </div>
       <h2>Rocnet Game</h2>
-      <p>An interactive web game built for quick play and experimentation.</p>
-      <a class="link" href="https://aadi-x.github.io/rocnet-game/" target="_blank" rel="noopener noreferrer">Open live project ↗</a>
+      <span class="card-role">Interactive Web Game · 2D Physics &amp; Canvas</span>
+      <p class="card-desc">
+        An interactive 2D arcade survival space game built with HTML5 Canvas. Features real-time game loop architecture, particle explosion rendering, collision boundary math, and keyboard/touch control.
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">HTML5 Canvas</span>
+        <span class="tag-item">JavaScript</span>
+        <span class="tag-item">Game Physics</span>
+        <span class="tag-item">Particle Engine</span>
+        <span class="tag-item">Arcade</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://aadi-x.github.io/rocnet-game/" target="_blank" rel="noopener noreferrer">
+          Play Live Game ↗
+        </a>
+      </div>
     </article>
+
+    <!-- 03 Data Alcott Systems -->
+    <article class="project-card" data-category="ai">
+      <div class="card-top">
+        <span class="card-num">03</span>
+        <span class="card-badge">AI / NLP / PYTHON</span>
+      </div>
+      <h2>Data Alcott Systems</h2>
+      <span class="card-role">AI &amp; NLP Intern · Applied Project Engineering</span>
+      <p class="card-desc">
+        Engineered Natural Language Processing (NLP) workflows and intelligent classification pipelines. Handled text preprocessing, tokenization, contextual entity extraction, and modular Python algorithms.
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">Python</span>
+        <span class="tag-item">NLP</span>
+        <span class="tag-item">NLTK</span>
+        <span class="tag-item">Text Processing</span>
+        <span class="tag-item">Data Science</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://www.linkedin.com/posts/aditya-walvekar_ai-nlp-python-activity-7508231718055792640-WLgM" target="_blank" rel="noopener noreferrer">
+          View on LinkedIn ↗
+        </a>
+        <a class="action-btn secondary" href="index.html#certifications">
+          View Certificate ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- 04 SkillCraft Technology -->
+    <article class="project-card" data-category="ai">
+      <div class="card-top">
+        <span class="card-num">04</span>
+        <span class="card-badge">MACHINE LEARNING</span>
+      </div>
+      <h2>SkillCraft Technology</h2>
+      <span class="card-role">Machine Learning Intern · Predictive Modeling</span>
+      <p class="card-desc">
+        Developed supervised and unsupervised predictive machine learning models. Built data ingestion and preprocessing pipelines, conducted feature evaluation, and implemented cross-validated performance metrics.
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">Python</span>
+        <span class="tag-item">Scikit-Learn</span>
+        <span class="tag-item">Pandas</span>
+        <span class="tag-item">Predictive Modeling</span>
+        <span class="tag-item">EDA</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://www.linkedin.com/posts/aditya-walvekar_machinelearning-internship-skillcrafttechnology-activity-7506038540015726593-lvKs" target="_blank" rel="noopener noreferrer">
+          View on LinkedIn ↗
+        </a>
+        <a class="action-btn secondary" href="index.html#certifications">
+          View Certificate ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- 05 CodeAlpha -->
+    <article class="project-card" data-category="ai">
+      <div class="card-top">
+        <span class="card-num">05</span>
+        <span class="card-badge">ARTIFICIAL INTELLIGENCE</span>
+      </div>
+      <h2>CodeAlpha</h2>
+      <span class="card-role">Artificial Intelligence Intern · Awarded LOR</span>
+      <p class="card-desc">
+        Conducted hands-on AI algorithmic design and model training. Delivered end-to-end task milestones across computer vision and machine learning logic. Recognized with an official Letter of Recommendation (LOR).
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">AI Architectures</span>
+        <span class="tag-item">Python</span>
+        <span class="tag-item">Scikit-Learn</span>
+        <span class="tag-item">Model Training</span>
+        <span class="tag-item">Awarded LOR</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://www.linkedin.com/posts/aditya-walvekar_artificialintelligence-ai-machinelearning-activity-7492691825548247040-1Uhq" target="_blank" rel="noopener noreferrer">
+          View on LinkedIn ↗
+        </a>
+        <a class="action-btn secondary" href="index.html#certifications">
+          View LOR &amp; Cert ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- 06 Codec Technologies -->
+    <article class="project-card" data-category="ai">
+      <div class="card-top">
+        <span class="card-num">06</span>
+        <span class="card-badge">AI / ML / NLP</span>
+      </div>
+      <h2>Codec Technologies</h2>
+      <span class="card-role">Data Science &amp; AI Intern · Intelligent Pipelines</span>
+      <p class="card-desc">
+        Engineered intelligent analytics workflows spanning AI, Machine Learning, and NLP. Implemented automated data cleaning routines and machine learning classifications for practical business scenarios.
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">Python</span>
+        <span class="tag-item">Machine Learning</span>
+        <span class="tag-item">NLP</span>
+        <span class="tag-item">Data Science</span>
+        <span class="tag-item">Automation</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://www.linkedin.com/posts/aditya-walvekar_machinelearning-artificialintelligence-nlp-activity-7489035661027741696-IR4h" target="_blank" rel="noopener noreferrer">
+          View on LinkedIn ↗
+        </a>
+        <a class="action-btn secondary" href="index.html#certifications">
+          View Certificate ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- 07 CodSoft -->
+    <article class="project-card" data-category="data">
+      <div class="card-top">
+        <span class="card-num">07</span>
+        <span class="card-badge">DATA ANALYTICS</span>
+      </div>
+      <h2>CodSoft</h2>
+      <span class="card-role">Data Analytics Intern · Telemetry &amp; Insights</span>
+      <p class="card-desc">
+        Executed exploratory data analysis (EDA), pattern discovery, and statistical metrics across diverse datasets. Designed visual chart distributions and analytical reports to surface actionable conclusions.
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">Python</span>
+        <span class="tag-item">Pandas</span>
+        <span class="tag-item">NumPy</span>
+        <span class="tag-item">Matplotlib</span>
+        <span class="tag-item">Data Analysis</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://www.linkedin.com/posts/aditya-walvekar_codsoft-dataanalytics-internship-activity-7490107159620411394-gvpN" target="_blank" rel="noopener noreferrer">
+          View on LinkedIn ↗
+        </a>
+        <a class="action-btn secondary" href="index.html#certifications">
+          View Certificate ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- 08 Cognifyz Technologies -->
+    <article class="project-card" data-category="data">
+      <div class="card-top">
+        <span class="card-num">08</span>
+        <span class="card-badge">PYTHON DEVELOPMENT</span>
+      </div>
+      <h2>Cognifyz Technologies</h2>
+      <span class="card-role">Python Development Intern · Software &amp; Automation</span>
+      <p class="card-desc">
+        Focused on core Python development, modular programming, and algorithmic problem-solving. Built utility scripts and programmatic modules adhering to clean code standards and structured project execution.
+      </p>
+      <div class="card-tags">
+        <span class="tag-item">Python 3</span>
+        <span class="tag-item">Algorithms</span>
+        <span class="tag-item">Automation</span>
+        <span class="tag-item">Modular Code</span>
+        <span class="tag-item">Clean Architecture</span>
+      </div>
+      <div class="card-actions">
+        <a class="action-btn primary" href="https://www.linkedin.com/posts/aditya-walvekar_python-pythondevelopment-internship-activity-7505324812450566149-bHk0" target="_blank" rel="noopener noreferrer">
+          View on LinkedIn ↗
+        </a>
+        <a class="action-btn secondary" href="index.html#certifications">
+          View Certificate ↗
+        </a>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Bottom Verification Callout -->
+  <div class="bottom-banner">
+    <div class="bottom-banner-text">
+      <span class="hero-eyebrow">OFFICIAL VERIFICATION</span>
+      <h3>100% Backed by Verified Credentials</h3>
+      <p>
+        Every internship project is backed by verified Offer Letters, Completion Certificates, and Recommendations alongside 9+ Industry Certifications from NVIDIA, Anthropic, Microsoft, and Google Cloud.
+      </p>
+    </div>
+    <div class="bottom-banner-actions">
+      <a class="action-btn primary" href="index.html#certifications">
+        Explore Certifications &amp; LORs ↗
+      </a>
+      <a class="action-btn secondary" href="index.html">
+        ← Back to Portfolio
+      </a>
+    </div>
   </div>
 </main>
+
+<footer>
+  <div class="shell">
+    <span>ADITYA WALVEKAR · PROJECTS &amp; INTERNSHIP ARCHIVE · BUILT FOR WHAT'S NEXT</span>
+  </div>
+</footer>
+
+<script>
+// Filter Tab Functionality
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+
+    const filterVal = btn.getAttribute('data-filter');
+
+    projectCards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      if (filterVal === 'all' || category === filterVal) {
+        card.classList.remove('is-hidden');
+      } else {
+        card.classList.add('is-hidden');
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>

@@ -495,8 +495,13 @@ section[id] {
 
 .projects {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.projects.featured {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .skill, .project {
@@ -689,9 +694,92 @@ section[id] {
 }
 
 .art {
-  height: 150px;
+  height: 160px;
   background: radial-gradient(circle at 50% 42%, #777, #2a2a2a 37%, #111 70%);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
   transition: 0.4s;
+}
+
+.art-badge {
+  font: 600 9.5px "DM Mono";
+  letter-spacing: 0.12em;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.live-art-app {
+  background: radial-gradient(circle at 75% 30%, rgba(59, 130, 246, 0.35), transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.25), transparent 50%),
+              linear-gradient(135deg, #1f1f1f, #111111);
+}
+
+.live-art-game {
+  background: radial-gradient(circle at 75% 30%, rgba(236, 72, 153, 0.35), transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.25), transparent 50%),
+              linear-gradient(135deg, #1f1f1f, #111111);
+}
+
+.projects-portal-bridge {
+  margin-top: 20px;
+  padding: 26px 30px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.7), rgba(15, 15, 15, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.projects-portal-bridge:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.bridge-text .bridge-tag {
+  font: 600 10px "DM Mono";
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.bridge-text h3 {
+  font: 700 19px Syne;
+  margin: 5px 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.bridge-text p {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 620px;
+}
+
+@media (max-width: 800px) {
+  .projects.featured {
+    grid-template-columns: 1fr;
+  }
+  .projects-portal-bridge {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .projects-portal-bridge .button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 .project:hover .art {
@@ -2004,7 +2092,7 @@ footer {
   <span class="nav-group-title">Explore Portals</span>
   <a href="graphics.html" class="nav-link">Creative work <span class="nav-arrow" aria-hidden="true">↗</span></a>
   <a href="games.html" class="nav-link">Games & OTT <span class="nav-arrow" aria-hidden="true">↗</span></a>
-  <a href="live-projects.html" class="nav-link">Live projects <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="live-projects.html" class="nav-link">Projects &amp; Work <span class="nav-arrow" aria-hidden="true">↗</span></a>
 </nav>
 <div class="actions">
   <button class="theme" id="theme" aria-label="Toggle colour theme">☼</button>
@@ -2211,79 +2299,56 @@ footer {
 <div class="top">
 <div>
 <span class="eyebrow">03 / Selected work</span>
-<h2 class="title">Projects &<br>internship work.</h2>
+<h2 class="title">Featured live<br>projects.</h2>
 </div>
-<a class="button" href="https://www.linkedin.com/in/aditya-walvekar" target="_blank" rel="noopener noreferrer">See LinkedIn ↗</a>
+<a class="button" href="live-projects.html">All Projects &amp; Work (8) ↗</a>
 </div>
-<div class="filters" role="group" aria-label="Filter projects by category">
-<button class="filter active" data-filter="all" aria-pressed="true">All work</button>
-<button class="filter" data-filter="ai" aria-pressed="false">AI / ML</button>
-<button class="filter" data-filter="python" aria-pressed="false">Python</button>
-<button class="filter" data-filter="data" aria-pressed="false">Data Analytics</button>
+
+<div class="projects featured motion">
+  <article class="project">
+    <div class="art live-art-app">
+      <span class="art-badge">● LIVE WEB APP</span>
+    </div>
+    <div class="copy">
+      <span class="tag">PRODUCTIVITY / LOCAL STORAGE / UX</span>
+      <h3>Habit Tracker App</h3>
+      <p>A focused daily habit-building interface with streak tracking, completion metrics, and persistent local storage.</p>
+      <div class="skill-tags" style="margin-top:12px; margin-bottom:14px; padding-top:8px;">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">LocalStorage API</span>
+      </div>
+      <a href="https://aadi-x.github.io/habit-studio/" target="_blank" rel="noopener noreferrer">Launch live app ↗</a>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="art live-art-game">
+      <span class="art-badge">● PLAYABLE GAME</span>
+    </div>
+    <div class="copy">
+      <span class="tag">HTML5 CANVAS / ARCADE / PHYSICS</span>
+      <h3>Rocnet Game</h3>
+      <p>An interactive 2D arcade survival space game engineered with canvas rendering loop, collision physics, and particle explosions.</p>
+      <div class="skill-tags" style="margin-top:12px; margin-bottom:14px; padding-top:8px;">
+        <span class="skill-tag">HTML5 Canvas</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Game Physics</span>
+        <span class="skill-tag">Particle Engine</span>
+      </div>
+      <a href="https://aadi-x.github.io/rocnet-game/" target="_blank" rel="noopener noreferrer">Play game ↗</a>
+    </div>
+  </article>
 </div>
-<div class="projects motion">
-<article class="project" data-kind="ai python">
-<div class="art">
-</div>
-<div class="copy">
-<span class="tag">AI / NLP / PYTHON</span>
-<h3>Data Alcott Systems</h3>
-<p>Applied AI, NLP and Python concepts through internship project work.</p>
-<a href="https://www.linkedin.com/posts/aditya-walvekar_ai-nlp-python-activity-7508231718055792640-WLgM" target="_blank" rel="noopener noreferrer">View project →</a>
-</div>
-</article>
-<article class="project" data-kind="ai">
-<div class="art">
-</div>
-<div class="copy">
-<span class="tag">MACHINE LEARNING</span>
-<h3>SkillCraft Technology</h3>
-<p>Machine-learning internship tasks and practical project milestones.</p>
-<a href="https://www.linkedin.com/posts/aditya-walvekar_machinelearning-internship-skillcrafttechnology-activity-7506038540015726593-lvKs" target="_blank" rel="noopener noreferrer">View project →</a>
-</div>
-</article>
-<article class="project" data-kind="python">
-<div class="art">
-</div>
-<div class="copy">
-<span class="tag">PYTHON DEVELOPMENT</span>
-<h3>Cognifyz Technologies</h3>
-<p>Python development work focused on programming and project execution.</p>
-<a href="https://www.linkedin.com/posts/aditya-walvekar_python-pythondevelopment-internship-activity-7505324812450566149-bHk0" target="_blank" rel="noopener noreferrer">View project →</a>
-</div>
-</article>
-<article class="project" data-kind="ai">
-<div class="art">
-</div>
-<div class="copy">
-<span class="tag">ARTIFICIAL INTELLIGENCE</span>
-<h3>CodeAlpha</h3>
-<p>AI and machine-learning internship projects.</p>
-<a href="https://www.linkedin.com/posts/aditya-walvekar_artificialintelligence-ai-machinelearning-activity-7492691825548247040-1Uhq" target="_blank" rel="noopener noreferrer">View project →</a>
-</div>
-</article>
-<article class="project" data-kind="ai">
-<div class="art">
-</div>
-<div class="copy">
-<span class="tag">AI / ML / NLP</span>
-<h3>Codec Technologies</h3>
-<p>Project-based work across AI, ML, NLP and data science.</p>
-<a href="https://www.linkedin.com/posts/aditya-walvekar_machinelearning-artificialintelligence-nlp-activity-7489035661027741696-IR4h" target="_blank" rel="noopener noreferrer">View project →</a>
-</div>
-</article>
-<article class="project" data-kind="data">
-<div class="art">
-</div>
-<div class="copy">
-<span class="tag">DATA ANALYTICS</span>
-<h3>CodSoft</h3>
-<p>Data analytics and data-science internship tasks.</p>
-<a href="https://www.linkedin.com/posts/aditya-walvekar_codsoft-dataanalytics-internship-activity-7490107159620411394-gvpN" target="_blank" rel="noopener noreferrer">View project →</a>
-</div>
-</article>
-</div>
-</section>
+
+<div class="projects-portal-bridge motion">
+  <div class="bridge-text">
+    <span class="bridge-tag">INTERNSHIP ENGINEERING ARCHIVE</span>
+    <h3>Applied AI, Machine Learning &amp; Python Works</h3>
+    <p>Explore all 6 internship engineering builds across Data Alcott Systems, SkillCraft, Cognifyz, CodeAlpha, Codec, and CodSoft with full project documentation.</p>
+  </div>
+  <a class="button primary" href="live-projects.html">Open Projects Portal (8) ↗</a>
 </div>
 </section>
 <section class="shell" style="padding-top:0">
