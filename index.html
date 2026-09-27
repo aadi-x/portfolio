@@ -942,6 +942,485 @@ footer {
   color: #F5EBE1;
   background: #6B554B;
   border-color: #6B554B;
+/* Certifications & Credentials Component */
+.cert-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.cert-tab {
+  font: 600 12px "DM Mono";
+  letter-spacing: 0.04em;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  min-height: 44px;
+}
+
+.cert-tab:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+.cert-tab.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.cert-tab-icon {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.cert-panel {
+  display: none;
+}
+
+.cert-panel.active {
+  display: block;
+}
+
+/* Industry Certifications Grid */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.cert-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card:before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: translateX(-120%);
+}
+
+.cert-card:hover:before {
+  animation: sweep 0.8s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.cert-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cert-issuer-badge {
+  font: 600 9.5px "DM Mono";
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+}
+
+.cert-status-badge {
+  font: 500 9px "DM Mono";
+  color: var(--muted);
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.cert-card h3 {
+  font: 700 18px Syne;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.cert-card p {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 18px;
+  flex-grow: 1;
+}
+
+.cert-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
+.cert-preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font: 600 11px "DM Mono";
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 38px;
+}
+
+.cert-preview-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* Internship Cards Grid */
+.internship-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.internship-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.internship-card:before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: translateX(-120%);
+}
+
+.internship-card:hover:before {
+  animation: sweep 0.8s ease;
+}
+
+.internship-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.internship-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.internship-card-title-group h3 {
+  font: 700 19px Syne;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+}
+
+.internship-role {
+  font: 600 10.5px "DM Mono";
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.internship-domain {
+  font: 500 9px "DM Mono";
+  color: var(--muted);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.internship-summary {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+/* Document Pills */
+.doc-section-title {
+  font: 600 9.5px "DM Mono";
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.doc-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.doc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font: 600 10.5px "DM Mono";
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 34px;
+}
+
+.doc-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.doc-pill-disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 7px;
+  background: transparent;
+  border: 1px dashed var(--line);
+  color: var(--muted);
+  font: 500 10px "DM Mono";
+  opacity: 0.7;
+  cursor: default;
+  min-height: 34px;
+}
+
+.doc-pill-icon {
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.internship-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.internship-verify-link {
+  font: 600 11px "DM Mono";
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.internship-verify-link:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* Light Theme Overrides for Certifications */
+[data-theme="light"] .cert-tab {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--muted);
+}
+[data-theme="light"] .cert-tab.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+[data-theme="light"] .cert-card,
+[data-theme="light"] .internship-card {
+  background: var(--surface);
+  border-color: var(--line);
+}
+[data-theme="light"] .cert-issuer-badge,
+[data-theme="light"] .cert-preview-btn,
+[data-theme="light"] .doc-pill {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: var(--line);
+}
+[data-theme="light"] .cert-preview-btn:hover,
+[data-theme="light"] .doc-pill:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* Lightbox Modal for Document Previews */
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.cert-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.cert-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1001;
+}
+
+.cert-modal-dialog {
+  position: relative;
+  z-index: 1002;
+  width: min(860px, calc(100vw - 32px));
+  max-height: calc(100vh - 40px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 28px 75px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.96) translateY(8px);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-modal.is-open .cert-modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.cert-modal-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 95%, transparent);
+}
+
+.cert-modal-titles {
+  min-width: 0;
+}
+
+.cert-modal-subtitle {
+  font: 600 10px "DM Mono";
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+}
+
+.cert-modal-title {
+  font: 700 17px Syne;
+  margin: 3px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cert-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cert-modal-open-btn {
+  padding: 8px 14px;
+  font-size: 11px;
+  min-height: 38px;
+}
+
+.cert-modal-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.cert-modal-close:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.cert-modal-close:active {
+  transform: scale(0.92);
+}
+
+.cert-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="light"] .cert-modal-body {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.cert-modal-frame {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.cert-modal-frame img {
+  width: 100%;
+  max-height: 68vh;
+  object-fit: contain;
+  display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1280,6 +1759,25 @@ footer {
   .achievements-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .cert-grid, .internship-grid {
+    grid-template-columns: 1fr;
+  }
+  .cert-modal-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100vh - 24px);
+  }
+  .cert-modal-header {
+    padding: 12px 14px;
+  }
+  .cert-modal-title {
+    font-size: 15px;
+  }
+  .cert-modal-body {
+    padding: 12px;
+  }
+  .cert-modal-frame img {
+    max-height: 60vh;
+  }
   .skill {
     min-height: 180px;
     padding: 20px;
@@ -1355,6 +1853,15 @@ footer {
   }
   .achievements-grid {
     grid-template-columns: 1fr;
+  }
+  .cert-tab {
+    flex: 1 1 100%;
+    justify-content: center;
+    padding: 10px 14px;
+    font-size: 11px;
+  }
+  .cert-modal-open-btn {
+    display: none;
   }
   .achievements-section {
     padding: 20px 16px;
@@ -1481,6 +1988,7 @@ footer {
   <a href="#projects" class="nav-link">Projects</a>
   <a href="#hobbies" class="nav-link">Hobbies</a>
   <a href="#experience" class="nav-link">Experience</a>
+  <a href="#certifications" class="nav-link">Certifications</a>
   <div class="nav-divider" role="separator"></div>
   <span class="nav-group-title">Explore Portals</span>
   <a href="graphics.html" class="nav-link">Creative work <span class="nav-arrow" aria-hidden="true">↗</span></a>
@@ -1853,6 +2361,290 @@ footer {
 </article>
 </div>
 </section>
+<section id="certifications" class="shell">
+<div class="top">
+<div>
+<span class="eyebrow">06 / Validated Credentials</span>
+<h2 class="title">Certifications &amp;<br>internship records.</h2>
+</div>
+<p class="section-intro">Explore verified credentials across AI, machine learning, data analytics, and software engineering — categorized by industry qualifications and company internship records.</p>
+</div>
+
+<div class="cert-tabs" role="tablist" aria-label="Certification categories">
+  <button class="cert-tab active" role="tab" id="tab-industry" aria-selected="true" aria-controls="panel-industry" tabindex="0">
+    <span class="cert-tab-icon">✦</span> Industry Certifications
+  </button>
+  <button class="cert-tab" role="tab" id="tab-internships" aria-selected="false" aria-controls="panel-internships" tabindex="-1">
+    <span class="cert-tab-icon">◈</span> Internships &amp; Letters
+  </button>
+</div>
+
+<!-- Tab Panel 1: Industry Certifications -->
+<div class="cert-panel active" id="panel-industry" role="tabpanel" aria-labelledby="tab-industry">
+  <div class="cert-grid motion">
+    <article class="cert-card">
+      <div class="cert-card-top">
+        <span class="cert-issuer-badge">MICROSOFT</span>
+        <span class="cert-status-badge">VERIFIED</span>
+      </div>
+      <h3>Artificial Intelligence &amp; Machine Learning</h3>
+      <p>Neural networks, natural language processing, computer vision algorithms, and ethical AI deployment on modern cloud platforms.</p>
+      <div class="cert-actions">
+        <button class="cert-preview-btn" data-doc-title="Artificial Intelligence &amp; Machine Learning" data-doc-issuer="Microsoft" data-doc-src="certificates/microsoft-ai-ml.svg">
+          <span class="cert-preview-icon">👁</span> Preview Certificate ↗
+        </button>
+      </div>
+    </article>
+
+    <article class="cert-card">
+      <div class="cert-card-top">
+        <span class="cert-issuer-badge">TATA GROUP</span>
+        <span class="cert-status-badge">VERIFIED</span>
+      </div>
+      <h3>GenAI &amp; Data Analytics Job Simulation</h3>
+      <p>Practical enterprise generative AI use cases, structured exploratory data analysis, business metric forecasting, and executive storytelling.</p>
+      <div class="cert-actions">
+        <button class="cert-preview-btn" data-doc-title="GenAI &amp; Data Analytics Job Simulation" data-doc-issuer="Tata Insights &amp; Quants (Forage)" data-doc-src="certificates/tata-genai-analytics.svg">
+          <span class="cert-preview-icon">👁</span> Preview Certificate ↗
+        </button>
+      </div>
+    </article>
+
+    <article class="cert-card">
+      <div class="cert-card-top">
+        <span class="cert-issuer-badge">DELOITTE</span>
+        <span class="cert-status-badge">VERIFIED</span>
+      </div>
+      <h3>Technology &amp; Analytics Job Simulation</h3>
+      <p>Data forensic workflows, telemetry analysis, business process optimization, and corporate technology advisory practices.</p>
+      <div class="cert-actions">
+        <button class="cert-preview-btn" data-doc-title="Technology &amp; Analytics Job Simulation" data-doc-issuer="Deloitte (Forage)" data-doc-src="certificates/deloitte-analytics.svg">
+          <span class="cert-preview-icon">👁</span> Preview Certificate ↗
+        </button>
+      </div>
+    </article>
+
+    <article class="cert-card">
+      <div class="cert-card-top">
+        <span class="cert-issuer-badge">TCS iON</span>
+        <span class="cert-status-badge">VERIFIED</span>
+      </div>
+      <h3>Career Edge — Young Professional</h3>
+      <p>Professional business communication, digital workplace etiquette, structured presentation frameworks, and corporate collaboration.</p>
+      <div class="cert-actions">
+        <button class="cert-preview-btn" data-doc-title="Career Edge — Young Professional" data-doc-issuer="Tata Consultancy Services" data-doc-src="certificates/tcs-ion-career-edge.svg">
+          <span class="cert-preview-icon">👁</span> Preview Certificate ↗
+        </button>
+      </div>
+    </article>
+
+    <article class="cert-card">
+      <div class="cert-card-top">
+        <span class="cert-issuer-badge">SIMPLILEARN / SKILLUP</span>
+        <span class="cert-status-badge">VERIFIED</span>
+      </div>
+      <h3>Generative AI Fundamentals</h3>
+      <p>Transformer architecture mechanisms, LLM tokenization, prompt design strategies, and conversational AI model fundamentals.</p>
+      <div class="cert-actions">
+        <button class="cert-preview-btn" data-doc-title="Generative AI Fundamentals" data-doc-issuer="SkillUp by Simplilearn" data-doc-src="certificates/skillup-generative-ai.svg">
+          <span class="cert-preview-icon">👁</span> Preview Certificate ↗
+        </button>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- Tab Panel 2: Internship Credentials -->
+<div class="cert-panel" id="panel-internships" role="tabpanel" aria-labelledby="tab-internships" hidden>
+  <div class="internship-grid motion">
+    <!-- Codec Technologies -->
+    <article class="internship-card">
+      <div class="internship-card-top">
+        <div class="internship-card-title-group">
+          <h3>Codec Technologies</h3>
+          <span class="internship-role">AI / ML / NLP Intern</span>
+        </div>
+        <span class="internship-domain">Machine Learning</span>
+      </div>
+      <p class="internship-summary">Engineered machine learning classification pipelines, trained NLP models, and deployed an interactive Streamlit spam detection web app.</p>
+      
+      <span class="doc-section-title">Credentials &amp; Letters</span>
+      <div class="doc-pills">
+        <button class="doc-pill" data-doc-title="Codec Technologies — Completion Certificate" data-doc-issuer="Codec Technologies Pvt. Ltd." data-doc-src="certificates/codec-completion.svg">
+          <span class="doc-pill-icon">📜</span> Completion Certificate
+        </button>
+        <button class="doc-pill" data-doc-title="Codec Technologies — Offer Letter" data-doc-issuer="Codec Technologies Pvt. Ltd." data-doc-src="certificates/codec-offer.svg">
+          <span class="doc-pill-icon">📄</span> Offer Letter
+        </button>
+        <span class="doc-pill-disabled" title="Letter of Recommendation is available upon formal request">
+          <span class="doc-pill-icon">✉</span> LOR: Available on Request
+        </span>
+      </div>
+
+      <div class="internship-footer">
+        <a class="internship-verify-link" href="https://www.linkedin.com/posts/aditya-walvekar_machinelearning-artificialintelligence-nlp-activity-7489035661027741696-IR4h" target="_blank" rel="noopener noreferrer">
+          Verify Announcement on LinkedIn ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- CodSoft -->
+    <article class="internship-card">
+      <div class="internship-card-top">
+        <div class="internship-card-title-group">
+          <h3>CodSoft</h3>
+          <span class="internship-role">Data Analytics Intern</span>
+        </div>
+        <span class="internship-domain">Data Science</span>
+      </div>
+      <p class="internship-summary">Conducted exploratory data analysis (EDA), statistical pattern recognition, structured data cleaning, and insightful visualization reporting.</p>
+      
+      <span class="doc-section-title">Credentials &amp; Letters</span>
+      <div class="doc-pills">
+        <button class="doc-pill" data-doc-title="CodSoft — Completion Certificate" data-doc-issuer="CodSoft" data-doc-src="certificates/codsoft-completion.svg">
+          <span class="doc-pill-icon">📜</span> Completion Certificate
+        </button>
+        <button class="doc-pill" data-doc-title="CodSoft — Offer Letter" data-doc-issuer="CodSoft" data-doc-src="certificates/codsoft-offer.svg">
+          <span class="doc-pill-icon">📄</span> Offer Letter
+        </button>
+        <span class="doc-pill-disabled" title="Letter of Recommendation is available upon formal request">
+          <span class="doc-pill-icon">✉</span> LOR: Available on Request
+        </span>
+      </div>
+
+      <div class="internship-footer">
+        <a class="internship-verify-link" href="https://www.linkedin.com/posts/aditya-walvekar_codsoft-dataanalytics-internship-activity-7490107159620411394-gvpN" target="_blank" rel="noopener noreferrer">
+          Verify Announcement on LinkedIn ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- CodeAlpha -->
+    <article class="internship-card">
+      <div class="internship-card-top">
+        <div class="internship-card-title-group">
+          <h3>CodeAlpha</h3>
+          <span class="internship-role">Artificial Intelligence Intern</span>
+        </div>
+        <span class="internship-domain">Artificial Intelligence</span>
+      </div>
+      <p class="internship-summary">Developed AI algorithms, implemented predictive models, and worked on real-world automation and analytical problem-solving modules.</p>
+      
+      <span class="doc-section-title">Credentials &amp; Letters</span>
+      <div class="doc-pills">
+        <button class="doc-pill" data-doc-title="CodeAlpha — Completion Certificate" data-doc-issuer="CodeAlpha" data-doc-src="certificates/codealpha-completion.svg">
+          <span class="doc-pill-icon">📜</span> Completion Certificate
+        </button>
+        <button class="doc-pill" data-doc-title="CodeAlpha — Offer Letter" data-doc-issuer="CodeAlpha" data-doc-src="certificates/codealpha-offer.svg">
+          <span class="doc-pill-icon">📄</span> Offer Letter
+        </button>
+        <span class="doc-pill-disabled" title="Letter of Recommendation is available upon formal request">
+          <span class="doc-pill-icon">✉</span> LOR: Available on Request
+        </span>
+      </div>
+
+      <div class="internship-footer">
+        <a class="internship-verify-link" href="https://www.linkedin.com/posts/aditya-walvekar_artificialintelligence-ai-machinelearning-activity-7492691825548247040-1Uhq" target="_blank" rel="noopener noreferrer">
+          Verify Announcement on LinkedIn ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Data Alcott Systems -->
+    <article class="internship-card">
+      <div class="internship-card-top">
+        <div class="internship-card-title-group">
+          <h3>Data Alcott Systems</h3>
+          <span class="internship-role">AI &amp; NLP Intern</span>
+        </div>
+        <span class="internship-domain">NLP &amp; Python</span>
+      </div>
+      <p class="internship-summary">Applied computational linguistics, text parsing, semantic feature representation, and machine learning pipelines using Python.</p>
+      
+      <span class="doc-section-title">Credentials &amp; Letters</span>
+      <div class="doc-pills">
+        <button class="doc-pill" data-doc-title="Data Alcott Systems — Completion Certificate" data-doc-issuer="Data Alcott Systems" data-doc-src="certificates/data-alcott-completion.svg">
+          <span class="doc-pill-icon">📜</span> Completion Certificate
+        </button>
+        <button class="doc-pill" data-doc-title="Data Alcott Systems — Offer Letter" data-doc-issuer="Data Alcott Systems" data-doc-src="certificates/data-alcott-offer.svg">
+          <span class="doc-pill-icon">📄</span> Offer Letter
+        </button>
+        <span class="doc-pill-disabled" title="Letter of Recommendation is available upon formal request">
+          <span class="doc-pill-icon">✉</span> LOR: Available on Request
+        </span>
+      </div>
+
+      <div class="internship-footer">
+        <a class="internship-verify-link" href="https://www.linkedin.com/posts/aditya-walvekar_ai-nlp-python-activity-7508231718055792640-WLgM" target="_blank" rel="noopener noreferrer">
+          Verify Announcement on LinkedIn ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- SkillCraft Technology -->
+    <article class="internship-card">
+      <div class="internship-card-top">
+        <div class="internship-card-title-group">
+          <h3>SkillCraft Technology</h3>
+          <span class="internship-role">Machine Learning Intern</span>
+        </div>
+        <span class="internship-domain">Model Engineering</span>
+      </div>
+      <p class="internship-summary">Trained supervised learning algorithms, performed feature evaluation, hyperparameter tuning, and precision metric validation.</p>
+      
+      <span class="doc-section-title">Credentials &amp; Letters</span>
+      <div class="doc-pills">
+        <button class="doc-pill" data-doc-title="SkillCraft Technology — Completion Certificate" data-doc-issuer="SkillCraft Technology" data-doc-src="certificates/skillcraft-completion.svg">
+          <span class="doc-pill-icon">📜</span> Completion Certificate
+        </button>
+        <button class="doc-pill" data-doc-title="SkillCraft Technology — Offer Letter" data-doc-issuer="SkillCraft Technology" data-doc-src="certificates/skillcraft-offer.svg">
+          <span class="doc-pill-icon">📄</span> Offer Letter
+        </button>
+        <span class="doc-pill-disabled" title="Letter of Recommendation is available upon formal request">
+          <span class="doc-pill-icon">✉</span> LOR: Available on Request
+        </span>
+      </div>
+
+      <div class="internship-footer">
+        <a class="internship-verify-link" href="https://www.linkedin.com/posts/aditya-walvekar_machinelearning-internship-skillcrafttechnology-activity-7506038540015726593-lvKs" target="_blank" rel="noopener noreferrer">
+          Verify Announcement on LinkedIn ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- Cognifyz Technologies -->
+    <article class="internship-card">
+      <div class="internship-card-top">
+        <div class="internship-card-title-group">
+          <h3>Cognifyz Technologies</h3>
+          <span class="internship-role">Python Developer Intern</span>
+        </div>
+        <span class="internship-domain">Software Engineering</span>
+      </div>
+      <p class="internship-summary">Engineered modular Python programs, implemented algorithmic workflows, and handled data manipulation tasks following software best practices.</p>
+      
+      <span class="doc-section-title">Credentials &amp; Letters</span>
+      <div class="doc-pills">
+        <button class="doc-pill" data-doc-title="Cognifyz Technologies — Completion Certificate" data-doc-issuer="Cognifyz Technologies" data-doc-src="certificates/cognifyz-completion.svg">
+          <span class="doc-pill-icon">📜</span> Completion Certificate
+        </button>
+        <button class="doc-pill" data-doc-title="Cognifyz Technologies — Offer Letter" data-doc-issuer="Cognifyz Technologies" data-doc-src="certificates/cognifyz-offer.svg">
+          <span class="doc-pill-icon">📄</span> Offer Letter
+        </button>
+        <span class="doc-pill-disabled" title="Letter of Recommendation is available upon formal request">
+          <span class="doc-pill-icon">✉</span> LOR: Available on Request
+        </span>
+      </div>
+
+      <div class="internship-footer">
+        <a class="internship-verify-link" href="https://www.linkedin.com/posts/aditya-walvekar_python-pythondevelopment-internship-activity-7505324812450566149-bHk0" target="_blank" rel="noopener noreferrer">
+          Verify Announcement on LinkedIn ↗
+        </a>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
 <section class="shell" style="padding-top:0">
 <div class="cta motion">
 <div>
@@ -1864,7 +2656,7 @@ footer {
 </div>
 </section>
 <section class="shell contact">
-<span class="eyebrow">06 / Let’s connect</span>
+<span class="eyebrow">07 / Let’s connect</span>
 <h2>Have an idea?<br>
 <em class="accent">Let’s build something.</em>
 </h2>
@@ -1876,6 +2668,28 @@ footer {
 <a href="https://www.behance.net/gallery/246357931/Portfolio-Graphics-Design-Aditya-Walvekar" target="_blank" rel="noopener noreferrer">BEHANCE</a>
 </div>
 </section>
+<div class="cert-modal" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="modal-doc-title" hidden>
+  <div class="cert-modal-backdrop" id="cert-modal-backdrop"></div>
+  <div class="cert-modal-dialog">
+    <div class="cert-modal-header">
+      <div class="cert-modal-titles">
+        <span class="cert-modal-subtitle" id="modal-doc-issuer">Organization</span>
+        <h3 class="cert-modal-title" id="modal-doc-title">Document Preview</h3>
+      </div>
+      <div class="cert-modal-actions">
+        <a class="button cert-modal-open-btn" id="modal-doc-link" href="#" target="_blank" rel="noopener noreferrer">
+          Open Fullscreen ↗
+        </a>
+        <button class="cert-modal-close" id="cert-modal-close" aria-label="Close document preview">✕</button>
+      </div>
+    </div>
+    <div class="cert-modal-body">
+      <div class="cert-modal-frame">
+        <img id="modal-doc-img" src="" alt="Document Preview" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 <footer class="shell">
 <span>© 2026 ADITYA WALVEKAR</span>
@@ -1937,6 +2751,108 @@ if (privateBtn) {
     }
   });
 }
+
+// Certifications Tab Switching & Lightbox Modal
+const certTabs = document.querySelectorAll('.cert-tab');
+const certPanels = document.querySelectorAll('.cert-panel');
+
+certTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    certTabs.forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+
+    certPanels.forEach(panel => {
+      if (panel.id === tab.getAttribute('aria-controls')) {
+        panel.classList.add('active');
+        panel.removeAttribute('hidden');
+      } else {
+        panel.classList.remove('active');
+        panel.setAttribute('hidden', '');
+      }
+    });
+  });
+
+  tab.addEventListener('keydown', (e) => {
+    let targetTab = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      targetTab = tab.nextElementSibling || certTabs[0];
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      targetTab = tab.previousElementSibling || certTabs[certTabs.length - 1];
+    }
+    if (targetTab) {
+      targetTab.focus();
+      targetTab.click();
+    }
+  });
+});
+
+const certModal = document.querySelector('#cert-modal');
+const certModalBackdrop = document.querySelector('#cert-modal-backdrop');
+const certModalClose = document.querySelector('#cert-modal-close');
+const modalDocTitle = document.querySelector('#modal-doc-title');
+const modalDocIssuer = document.querySelector('#modal-doc-issuer');
+const modalDocImg = document.querySelector('#modal-doc-img');
+const modalDocLink = document.querySelector('#modal-doc-link');
+let lastFocusedElement = null;
+
+function openCertModal(title, issuer, src) {
+  lastFocusedElement = document.activeElement;
+  if (modalDocTitle) modalDocTitle.textContent = title;
+  if (modalDocIssuer) modalDocIssuer.textContent = issuer;
+  if (modalDocImg) {
+    modalDocImg.src = src;
+    modalDocImg.alt = title;
+  }
+  if (modalDocLink) modalDocLink.href = src;
+  if (certModal) {
+    certModal.removeAttribute('hidden');
+    void certModal.offsetWidth;
+    certModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    if (certModalClose) certModalClose.focus();
+  }
+}
+
+function closeCertModal() {
+  if (!certModal) return;
+  certModal.classList.remove('is-open');
+  setTimeout(() => {
+    certModal.setAttribute('hidden', '');
+    if (modalDocImg) modalDocImg.src = '';
+    document.body.style.overflow = '';
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
+  }, 220);
+}
+
+document.querySelectorAll('[data-doc-src]').forEach(trigger => {
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    const title = trigger.getAttribute('data-doc-title');
+    const issuer = trigger.getAttribute('data-doc-issuer');
+    const src = trigger.getAttribute('data-doc-src');
+    openCertModal(title, issuer, src);
+  });
+});
+
+if (certModalClose) {
+  certModalClose.addEventListener('click', closeCertModal);
+}
+if (certModalBackdrop) {
+  certModalBackdrop.addEventListener('click', closeCertModal);
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && certModal && !certModal.hasAttribute('hidden')) {
+    closeCertModal();
+  }
+});
 </script>
 </body>
 </html>
