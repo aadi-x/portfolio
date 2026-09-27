@@ -299,12 +299,10 @@ h1 {
 
 /* Fluid Custom Cursor */
 @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-custom-cursor,
+  html.has-custom-cursor *,
   body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor .btn,
-  body.has-custom-cursor .filter,
-  body.has-custom-cursor .card {
+  body.has-custom-cursor * {
     cursor: none !important;
   }
 
@@ -493,6 +491,7 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
   ring.className = 'cursor-ring cursor-hidden';
   document.body.appendChild(dot);
   document.body.appendChild(ring);
+  document.documentElement.classList.add('has-custom-cursor');
   document.body.classList.add('has-custom-cursor');
 
   let mouseX = -100, mouseY = -100;
@@ -503,6 +502,11 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
     mouseY = e.clientY;
     dot.style.left = `${mouseX}px`;
     dot.style.top = `${mouseY}px`;
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  window.addEventListener('mouseenter', () => {
     dot.classList.remove('cursor-hidden');
     ring.classList.remove('cursor-hidden');
   });
@@ -524,10 +528,16 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
   document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
   document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
 
-  const interactives = document.querySelectorAll('a, button, .card, .btn, .filter');
-  interactives.forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('is-hovering'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('is-hovering'));
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, .card, .btn, .filter, .lightbox button')) {
+      ring.classList.add('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, .card, .btn, .filter, .lightbox button')) {
+      ring.classList.remove('is-hovering');
+    }
   });
 }
 

@@ -232,9 +232,9 @@ section[id] {
 .hero {
   min-height: calc(100vh - 80px);
   display: grid;
-  grid-template-columns: 1.04fr 0.96fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
-  gap: 40px;
+  gap: clamp(24px, 3.5vw, 44px);
 }
 
 .hero h1 {
@@ -308,8 +308,9 @@ section[id] {
 }
 
 .f1 {
-  right: 18px;
-  top: 75px;
+  right: 50px;
+  top: 58px;
+  white-space: nowrap;
 }
 
 .f2 {
@@ -733,7 +734,7 @@ section[id] {
   padding: 26px 30px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.7), rgba(15, 15, 15, 0.9));
+  background: linear-gradient(135deg, var(--card), var(--surface));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1038,11 +1039,11 @@ footer {
 }
 
 .portrait:hover .f1 {
-  transform: translate3d(4px, -4px, 20px);
+  transform: translate3d(2px, -3px, 20px);
 }
 
 .portrait:hover .f2 {
-  transform: translate3d(-4px, 4px, 20px);
+  transform: translate3d(-3px, 3px, 20px);
 }
 
 /* Hero Live Particle Canvas */
@@ -1068,16 +1069,17 @@ footer {
 /* Live Dynamic Word Rotator */
 .rotator-word {
   display: inline-block;
-  color: var(--accent);
+  color: var(--ink);
   font-weight: 700;
   border-bottom: 2px solid var(--accent);
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  min-width: 110px;
+  padding-bottom: 1px;
+  vertical-align: baseline;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s;
 }
 
 .rotator-word.changing {
   opacity: 0;
-  transform: translateY(-6px);
+  transform: translateY(-5px);
 }
 
 /* Scroll-Down Bouncing Indicator */
@@ -1201,12 +1203,10 @@ footer {
 
 /* Fluid Custom Cursor */
 @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-custom-cursor,
+  html.has-custom-cursor *,
   body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor .card,
-  body.has-custom-cursor .project,
-  body.has-custom-cursor .persona {
+  body.has-custom-cursor * {
     cursor: none !important;
   }
 
@@ -1309,6 +1309,77 @@ footer {
 
 [data-theme="light"] .cta p {
   color: #5D5048;
+}
+
+[data-theme="light"] .projects-portal-bridge {
+  background: linear-gradient(120deg, #E3D5CA, #D7BDB0);
+  color: #25221F;
+  border-color: rgba(112, 91, 79, 0.25);
+  box-shadow: 0 18px 52px rgba(87, 68, 57, 0.12);
+}
+
+[data-theme="light"] .projects-portal-bridge .bridge-tag {
+  color: #6B554B;
+}
+
+[data-theme="light"] .projects-portal-bridge h3 {
+  color: #25221F;
+}
+
+[data-theme="light"] .projects-portal-bridge p {
+  color: #5D5048;
+}
+
+[data-theme="light"] .projects-portal-bridge:hover {
+  border-color: #6B554B;
+}
+
+[data-theme="light"] .portrait:before {
+  background: linear-gradient(145deg, #D7BDB0, #4A3E39);
+  border-color: rgba(112, 91, 79, 0.35);
+}
+
+[data-theme="light"] .float {
+  background: #F5EBE1;
+  color: #25221F;
+  border-color: rgba(112, 91, 79, 0.3);
+}
+
+[data-theme="light"] .hero-scroll-btn {
+  color: #665951;
+}
+
+[data-theme="light"] .hero-scroll-btn:hover {
+  color: #25221F;
+}
+
+[data-theme="light"] .scroll-mouse {
+  border-color: rgba(112, 91, 79, 0.35);
+}
+
+[data-theme="light"] .cursor-dot {
+  background: #25221F;
+  box-shadow: 0 0 8px rgba(37, 34, 31, 0.5);
+}
+
+[data-theme="light"] .cursor-ring {
+  border-color: rgba(37, 34, 31, 0.45);
+}
+
+[data-theme="light"] .cursor-ring.is-hovering {
+  background: rgba(37, 34, 31, 0.09);
+  border-color: #25221F;
+}
+
+@media (min-width: 801px) and (max-width: 1150px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 24px;
+  }
+  .f1 {
+    right: 36px;
+    top: 48px;
+  }
 }
 
 [data-theme="light"] .filter {
@@ -3479,6 +3550,7 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
   ring.className = 'cursor-ring cursor-hidden';
   document.body.appendChild(dot);
   document.body.appendChild(ring);
+  document.documentElement.classList.add('has-custom-cursor');
   document.body.classList.add('has-custom-cursor');
 
   let mouseX = -100, mouseY = -100;
@@ -3489,6 +3561,11 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
     mouseY = e.clientY;
     dot.style.left = `${mouseX}px`;
     dot.style.top = `${mouseY}px`;
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  window.addEventListener('mouseenter', () => {
     dot.classList.remove('cursor-hidden');
     ring.classList.remove('cursor-hidden');
   });
@@ -3510,10 +3587,16 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
   document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
   document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
 
-  const interactives = document.querySelectorAll('a, button, .card, .project, .persona, [role="tab"], .filter, .cert-btn, .intern-doc-btn');
-  interactives.forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('is-hovering'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('is-hovering'));
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, .card, .project, .persona, [role="tab"], .filter, .cert-btn, .intern-doc-btn, .hero-scroll-btn, .projects-portal-bridge')) {
+      ring.classList.add('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, .card, .project, .persona, [role="tab"], .filter, .cert-btn, .intern-doc-btn, .hero-scroll-btn, .projects-portal-bridge')) {
+      ring.classList.remove('is-hovering');
+    }
   });
 }
 </script>
