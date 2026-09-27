@@ -943,15 +943,241 @@ footer {
   font: 500 10px "DM Mono";
 }
 
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #555555, #f2f2f2, #d8d8d8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  z-index: 9990;
+  pointer-events: none;
+  transition: width 0.08s ease-out;
+}
+
+/* Status Pulse Indicator */
+.status-pulse {
+  display: inline-block;
+  width: 7.5px;
+  height: 7.5px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 rgba(34, 197, 94, 0.6);
+  animation: pulse-ring 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Hero Shimmer Headline */
+.hero h1 {
+  background: linear-gradient(135deg, #ffffff 20%, #a8a8a8 60%, #ffffff 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s ease;
+}
+
+.hero h1:hover {
+  background-position: right center;
+}
+
+.hero h1 .accent {
+  -webkit-text-fill-color: initial;
+  color: var(--accent);
+}
+
+/* Hero Portrait 3D Parallax & Glow */
+.portrait {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.portrait-glow {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.09) 0%, transparent 68%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.25s ease-out, opacity 0.25s ease;
+  opacity: 0.85;
+}
+
+.portrait picture, .portrait img {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portrait .float {
+  z-index: 3;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+
+.portrait:hover .f1 {
+  transform: translate3d(6px, -4px, 20px);
+}
+
+.portrait:hover .f2 {
+  transform: translate3d(-6px, 4px, 20px);
+}
+
+/* Scroll-Driven Motion & Staggered Reveals */
 .motion {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.75s, transform 0.75s;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .motion.in {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion.in > article,
+  .motion.in > div {
+    animation: fadeUpStagger 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  .motion.in > *:nth-child(1) { animation-delay: 0.04s; }
+  .motion.in > *:nth-child(2) { animation-delay: 0.10s; }
+  .motion.in > *:nth-child(3) { animation-delay: 0.16s; }
+  .motion.in > *:nth-child(4) { animation-delay: 0.22s; }
+  .motion.in > *:nth-child(5) { animation-delay: 0.28s; }
+  .motion.in > *:nth-child(6) { animation-delay: 0.34s; }
+  .motion.in > *:nth-child(7) { animation-delay: 0.40s; }
+  .motion.in > *:nth-child(8) { animation-delay: 0.46s; }
+  .motion.in > *:nth-child(9) { animation-delay: 0.52s; }
+
+  @keyframes fadeUpStagger {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Interactive Card Spotlight Glow */
+.project, .skill, .cert-card, .intern-card, .achieve-card, .persona, .panel {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+}
+
+.project::after, .skill::after, .cert-card::after, .intern-card::after, .achieve-card::after, .persona::after, .panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.07), transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.project:hover::after, .skill:hover::after, .cert-card:hover::after, .intern-card:hover::after, .achieve-card:hover::after, .persona:hover::after, .panel:hover::after {
+  opacity: 1;
+}
+
+.persona:hover {
+  transform: translateY(-5px) scale(1.015);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+/* Fluid Custom Cursor */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor .card,
+  body.has-custom-cursor .project,
+  body.has-custom-cursor .persona {
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s, transform 0.08s ease-out;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.42);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.22s,
+                border-color 0.22s,
+                opacity 0.2s;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-ring.is-hovering {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: invert(1);
+  }
+
+  .cursor-ring.is-clicking {
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  .cursor-hidden {
+    opacity: 0 !important;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring {
+    display: none !important;
+  }
+}
+
+.nav-link.active-section {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 /* Light Theme Overrides */
@@ -2078,6 +2304,7 @@ footer {
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <header class="shell nav">
 <a class="logo" href="#home">AW<b>.</b></a>
 <nav class="links" id="site-links" aria-label="Primary Navigation">
@@ -2108,7 +2335,7 @@ footer {
 <main>
 <section id="home" class="shell hero">
 <div>
-<span class="eyebrow">Available for creative collaborations</span>
+<span class="eyebrow"><span class="status-pulse" aria-hidden="true"></span>Available for creative collaborations</span>
 <h1>ADITYA<br>
 <em class="accent">WALVEKAR</em>
 </h1>
@@ -2118,7 +2345,8 @@ footer {
 <a class="button" href="#about">About me</a>
 </div>
 </div>
-<div class="portrait">
+<div class="portrait" id="hero-portrait">
+<div class="portrait-glow" aria-hidden="true"></div>
 <picture>
   <source srcset="aditya-portrait.webp" type="image/webp">
   <img src="aditya-portrait.png" alt="Portrait of Aditya Walvekar" width="335" height="420" fetchpriority="high">
@@ -2851,7 +3079,144 @@ footer {
 <span>© 2026 ADITYA WALVEKAR</span>
 <span>DESIGNED WITH INTENT · BUILT FOR WHAT’S NEXT</span>
 </footer>
-<script>const theme=document.querySelector('#theme');theme.addEventListener('click',()=>{const light=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=light?'dark':'light';theme.textContent=light?'☼':'◐';localStorage.theme=document.documentElement.dataset.theme});if(localStorage.theme){document.documentElement.dataset.theme=localStorage.theme;theme.textContent=localStorage.theme==='light'?'◐':'☼'}const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.motion').forEach(x=>observer.observe(x));const filters=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('[data-kind]')];filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false')});f.classList.add('active');f.setAttribute('aria-pressed','true');cards.forEach(c=>c.hidden=f.dataset.filter!=='all'&&!c.dataset.kind.includes(f.dataset.filter))}));</script>
+<script>
+// 1. Theme Controller
+const theme = document.querySelector('#theme');
+if (theme) {
+  theme.addEventListener('click', () => {
+    const light = document.documentElement.dataset.theme === 'light';
+    document.documentElement.dataset.theme = light ? 'dark' : 'light';
+    theme.textContent = light ? '☼' : '◐';
+    localStorage.theme = document.documentElement.dataset.theme;
+  });
+  if (localStorage.theme) {
+    document.documentElement.dataset.theme = localStorage.theme;
+    theme.textContent = localStorage.theme === 'light' ? '◐' : '☼';
+  }
+}
+
+// 2. Scroll-Driven Reveal Animations (IntersectionObserver)
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.motion').forEach(el => observer.observe(el));
+
+// 3. Scroll Progress & Active Nav Scrollspy
+const scrollProgressBar = document.querySelector('#scroll-progress');
+const trackedSections = document.querySelectorAll('section[id]');
+const pageNavLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+function handleScrollTelemetry() {
+  if (scrollProgressBar) {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+    scrollProgressBar.style.width = `${progress}%`;
+  }
+
+  let currentId = '';
+  trackedSections.forEach(sec => {
+    const top = sec.offsetTop - 180;
+    const height = sec.offsetHeight;
+    if (window.scrollY >= top && window.scrollY < top + height) {
+      currentId = sec.getAttribute('id');
+    }
+  });
+
+  pageNavLinks.forEach(link => {
+    const target = link.getAttribute('href');
+    if (target === `#${currentId}`) {
+      link.classList.add('active-section');
+    } else {
+      link.classList.remove('active-section');
+    }
+  });
+}
+
+window.addEventListener('scroll', handleScrollTelemetry, { passive: true });
+handleScrollTelemetry();
+
+// 4. Hero Portrait Interactive 3D Tilt & Glow
+const heroPortrait = document.querySelector('#hero-portrait');
+if (heroPortrait) {
+  const glow = heroPortrait.querySelector('.portrait-glow');
+  const img = heroPortrait.querySelector('picture, img');
+  heroPortrait.addEventListener('mousemove', (e) => {
+    const rect = heroPortrait.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    if (img) img.style.transform = `perspective(900px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale3d(1.02, 1.02, 1.02)`;
+    if (glow) glow.style.transform = `translate(${x * 28}px, ${y * 28}px)`;
+  });
+  heroPortrait.addEventListener('mouseleave', () => {
+    if (img) img.style.transform = '';
+    if (glow) glow.style.transform = '';
+  });
+}
+
+// 5. Card Interactive Spotlight Tracker
+const spotlightCards = document.querySelectorAll('.project, .skill, .cert-card, .intern-card, .achieve-card, .persona, .panel, .cta');
+spotlightCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
+// 6. Fluid Custom Cursor
+if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot cursor-hidden';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring cursor-hidden';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.body.classList.add('has-custom-cursor');
+
+  let mouseX = -100, mouseY = -100;
+  let ringX = -100, ringY = -100;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  function renderCursorRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    requestAnimationFrame(renderCursorRing);
+  }
+  requestAnimationFrame(renderCursorRing);
+
+  document.addEventListener('mouseleave', () => {
+    dot.classList.add('cursor-hidden');
+    ring.classList.add('cursor-hidden');
+  });
+
+  document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
+  document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
+
+  const interactives = document.querySelectorAll('a, button, .card, .project, .persona, [role="tab"], .filter, .cert-btn, .intern-doc-btn');
+  interactives.forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('is-hovering'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('is-hovering'));
+  });
+}
+</script>
 <script>
 const menuButton = document.querySelector('#menu-toggle');
 const siteLinks = document.querySelector('#site-links');
