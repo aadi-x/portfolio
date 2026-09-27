@@ -308,13 +308,13 @@ section[id] {
 }
 
 .f1 {
-  right: 3px;
-  top: 80px;
+  right: 18px;
+  top: 75px;
 }
 
 .f2 {
-  left: 0;
-  bottom: 48px;
+  left: 10px;
+  bottom: 42px;
   animation-delay: -2s;
 }
 
@@ -1000,17 +1000,18 @@ footer {
   color: var(--accent);
 }
 
-/* Hero Portrait 3D Parallax & Glow */
 .portrait {
   perspective: 1000px;
   transform-style: preserve-3d;
   will-change: transform;
+  max-width: 440px;
+  margin: 0 auto;
 }
 
 .portrait-glow {
   position: absolute;
-  inset: -15%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.09) 0%, transparent 68%);
+  inset: -12%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 68%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -1018,23 +1019,113 @@ footer {
   opacity: 0.85;
 }
 
-.portrait picture, .portrait img {
-  position: relative;
+.portrait picture {
+  display: contents;
+}
+
+.portrait img {
+  position: absolute;
   z-index: 1;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portrait .float {
-  z-index: 3;
+  z-index: 4;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
 }
 
+.portrait:hover .float {
+  animation-play-state: paused;
+}
+
 .portrait:hover .f1 {
-  transform: translate3d(6px, -4px, 20px);
+  transform: translate3d(4px, -4px, 20px);
 }
 
 .portrait:hover .f2 {
-  transform: translate3d(-6px, 4px, 20px);
+  transform: translate3d(-4px, 4px, 20px);
+}
+
+/* Hero Live Particle Canvas */
+.hero {
+  position: relative;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* Live Dynamic Word Rotator */
+.rotator-word {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 110px;
+}
+
+.rotator-word.changing {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+/* Scroll-Down Bouncing Indicator */
+.hero-scroll-wrap {
+  margin-top: 36px;
+}
+
+.hero-scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font: 500 10.5px "DM Mono";
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.hero-scroll-btn:hover {
+  color: var(--ink);
+  transform: translateY(2px);
+}
+
+.scroll-mouse {
+  width: 18px;
+  height: 28px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  position: relative;
+  display: block;
+}
+
+.scroll-wheel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 2.5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: mouseWheel 2s ease-in-out infinite;
+}
+
+@keyframes mouseWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  60% { transform: translate(-50%, 9px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 0; }
 }
 
 /* Scroll-Driven Motion & Staggered Reveals */
@@ -2334,15 +2425,22 @@ footer {
 <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 <main>
 <section id="home" class="shell hero">
+<canvas class="hero-particles" id="hero-particles" aria-hidden="true"></canvas>
 <div>
 <span class="eyebrow"><span class="status-pulse" aria-hidden="true"></span>Available for creative collaborations</span>
 <h1>ADITYA<br>
 <em class="accent">WALVEKAR</em>
 </h1>
-<p class="intro">Designer × Developer × Creator. I turn visual ideas and emerging technology into work that feels clear, memorable and built for what’s next.</p>
+<p class="intro">Designer × Developer × Creator. I turn <span class="rotator-word" id="rotator-word">visual ideas</span> into work that feels clear, memorable and built for what’s next.</p>
 <div class="hero-actions">
 <a class="button primary" href="#projects">Explore my work ↓</a>
 <a class="button" href="#about">About me</a>
+</div>
+<div class="hero-scroll-wrap">
+  <a href="#about" class="hero-scroll-btn" aria-label="Scroll to explore portfolio">
+    <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+    <span class="scroll-label">EXPLORE ARCHIVE ↓</span>
+  </a>
 </div>
 </div>
 <div class="portrait" id="hero-portrait">
@@ -2352,7 +2450,7 @@ footer {
   <img src="aditya-portrait.png" alt="Portrait of Aditya Walvekar" width="335" height="420" fetchpriority="high">
 </picture>
 <div class="float f1">
-<span class="dot">●</span> CREATIVE SYSTEM<strong>ONLINE / 2022</strong>
+<span class="dot">●</span> CREATIVE SYSTEM<strong>ONLINE / 2026</strong>
 </div>
 <div class="float f2">
 <strong>Designer + engineer</strong>Visual thinking, technical craft.</div>
@@ -3141,23 +3239,225 @@ function handleScrollTelemetry() {
 window.addEventListener('scroll', handleScrollTelemetry, { passive: true });
 handleScrollTelemetry();
 
-// 4. Hero Portrait Interactive 3D Tilt & Glow
+// 4. Hero Particle Constellation Cyber-Canvas
+(function initHeroParticles() {
+  const canvas = document.querySelector('#hero-particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const particleCount = window.innerWidth < 768 ? 32 : 60;
+  let mouse = { x: -1000, y: -1000, radius: 125 };
+
+  function resize() {
+    const parent = canvas.parentElement;
+    width = canvas.width = parent.offsetWidth;
+    height = canvas.height = parent.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Particle {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial = false) {
+      this.x = initial ? Math.random() * width : (Math.random() > 0.5 ? 0 : width);
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.radius = Math.random() * 1.5 + 0.8;
+      this.baseAlpha = Math.random() * 0.45 + 0.2;
+      this.alpha = this.baseAlpha;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0) this.x = width;
+      if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height;
+      if (this.y > height) this.y = 0;
+
+      const dx = mouse.x - this.x;
+      const dy = mouse.y - this.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < mouse.radius) {
+        const force = (mouse.radius - dist) / mouse.radius;
+        const angle = Math.atan2(dy, dx);
+        this.x -= Math.cos(angle) * force * 2.2;
+        this.y -= Math.sin(angle) * force * 2.2;
+        this.alpha = Math.min(0.9, this.baseAlpha + force * 0.4);
+      } else {
+        this.alpha += (this.baseAlpha - this.alpha) * 0.05;
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(240, 240, 240, ${this.alpha})`;
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+      ctx.shadowBlur = 5;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  const heroSection = canvas.closest('.hero');
+  if (heroSection) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    heroSection.addEventListener('mouseleave', () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.hypot(dx, dy);
+        const maxDist = 95;
+        if (dist < maxDist) {
+          const lineAlpha = (1 - dist / maxDist) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    particles.forEach(p => {
+      if (!prefersReduced) p.update();
+      p.draw();
+    });
+
+    if (!prefersReduced) {
+      requestAnimationFrame(render);
+    }
+  }
+
+  render();
+})();
+
+// 5. Live Dynamic Word Rotator
+(function initWordRotator() {
+  const rotatorEl = document.querySelector('#rotator-word');
+  if (!rotatorEl) return;
+  const words = [
+    'visual ideas',
+    'intelligent AI',
+    'creative code',
+    'scalable systems',
+    'digital worlds'
+  ];
+  let currentIndex = 0;
+
+  setInterval(() => {
+    rotatorEl.classList.add('changing');
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % words.length;
+      rotatorEl.textContent = words[currentIndex];
+      rotatorEl.classList.remove('changing');
+    }, 280);
+  }, 2800);
+})();
+
+// 6. Hero Portrait Interactive 3D Parallax Tilt
 const heroPortrait = document.querySelector('#hero-portrait');
 if (heroPortrait) {
   const glow = heroPortrait.querySelector('.portrait-glow');
-  const img = heroPortrait.querySelector('picture, img');
+  let targetTiltX = 0, targetTiltY = 0;
+  let currentTiltX = 0, currentTiltY = 0;
+  let tiltRaf = null;
+
+  function animatePortraitTilt() {
+    currentTiltX += (targetTiltX - currentTiltX) * 0.12;
+    currentTiltY += (targetTiltY - currentTiltY) * 0.12;
+    heroPortrait.style.transform = `perspective(1000px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+    if (glow) glow.style.transform = `translate(${(currentTiltY * 2.4).toFixed(1)}px, ${(-currentTiltX * 2.4).toFixed(1)}px)`;
+
+    if (Math.abs(targetTiltX - currentTiltX) > 0.02 || Math.abs(targetTiltY - currentTiltY) > 0.02) {
+      tiltRaf = requestAnimationFrame(animatePortraitTilt);
+    } else {
+      tiltRaf = null;
+    }
+  }
+
   heroPortrait.addEventListener('mousemove', (e) => {
     const rect = heroPortrait.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    if (img) img.style.transform = `perspective(900px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale3d(1.02, 1.02, 1.02)`;
-    if (glow) glow.style.transform = `translate(${x * 28}px, ${y * 28}px)`;
+    targetTiltX = -y * 10;
+    targetTiltY = x * 10;
+    if (!tiltRaf) tiltRaf = requestAnimationFrame(animatePortraitTilt);
   });
+
   heroPortrait.addEventListener('mouseleave', () => {
-    if (img) img.style.transform = '';
-    if (glow) glow.style.transform = '';
+    targetTiltX = 0;
+    targetTiltY = 0;
+    if (!tiltRaf) tiltRaf = requestAnimationFrame(animatePortraitTilt);
   });
 }
+
+// 7. Magnetic Button Pull
+if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.button.primary, .hero-scroll-btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - (rect.left + rect.width / 2);
+      const y = e.clientY - (rect.top + rect.height / 2);
+      btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+// 8. Live Number Counters for Credential Badges
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const targetNum = parseInt(el.textContent, 10);
+      if (!isNaN(targetNum) && targetNum > 0) {
+        const duration = 1200;
+        const start = performance.now();
+        function updateCount(time) {
+          const elapsed = time - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(easeProgress * targetNum);
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            el.textContent = targetNum;
+          }
+        }
+        requestAnimationFrame(updateCount);
+      }
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.badge-count').forEach(badge => countObserver.observe(badge));
 
 // 5. Card Interactive Spotlight Tracker
 const spotlightCards = document.querySelectorAll('.project, .skill, .cert-card, .intern-card, .achieve-card, .persona, .panel, .cta');
