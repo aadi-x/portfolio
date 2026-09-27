@@ -241,8 +241,103 @@ h1 {
   transform: translateX(100%);
 }
 
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08), transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
 .project-card.is-hidden {
   display: none !important;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #555555, #f2f2f2, #d8d8d8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  z-index: 9990;
+  pointer-events: none;
+  transition: width 0.08s ease-out;
+}
+
+/* Fluid Custom Cursor */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-custom-cursor,
+  html.has-custom-cursor *,
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s, transform 0.08s ease-out;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.42);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.22s,
+                border-color 0.22s,
+                opacity 0.2s;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-ring.is-hovering {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: invert(1);
+  }
+
+  .cursor-ring.is-clicking {
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  .cursor-hidden {
+    opacity: 0 !important;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring {
+    display: none !important;
+  }
 }
 
 /* Card Elements */
@@ -446,6 +541,7 @@ footer {
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
 <header class="shell nav">
   <a class="logo" href="index.html" aria-label="Aditya Walvekar Portfolio Home">AW<b>.</b></a>
@@ -757,6 +853,85 @@ filterBtns.forEach(btn => {
     });
   });
 });
+
+// Scroll Progress Bar
+const scrollProgressBar = document.querySelector('#scroll-progress');
+if (scrollProgressBar) {
+  window.addEventListener('scroll', () => {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+    scrollProgressBar.style.width = `${progress}%`;
+  }, { passive: true });
+}
+
+// Spotlight Cursor Tracker on Project Cards
+projectCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
+// Fluid Custom Cursor
+if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot cursor-hidden';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring cursor-hidden';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.documentElement.classList.add('has-custom-cursor');
+  document.body.classList.add('has-custom-cursor');
+
+  let mouseX = -100, mouseY = -100;
+  let ringX = -100, ringY = -100;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  window.addEventListener('mouseenter', () => {
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  function renderCursorRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    requestAnimationFrame(renderCursorRing);
+  }
+  requestAnimationFrame(renderCursorRing);
+
+  document.addEventListener('mouseleave', () => {
+    dot.classList.add('cursor-hidden');
+    ring.classList.add('cursor-hidden');
+  });
+
+  document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
+  document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, .project-card, .filter-btn, .action-btn')) {
+      ring.classList.add('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, .project-card, .filter-btn, .action-btn')) {
+      ring.classList.remove('is-hovering');
+    }
+  });
+}
 </script>
 
 </body>

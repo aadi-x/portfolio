@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Personal archive of games, movies, Marvel Cinematic Universe releases, web series, and anime enjoyed by Aditya Walvekar.">
 <meta name="author" content="Aditya Walvekar">
-<meta name="theme-color" content="#06141b">
+<meta name="theme-color" content="#090909">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Games & OTT Worlds — Aditya Walvekar">
 <meta property="og:description" content="A personal archive of games, movies, Marvel Cinematic Universe releases, web series, and anime.">
@@ -14,22 +14,22 @@
 <meta name="twitter:title" content="Games & OTT Worlds — Aditya Walvekar">
 <meta name="twitter:description" content="A personal archive of games, movies, Marvel Cinematic Universe releases, web series, and anime.">
 <meta name="twitter:image" content="aditya-portrait.webp">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2306141b%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23ccd0cf%22 text-anchor=%22middle%22>AW<tspan fill=%22%239ba8ab%22>.</tspan></text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
 <title>Games & OTT — Aditya Walvekar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #06141b;
-  --s: #11212d;
-  --card: rgba(17, 33, 45, 0.91);
-  --ink: #ccd0cf;
-  --m: #9ba8ab;
-  --line: rgba(74, 92, 106, 0.53);
-  --a: #9ba8ab;
-  --deep: #253745;
-  --shadow: 0 24px 65px rgba(2, 8, 12, 0.5);
+  --bg: #090909;
+  --s: #141414;
+  --card: #181818;
+  --ink: #f2f2f2;
+  --m: #a0a0a0;
+  --line: rgba(255, 255, 255, 0.12);
+  --a: #d8d8d8;
+  --deep: #222222;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
 }
 
 * {
@@ -45,6 +45,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: Manrope, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 body:before {
@@ -52,16 +53,15 @@ body:before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(circle at 10% 8%, rgba(37, 55, 69, 0.73), transparent 30%),
-              radial-gradient(circle at 94% 64%, rgba(74, 92, 106, 0.4), transparent 27%),
-              linear-gradient(115deg, #06141b, #11212d);
+  background: radial-gradient(circle at 10% 8%, #2a2a2a, transparent 30%),
+              radial-gradient(circle at 94% 64%, #181818, transparent 27%),
+              linear-gradient(115deg, #090909, #141414);
   animation: ambient 12s ease-in-out infinite alternate;
 }
 
 @keyframes ambient {
   to {
-    filter: hue-rotate(8deg);
-    transform: scale(1.04);
+    transform: scale(1.03);
   }
 }
 
@@ -148,7 +148,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(6, 20, 27, 0.5);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--m);
   font: 500 11px "DM Mono";
   cursor: pointer;
@@ -223,12 +223,12 @@ h1 {
 }
 
 .fav {
-  background: linear-gradient(145deg, #253745, #11212d);
-  border-color: rgba(155, 168, 171, 0.4);
+  background: linear-gradient(145deg, #222222, #141414);
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .fav .chip {
-  border-color: rgba(155, 168, 171, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
   color: var(--ink);
 }
 
@@ -276,11 +276,89 @@ h1 {
   .tab {
     padding: 8px 14px;
     font-size: 10px;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #d8d8d8, #ffffff);
+  z-index: 9999;
+  transition: width 0.08s ease-out;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Fluid Custom Cursor */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-custom-cursor,
+  html.has-custom-cursor *,
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s, transform 0.15s;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  }
+
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.22s,
+                border-color 0.22s,
+                opacity 0.2s;
+  }
+
+  .cursor-ring.is-hovering {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: invert(1);
+  }
+
+  .cursor-ring.is-clicking {
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  .cursor-hidden {
+    opacity: 0 !important;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring {
+    display: none !important;
   }
 }
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <header class="shell nav">
   <a class="logo" href="index.html">AW<b>.</b></a>
   <a class="btn" href="index.html">← Back to portfolio</a>
@@ -568,6 +646,74 @@ tabs.forEach((t, i) => {
     }
   });
 });
+
+// Scroll Progress Bar
+const scrollProgressBar = document.querySelector('#scroll-progress');
+if (scrollProgressBar) {
+  window.addEventListener('scroll', () => {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+    scrollProgressBar.style.width = `${progress}%`;
+  }, { passive: true });
+}
+
+// Fluid Custom Cursor
+if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot cursor-hidden';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring cursor-hidden';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.documentElement.classList.add('has-custom-cursor');
+  document.body.classList.add('has-custom-cursor');
+
+  let mouseX = -100, mouseY = -100;
+  let ringX = -100, ringY = -100;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  window.addEventListener('mouseenter', () => {
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  function renderCursorRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    requestAnimationFrame(renderCursorRing);
+  }
+  requestAnimationFrame(renderCursorRing);
+
+  document.addEventListener('mouseleave', () => {
+    dot.classList.add('cursor-hidden');
+    ring.classList.add('cursor-hidden');
+  });
+
+  document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
+  document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, .tab, .btn, .chip, .panel')) {
+      ring.classList.add('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, .tab, .btn, .chip, .panel')) {
+      ring.classList.remove('is-hovering');
+    }
+  });
+}
 </script>
 </body>
 </html>

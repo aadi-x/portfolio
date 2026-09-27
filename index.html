@@ -232,15 +232,16 @@ section[id] {
 .hero {
   min-height: calc(100vh - 80px);
   display: grid;
-  grid-template-columns: 1.04fr 0.96fr;
+  grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
-  gap: 40px;
+  gap: clamp(24px, 3.5vw, 44px);
 }
 
 .hero h1 {
-  font: 800 clamp(54px, 7vw, 103px) / 0.88 Syne;
-  letter-spacing: -0.075em;
+  font: 800 clamp(44px, 6vw, 92px) / 0.9 Syne;
+  letter-spacing: -0.065em;
   margin: 15px 0 22px;
+  white-space: nowrap;
 }
 
 .intro, .section-intro {
@@ -269,8 +270,6 @@ section[id] {
   height: 470px;
   border: 1px solid var(--line);
   border-radius: 205px 205px 25px;
-  background: linear-gradient(145deg, #555, #171717);
-  transform: rotate(7deg);
   animation: frame 5s ease-in-out infinite;
 }
 
@@ -299,7 +298,9 @@ section[id] {
   box-shadow: var(--shadow);
   font-size: 10px;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   animation: float 4.5s ease-in-out infinite;
+  z-index: 3;
 }
 
 .float strong {
@@ -308,14 +309,16 @@ section[id] {
 }
 
 .f1 {
-  right: 3px;
-  top: 80px;
+  right: 14px;
+  top: 60px;
+  white-space: nowrap;
 }
 
 .f2 {
-  left: 0;
-  bottom: 48px;
+  left: 10px;
+  bottom: 42px;
   animation-delay: -2s;
+  white-space: nowrap;
 }
 
 .dot {
@@ -695,7 +698,7 @@ section[id] {
 
 .art {
   height: 160px;
-  background: radial-gradient(circle at 50% 42%, #777, #2a2a2a 37%, #111 70%);
+  background: radial-gradient(circle at 50% 42%, #262626, #161616 55%, #0d0d0d 85%);
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -708,24 +711,13 @@ section[id] {
   letter-spacing: 0.12em;
   padding: 3px 9px;
   border-radius: 6px;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(4px);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.35);
+  background: rgba(12, 12, 12, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--accent);
+  border: 1px solid var(--line);
   text-transform: uppercase;
   z-index: 2;
-}
-
-.live-art-app {
-  background: radial-gradient(circle at 75% 30%, rgba(59, 130, 246, 0.35), transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.25), transparent 50%),
-              linear-gradient(135deg, #1f1f1f, #111111);
-}
-
-.live-art-game {
-  background: radial-gradient(circle at 75% 30%, rgba(236, 72, 153, 0.35), transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.25), transparent 50%),
-              linear-gradient(135deg, #1f1f1f, #111111);
 }
 
 .projects-portal-bridge {
@@ -733,7 +725,7 @@ section[id] {
   padding: 26px 30px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.7), rgba(15, 15, 15, 0.9));
+  background: linear-gradient(135deg, var(--card), var(--surface));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -943,15 +935,234 @@ footer {
   font: 500 10px "DM Mono";
 }
 
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #555555, #f2f2f2, #d8d8d8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  z-index: 9990;
+  pointer-events: none;
+  transition: width 0.08s ease-out;
+}
+
+/* Status Pulse Indicator */
+.status-pulse {
+  display: inline-block;
+  width: 7.5px;
+  height: 7.5px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 rgba(34, 197, 94, 0.6);
+  animation: pulse-ring 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+
+
+/* Scroll-Down Bouncing Indicator */
+.hero-scroll-wrap {
+  margin-top: 36px;
+}
+
+.hero-scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font: 500 10.5px "DM Mono";
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.hero-scroll-btn:hover {
+  color: var(--ink);
+  transform: translateY(2px);
+}
+
+.scroll-mouse {
+  width: 18px;
+  height: 28px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  position: relative;
+  display: block;
+}
+
+.scroll-wheel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 2.5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: mouseWheel 2s ease-in-out infinite;
+}
+
+@keyframes mouseWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  60% { transform: translate(-50%, 9px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 0; }
+}
+
+/* Scroll-Driven Motion & Staggered Reveals */
 .motion {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.75s, transform 0.75s;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .motion.in {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion.in > article,
+  .motion.in > div {
+    animation: fadeUpStagger 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  .motion.in > *:nth-child(1) { animation-delay: 0.04s; }
+  .motion.in > *:nth-child(2) { animation-delay: 0.10s; }
+  .motion.in > *:nth-child(3) { animation-delay: 0.16s; }
+  .motion.in > *:nth-child(4) { animation-delay: 0.22s; }
+  .motion.in > *:nth-child(5) { animation-delay: 0.28s; }
+  .motion.in > *:nth-child(6) { animation-delay: 0.34s; }
+  .motion.in > *:nth-child(7) { animation-delay: 0.40s; }
+  .motion.in > *:nth-child(8) { animation-delay: 0.46s; }
+  .motion.in > *:nth-child(9) { animation-delay: 0.52s; }
+
+  @keyframes fadeUpStagger {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Interactive Card Spotlight Glow */
+.project, .skill, .cert-card, .intern-card, .achieve-card, .persona, .panel {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+}
+
+.project::after, .skill::after, .cert-card::after, .intern-card::after, .achieve-card::after, .persona::after, .panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.07), transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.project:hover::after, .skill:hover::after, .cert-card:hover::after, .intern-card:hover::after, .achieve-card:hover::after, .persona:hover::after, .panel:hover::after {
+  opacity: 1;
+}
+
+.persona:hover {
+  transform: translateY(-5px) scale(1.015);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+/* Fluid Custom Cursor */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-custom-cursor,
+  html.has-custom-cursor *,
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s, transform 0.08s ease-out;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.42);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.22s,
+                border-color 0.22s,
+                opacity 0.2s;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-ring.is-hovering {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: invert(1);
+  }
+
+  .cursor-ring.is-clicking {
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  .cursor-hidden {
+    opacity: 0 !important;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring {
+    display: none !important;
+  }
+}
+
+.nav-link.active-section {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 /* Light Theme Overrides */
@@ -992,6 +1203,81 @@ footer {
 
 [data-theme="light"] .cta p {
   color: #5D5048;
+}
+
+[data-theme="light"] .projects-portal-bridge {
+  background: linear-gradient(120deg, #E3D5CA, #D7BDB0);
+  color: #25221F;
+  border-color: rgba(112, 91, 79, 0.25);
+  box-shadow: 0 18px 52px rgba(87, 68, 57, 0.12);
+}
+
+[data-theme="light"] .projects-portal-bridge .bridge-tag {
+  color: #6B554B;
+}
+
+[data-theme="light"] .projects-portal-bridge h3 {
+  color: #25221F;
+}
+
+[data-theme="light"] .projects-portal-bridge p {
+  color: #5D5048;
+}
+
+[data-theme="light"] .projects-portal-bridge:hover {
+  border-color: #6B554B;
+}
+
+[data-theme="light"] .portrait:before {
+  border-color: rgba(112, 91, 79, 0.35);
+}
+
+[data-theme="light"] .float {
+  background: #F5EBE1;
+  color: #25221F;
+  border-color: rgba(112, 91, 79, 0.3);
+}
+
+[data-theme="light"] .hero-scroll-btn {
+  color: #665951;
+}
+
+[data-theme="light"] .hero-scroll-btn:hover {
+  color: #25221F;
+}
+
+[data-theme="light"] .scroll-mouse {
+  border-color: rgba(112, 91, 79, 0.35);
+}
+
+[data-theme="light"] .cursor-dot {
+  background: #25221F;
+  box-shadow: 0 0 8px rgba(37, 34, 31, 0.5);
+}
+
+[data-theme="light"] .cursor-ring {
+  border-color: rgba(37, 34, 31, 0.45);
+}
+
+[data-theme="light"] .cursor-ring.is-hovering {
+  background: rgba(37, 34, 31, 0.09);
+  border-color: #25221F;
+}
+
+@media (min-width: 801px) and (max-width: 1150px) {
+  .hero {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 5.2vw, 64px);
+    white-space: nowrap;
+  }
+  .f1 {
+    right: 10px;
+    top: 48px;
+    white-space: nowrap;
+  }
 }
 
 [data-theme="light"] .filter {
@@ -2078,6 +2364,7 @@ footer {
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <header class="shell nav">
 <a class="logo" href="#home">AW<b>.</b></a>
 <nav class="links" id="site-links" aria-label="Primary Navigation">
@@ -2108,7 +2395,7 @@ footer {
 <main>
 <section id="home" class="shell hero">
 <div>
-<span class="eyebrow">Available for creative collaborations</span>
+<span class="eyebrow"><span class="status-pulse" aria-hidden="true"></span>Available for creative collaborations</span>
 <h1>ADITYA<br>
 <em class="accent">WALVEKAR</em>
 </h1>
@@ -2117,14 +2404,20 @@ footer {
 <a class="button primary" href="#projects">Explore my work ↓</a>
 <a class="button" href="#about">About me</a>
 </div>
+<div class="hero-scroll-wrap">
+  <a href="#about" class="hero-scroll-btn" aria-label="Scroll to explore portfolio">
+    <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+    <span class="scroll-label">EXPLORE ARCHIVE ↓</span>
+  </a>
 </div>
-<div class="portrait">
+</div>
+<div class="portrait" id="hero-portrait">
 <picture>
   <source srcset="aditya-portrait.webp" type="image/webp">
   <img src="aditya-portrait.png" alt="Portrait of Aditya Walvekar" width="335" height="420" fetchpriority="high">
 </picture>
 <div class="float f1">
-<span class="dot">●</span> CREATIVE SYSTEM<strong>ONLINE / 2022</strong>
+<span class="dot">●</span> CREATIVE SYSTEM<strong>ONLINE / 2026</strong>
 </div>
 <div class="float f2">
 <strong>Designer + engineer</strong>Visual thinking, technical craft.</div>
@@ -2306,7 +2599,7 @@ footer {
 
 <div class="projects featured motion">
   <article class="project">
-    <div class="art live-art-app">
+    <div class="art">
       <span class="art-badge">● LIVE WEB APP</span>
     </div>
     <div class="copy">
@@ -2324,7 +2617,7 @@ footer {
   </article>
 
   <article class="project">
-    <div class="art live-art-game">
+    <div class="art">
       <span class="art-badge">● PLAYABLE GAME</span>
     </div>
     <div class="copy">
@@ -2851,7 +3144,180 @@ footer {
 <span>© 2026 ADITYA WALVEKAR</span>
 <span>DESIGNED WITH INTENT · BUILT FOR WHAT’S NEXT</span>
 </footer>
-<script>const theme=document.querySelector('#theme');theme.addEventListener('click',()=>{const light=document.documentElement.dataset.theme==='light';document.documentElement.dataset.theme=light?'dark':'light';theme.textContent=light?'☼':'◐';localStorage.theme=document.documentElement.dataset.theme});if(localStorage.theme){document.documentElement.dataset.theme=localStorage.theme;theme.textContent=localStorage.theme==='light'?'◐':'☼'}const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.motion').forEach(x=>observer.observe(x));const filters=[...document.querySelectorAll('[data-filter]')],cards=[...document.querySelectorAll('[data-kind]')];filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false')});f.classList.add('active');f.setAttribute('aria-pressed','true');cards.forEach(c=>c.hidden=f.dataset.filter!=='all'&&!c.dataset.kind.includes(f.dataset.filter))}));</script>
+<script>
+// 1. Theme Controller
+const theme = document.querySelector('#theme');
+if (theme) {
+  theme.addEventListener('click', () => {
+    const light = document.documentElement.dataset.theme === 'light';
+    document.documentElement.dataset.theme = light ? 'dark' : 'light';
+    theme.textContent = light ? '☼' : '◐';
+    localStorage.theme = document.documentElement.dataset.theme;
+  });
+  if (localStorage.theme) {
+    document.documentElement.dataset.theme = localStorage.theme;
+    theme.textContent = localStorage.theme === 'light' ? '◐' : '☼';
+  }
+}
+
+// 2. Scroll-Driven Reveal Animations (IntersectionObserver)
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.motion').forEach(el => observer.observe(el));
+
+// 3. Scroll Progress & Active Nav Scrollspy
+const scrollProgressBar = document.querySelector('#scroll-progress');
+const trackedSections = document.querySelectorAll('section[id]');
+const pageNavLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+function handleScrollTelemetry() {
+  if (scrollProgressBar) {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+    scrollProgressBar.style.width = `${progress}%`;
+  }
+
+  let currentId = '';
+  trackedSections.forEach(sec => {
+    const top = sec.offsetTop - 180;
+    const height = sec.offsetHeight;
+    if (window.scrollY >= top && window.scrollY < top + height) {
+      currentId = sec.getAttribute('id');
+    }
+  });
+
+  pageNavLinks.forEach(link => {
+    const target = link.getAttribute('href');
+    if (target === `#${currentId}`) {
+      link.classList.add('active-section');
+    } else {
+      link.classList.remove('active-section');
+    }
+  });
+}
+
+window.addEventListener('scroll', handleScrollTelemetry, { passive: true });
+handleScrollTelemetry();
+// 4. Magnetic Button Pull
+if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.button.primary, .hero-scroll-btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - (rect.left + rect.width / 2);
+      const y = e.clientY - (rect.top + rect.height / 2);
+      btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+// 5. Live Number Counters for Credential Badges
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const targetNum = parseInt(el.textContent, 10);
+      if (!isNaN(targetNum) && targetNum > 0) {
+        const duration = 1200;
+        const start = performance.now();
+        function updateCount(time) {
+          const elapsed = time - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(easeProgress * targetNum);
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            el.textContent = targetNum;
+          }
+        }
+        requestAnimationFrame(updateCount);
+      }
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.badge-count').forEach(badge => countObserver.observe(badge));
+
+// 6. Card Interactive Spotlight Tracker
+const spotlightCards = document.querySelectorAll('.project, .skill, .cert-card, .intern-card, .achieve-card, .persona, .panel, .cta');
+spotlightCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
+// 7. Fluid Custom Cursor
+if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot cursor-hidden';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring cursor-hidden';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.documentElement.classList.add('has-custom-cursor');
+  document.body.classList.add('has-custom-cursor');
+
+  let mouseX = -100, mouseY = -100;
+  let ringX = -100, ringY = -100;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  window.addEventListener('mouseenter', () => {
+    dot.classList.remove('cursor-hidden');
+    ring.classList.remove('cursor-hidden');
+  });
+
+  function renderCursorRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    requestAnimationFrame(renderCursorRing);
+  }
+  requestAnimationFrame(renderCursorRing);
+
+  document.addEventListener('mouseleave', () => {
+    dot.classList.add('cursor-hidden');
+    ring.classList.add('cursor-hidden');
+  });
+
+  document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
+  document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, .card, .project, .persona, [role="tab"], .filter, .cert-btn, .intern-doc-btn, .hero-scroll-btn, .projects-portal-bridge')) {
+      ring.classList.add('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, .card, .project, .persona, [role="tab"], .filter, .cert-btn, .intern-doc-btn, .hero-scroll-btn, .projects-portal-bridge')) {
+      ring.classList.remove('is-hovering');
+    }
+  });
+}
+</script>
 <script>
 const menuButton = document.querySelector('#menu-toggle');
 const siteLinks = document.querySelector('#site-links');
