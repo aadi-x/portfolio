@@ -255,6 +255,175 @@ h1 {
   color: var(--bg);
 }
 
+/* Agency Callout Banner */
+.agency-callout {
+  margin: 10px 0 28px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(20, 20, 20, 0.95) 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.agency-callout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+}
+
+.agency-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font: 500 11px "DM Mono";
+  color: var(--a);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.agency-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.agency-text {
+  max-width: 660px;
+}
+
+.agency-text h2 {
+  font: 700 22px Syne;
+  letter-spacing: -0.03em;
+  margin: 0 0 8px;
+  color: #fff;
+}
+
+.agency-text p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.agency-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.agency-ig-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  color: #ffffff;
+  font: 600 12px Manrope;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(225, 48, 108, 0.35);
+  transition: transform 0.25s, box-shadow 0.25s;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.agency-ig-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(225, 48, 108, 0.55);
+}
+
+/* Card Badges */
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font: 600 9px "DM Mono";
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Enhanced Lightbox */
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: min(92vw, 880px);
+  width: 100%;
+}
+
+.lightbox-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 14px;
+  padding: 12px 18px;
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-title {
+  font: 600 13px Manrope;
+  color: #ffffff;
+}
+
+.lightbox-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font: 500 11px "DM Mono";
+  transition: 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lightbox-ig-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
 @media (max-width: 650px) {
   .shell {
     width: 100%;
@@ -274,6 +443,18 @@ h1 {
   }
   .nav {
     height: 70px;
+  }
+  .agency-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .agency-ig-button {
+    width: 100%;
+    justify-content: center;
+  }
+  .lightbox-meta {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -372,26 +553,68 @@ body.has-custom-cursor * {
 </header>
 <main class="shell">
   <div class="hero">
-    <span class="eyebrow">Graphic design / Suyash Graphics</span>
+    <span class="eyebrow">Commercial Practice / Suyash Graphics</span>
     <h1>Ideas, made<br><em class="accent">visible.</em></h1>
-    <p class="intro">A direct portfolio of social media creatives, product visualisation, promotional posters and flyer design. Select a type to focus the collection, then click any visual for a closer view.</p>
+    <p class="intro">A direct portfolio of commercial branding, festival campaigns, promotional posters, and product visualisations crafted at Suyash Graphics. Select a category to explore, and click any visual for high-resolution details.</p>
   </div>
+
+  <!-- Agency Callout Banner -->
+  <div class="agency-callout">
+    <div class="agency-pill">
+      <span class="pulse-dot"></span>
+      <span>Commercial Practice · Lead Graphic Designer &amp; Freelancer</span>
+    </div>
+    <div class="agency-inner">
+      <div class="agency-text">
+        <h2>Crafted at Suyash Graphics</h2>
+        <p>A curated collection of client branding, festival hoardings, social media creatives, print advertising, and recruitment campaigns created during my commercial tenure and freelance practice at <strong>Suyash Graphics (@suyashgraphics09)</strong>, Kolhapur.</p>
+      </div>
+      <a class="agency-ig-button" href="https://www.instagram.com/suyashgraphics09/" target="_blank" rel="noopener noreferrer" aria-label="Visit Suyash Graphics on Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        <span>@suyashgraphics09 on Instagram ↗</span>
+      </a>
+    </div>
+  </div>
+
   <div class="filters" role="group" aria-label="Filter designs by category">
-    <button class="filter active" data-filter="all" aria-pressed="true">All designs</button>
+    <button class="filter active" data-filter="all" aria-pressed="true">All designs (33)</button>
+    <button class="filter" data-filter="suyash" aria-pressed="false">Suyash Graphics</button>
     <button class="filter" data-filter="product" aria-pressed="false">Product visualisation</button>
     <button class="filter" data-filter="social" aria-pressed="false">Social media</button>
-    <button class="filter" data-filter="poster" aria-pressed="false">Posters & flyers</button>
+    <button class="filter" data-filter="poster" aria-pressed="false">Posters &amp; flyers</button>
   </div>
   <div class="grid" id="grid"></div>
 </main>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Design preview lightbox">
   <button aria-label="Close preview">×</button>
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Design preview">
+  <div class="lightbox-content">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Design preview">
+    <div class="lightbox-meta">
+      <span class="lightbox-title" id="lightbox-title">Design Preview</span>
+      <a class="lightbox-ig-btn" id="lightbox-ig-link" href="https://www.instagram.com/suyashgraphics09/" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        <span>Suyash Graphics on Instagram ↗</span>
+      </a>
+    </div>
+  </div>
 </div>
 
 <script>
 const designs = [
+  // Suyash Graphics Commercial Client Work (Live on Instagram @suyashgraphics09)
+  ['suyash_DdQe1M_seFX.webp', 'suyash poster', 'Suyash Graphics — Commercial Ganeshotsav Branding', 'https://www.instagram.com/suyashgraphics09/p/DdQe1M_seFX/'],
+  ['suyash_DdZaeP5svGF.webp', 'suyash poster', 'Suyash Graphics — Ganeshotsav Festival Creative', 'https://www.instagram.com/suyashgraphics09/p/DdZaeP5svGF/'],
+  ['suyash_Dc1TI-1sdci.webp', 'suyash social', 'Suyash Graphics — Janmashtami Festival Poster', 'https://www.instagram.com/suyashgraphics09/p/Dc1TI-1sdci/'],
+  ['suyash_Dc1JMt8sd6n.webp', 'suyash social', 'Suyash Graphics — Festive Campaign Visual', 'https://www.instagram.com/suyashgraphics09/p/Dc1JMt8sd6n/'],
+  ['suyash_DctzQdVs_x3.webp', 'suyash poster', 'Suyash Graphics — Agency Hiring Announcement', 'https://www.instagram.com/suyashgraphics09/p/DctzQdVs_x3/'],
+  ['suyash_DcnD-A8sg5U.webp', 'suyash poster', 'Suyash Graphics — Creative Team Recruitment', 'https://www.instagram.com/suyashgraphics09/p/DcnD-A8sg5U/'],
+  ['suyash_DcjggL-Mltt.webp', 'suyash social', 'Suyash Graphics — Raksha Bandhan Campaign', 'https://www.instagram.com/suyashgraphics09/p/DcjggL-Mltt/'],
+  ['suyash_DYIRGKmyoum.webp', 'suyash social', 'Suyash Graphics — Brand Identity Campaign', 'https://www.instagram.com/suyashgraphics09/p/DYIRGKmyoum/'],
+  ['suyash_DGkS5i4sVb7.webp', 'suyash social', 'Suyash Graphics — Creative Studio Showcase', 'https://www.instagram.com/suyashgraphics09/p/DGkS5i4sVb7/'],
+  ['suyash_DdMJpfaISAE.webp', 'suyash poster', 'Suyash Graphics — Shivtej Talim Ganeshotsav Schedule', 'https://www.instagram.com/suyashgraphics09/'],
+
+  // Studio & Brand Visualizations
   ['535a5b72c5e3e097.webp', 'social', 'Branding campaign'],
   ['a9a9af856b17f232.webp', 'social', 'Digital creative'],
   ['6f058a401e9f2eac.webp', 'product', 'Product advertising'],
@@ -418,11 +641,13 @@ const designs = [
 ];
 
 const grid = document.querySelector('#grid');
-grid.innerHTML = designs.map(d =>
-  `<button class="card" data-type="${d[1]}" data-title="${d[2]}" aria-label="View ${d[2]}">` +
-  `<img loading="lazy" src="designs/${d[0]}" alt="${d[2]}">` +
-  `</button>`
-).join('');
+grid.innerHTML = designs.map(d => {
+  const isSuyash = d[1].includes('suyash');
+  return `<button class="card" data-type="${d[1]}" data-title="${d[2]}" data-ig="${d[3] || 'https://www.instagram.com/suyashgraphics09/'}" aria-label="View ${d[2]}">` +
+    `<img loading="lazy" src="designs/${d[0]}" alt="${d[2]}">` +
+    (isSuyash ? `<span class="card-badge">Suyash Graphics</span>` : '') +
+    `</button>`;
+}).join('');
 
 const cards = [...document.querySelectorAll('.card')];
 const filters = [...document.querySelectorAll('.filter')];
@@ -440,7 +665,8 @@ filters.forEach(f => f.addEventListener('click', () => {
   f.setAttribute('aria-pressed', 'true');
   const target = f.dataset.filter;
   cards.forEach(c => {
-    c.hidden = target !== 'all' && c.dataset.type !== target;
+    const types = (c.dataset.type || '').split(' ');
+    c.hidden = target !== 'all' && !types.includes(target);
   });
 }));
 
@@ -449,6 +675,12 @@ function openLightbox(card) {
   const img = card.querySelector('img');
   out.src = img.src;
   out.alt = card.dataset.title;
+  const titleEl = document.querySelector('#lightbox-title');
+  if (titleEl) titleEl.textContent = card.dataset.title;
+  const igEl = document.querySelector('#lightbox-ig-link');
+  if (igEl) {
+    igEl.href = card.dataset.ig || 'https://www.instagram.com/suyashgraphics09/';
+  }
   box.classList.add('open');
   document.body.style.overflow = 'hidden';
   closeBtn.focus();
@@ -535,7 +767,7 @@ if (scrollProgressBar) {
     document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
     document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
 
-    const hoverSelectors = 'a, button, .card, .btn, .filter, .lightbox button';
+    const hoverSelectors = 'a, button, .card, .btn, .filter, .lightbox button, .agency-ig-button, .lightbox-ig-btn';
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(hoverSelectors)) {
         ring.classList.add('is-hovering');
