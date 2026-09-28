@@ -294,65 +294,64 @@ h1 {
 }
 
 /* Fluid Custom Cursor */
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  html.has-custom-cursor,
-  html.has-custom-cursor *,
-  body.has-custom-cursor,
-  body.has-custom-cursor * {
-    cursor: none !important;
-  }
-
-  .cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 6px;
-    height: 6px;
-    background: #ffffff;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.2s, transform 0.15s;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
-  }
-
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.22s,
-                border-color 0.22s,
-                opacity 0.2s;
-  }
-
-  .cursor-ring.is-hovering {
-    width: 48px;
-    height: 48px;
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: invert(1);
-  }
-
-  .cursor-ring.is-clicking {
-    transform: translate(-50%, -50%) scale(0.85);
-  }
-
-  .cursor-hidden {
-    opacity: 0 !important;
-  }
+html.has-custom-cursor,
+html.has-custom-cursor *,
+body.has-custom-cursor,
+body.has-custom-cursor * {
+  cursor: none !important;
 }
 
-@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s, transform 0.08s ease-out;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.22s,
+              border-color 0.22s,
+              opacity 0.2s;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring.is-hovering {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: invert(1);
+}
+
+.cursor-ring.is-clicking {
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+.cursor-hidden {
+  opacity: 0 !important;
+}
+
+@media (pointer: coarse) {
   .cursor-dot, .cursor-ring {
     display: none !important;
   }
@@ -660,7 +659,7 @@ if (scrollProgressBar) {
 }
 
 // Fluid Custom Cursor
-if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (window.matchMedia('(pointer: fine)').matches) {
   const dot = document.createElement('div');
   dot.className = 'cursor-dot cursor-hidden';
   const ring = document.createElement('div');
@@ -705,13 +704,13 @@ if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers
   document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
 
   document.addEventListener('mouseover', (e) => {
-    if (e.target.closest('a, button, .tab, .btn, .chip, .panel')) {
+    if (e.target.closest('a, button, .tab, .btn, .chip, .panel, .fav')) {
       ring.classList.add('is-hovering');
     }
   });
 
   document.addEventListener('mouseout', (e) => {
-    if (e.target.closest('a, button, .tab, .btn, .chip, .panel')) {
+    if (e.target.closest('a, button, .tab, .btn, .chip, .panel, .fav')) {
       ring.classList.remove('is-hovering');
     }
   });
