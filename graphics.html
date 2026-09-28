@@ -485,62 +485,89 @@ if (scrollProgressBar) {
 }
 
 // Fluid Custom Cursor
-if (window.matchMedia('(pointer: fine)').matches) {
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot cursor-hidden';
-  const ring = document.createElement('div');
-  ring.className = 'cursor-ring cursor-hidden';
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-  document.documentElement.classList.add('has-custom-cursor');
-  document.body.classList.add('has-custom-cursor');
+(function() {
+  let initialized = false;
 
-  let mouseX = -100, mouseY = -100;
-  let ringX = -100, ringY = -100;
+  function initCursor() {
+    if (initialized) return;
+    initialized = true;
 
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
-    dot.classList.remove('cursor-hidden');
-    ring.classList.remove('cursor-hidden');
-  });
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot cursor-hidden';
+    const ring = document.createElement('div');
+    ring.className = 'cursor-ring cursor-hidden';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    document.documentElement.classList.add('has-custom-cursor');
+    document.body.classList.add('has-custom-cursor');
 
-  window.addEventListener('mouseenter', () => {
-    dot.classList.remove('cursor-hidden');
-    ring.classList.remove('cursor-hidden');
-  });
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
 
-  function renderCursorRing() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.left = `${ringX}px`;
-    ring.style.top = `${ringY}px`;
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = `${mouseX}px`;
+      dot.style.top = `${mouseY}px`;
+      dot.classList.remove('cursor-hidden');
+      ring.classList.remove('cursor-hidden');
+    });
+
+    window.addEventListener('mouseenter', () => {
+      dot.classList.remove('cursor-hidden');
+      ring.classList.remove('cursor-hidden');
+    });
+
+    function renderCursorRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      ring.style.left = `${ringX}px`;
+      ring.style.top = `${ringY}px`;
+      requestAnimationFrame(renderCursorRing);
+    }
     requestAnimationFrame(renderCursorRing);
+
+    document.addEventListener('mouseleave', () => {
+      dot.classList.add('cursor-hidden');
+      ring.classList.add('cursor-hidden');
+    });
+
+    document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
+    document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
+
+    const hoverSelectors = 'a, button, .card, .btn, .filter, .lightbox button';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(hoverSelectors)) {
+        ring.classList.add('is-hovering');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(hoverSelectors)) {
+        ring.classList.remove('is-hovering');
+      }
+    });
   }
-  requestAnimationFrame(renderCursorRing);
 
-  document.addEventListener('mouseleave', () => {
-    dot.classList.add('cursor-hidden');
-    ring.classList.add('cursor-hidden');
-  });
+  if (window.matchMedia('(pointer: fine)').matches) {
+    initCursor();
+  } else {
+    window.addEventListener('mousemove', function onFirstMove(e) {
+      if (e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents) return;
+      initCursor();
+      window.removeEventListener('mousemove', onFirstMove);
+    }, { once: true });
+  }
 
-  document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
-  document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
-
-  document.addEventListener('mouseover', (e) => {
-    if (e.target.closest('a, button, .card, .btn, .filter, .lightbox button')) {
-      ring.classList.add('is-hovering');
-    }
-  });
-
-  document.addEventListener('mouseout', (e) => {
-    if (e.target.closest('a, button, .card, .btn, .filter, .lightbox button')) {
-      ring.classList.remove('is-hovering');
-    }
-  });
-}
+  window.addEventListener('touchstart', () => {
+    document.documentElement.classList.remove('has-custom-cursor');
+    document.body.classList.remove('has-custom-cursor');
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    if (dot) dot.classList.add('cursor-hidden');
+    if (ring) ring.classList.add('cursor-hidden');
+  }, { passive: true });
+})();
 
 // Interactive Spotlight Tracker on Cards
 cards.forEach(card => {
