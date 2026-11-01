@@ -2484,9 +2484,365 @@ body.has-custom-cursor * {
     height: 190px;
   }
 }
+
+/* ============================================================
+   CINEMATIC LANDING PORTAL STYLES (Ultra-Minimalist & Seamless)
+   ============================================================ */
+.landing-portal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100000;
+  background: #050507;
+  color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.landing-portal.is-leaving {
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Atmospheric Ambient Canvas / Dark Breathing Lighting */
+.landing-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.38;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.ambient-glow.glow-1 {
+  width: 540px;
+  height: 540px;
+  top: 15%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(160, 160, 185, 0.16), transparent 70%);
+  animation: landingAmbientMove1 14s ease-in-out infinite alternate;
+}
+
+.ambient-glow.glow-2 {
+  width: 620px;
+  height: 620px;
+  bottom: 12%;
+  right: 18%;
+  background: radial-gradient(circle, rgba(120, 120, 145, 0.13), transparent 70%);
+  animation: landingAmbientMove2 18s ease-in-out infinite alternate;
+}
+
+@keyframes landingAmbientMove1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(40px, -30px, 0) scale(1.15); opacity: 0.48; }
+  100% { transform: translate3d(-20px, 40px, 0) scale(0.95); opacity: 0.32; }
+}
+
+@keyframes landingAmbientMove2 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-50px, 30px, 0) scale(1.1); opacity: 0.28; }
+  100% { transform: translate3d(30px, -40px, 0) scale(0.9); opacity: 0.42; }
+}
+
+/* Fine Precision Grid Lines */
+.landing-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 30%, transparent 75%);
+}
+
+/* Central Kinetic Typography Stage */
+.landing-stage {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  user-select: none;
+}
+
+/* 1. Salutation / Eyebrow */
+.landing-eyebrow-mask {
+  overflow: hidden;
+  padding: 4px 0;
+  margin-bottom: clamp(6px, 1.2vh, 12px);
+}
+
+.landing-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  transform: translateY(120%);
+  opacity: 0;
+  animation: landingMaskReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+.landing-eyebrow .eyebrow-accent {
+  color: #d4d4d8;
+  font-weight: 700;
+}
+
+/* 2. Monumental Name */
+.landing-name-mask {
+  overflow: hidden;
+  padding: 8px 0;
+  margin-bottom: clamp(4px, 1vh, 8px);
+}
+
+.landing-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(38px, 7.2vw, 92px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 22px);
+  flex-wrap: wrap;
+  transform: translateY(120%);
+  opacity: 0;
+  animation: landingMaskReveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+.landing-name .name-first {
+  color: #ffffff;
+}
+
+.landing-name .name-last {
+  background: linear-gradient(135deg, #ffffff 0%, #d4d4d8 50%, #9ca3af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* 3. Minimal Precision Separator */
+.landing-rule {
+  width: min(340px, 60%);
+  height: 1px;
+  margin: clamp(14px, 2vh, 22px) auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  transform: scaleX(0);
+  opacity: 0;
+  animation: landingRuleReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+}
+
+/* 4. Tagline Trio */
+.landing-tagline-mask {
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.landing-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(11.5px, 1.15vw, 14.5px);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.2vw, 14px);
+  flex-wrap: wrap;
+  margin: 0;
+  transform: translateY(120%);
+  opacity: 0;
+  animation: landingMaskReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
+}
+
+.landing-tagline .tag-dot {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* 5. Minimalist Ambient Enter Cue */
+.landing-cue {
+  margin-top: clamp(24px, 3.5vh, 36px);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: landingFadeIn 0.8s ease 1.6s forwards;
+}
+
+.landing-cue-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #52525b;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+}
+
+.landing-portal:hover .landing-cue-text {
+  color: #a1a1aa;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Kinetic Keyframes */
+@keyframes landingMaskReveal {
+  0% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes landingRuleReveal {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes landingFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Seamless Morph State on Main Portfolio */
+body.landing-active {
+  overflow: hidden !important;
+}
+
+body.landing-active main {
+  opacity: 0;
+  transform: scale(0.985);
+  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.landing-active header.nav {
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body:not(.landing-active) main {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body:not(.landing-active) header.nav {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-portal {
+    display: none !important;
+  }
+  body.landing-active main,
+  body.landing-active header.nav {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 </style>
 </head>
 <body>
+
+<!-- ============================================================
+     CINEMATIC LANDING PORTAL (Ultra-Minimalist Intro Sequence)
+     ============================================================ -->
+<div id="landing-portal" class="landing-portal" aria-label="Welcome to Aditya Walvekar's Portfolio">
+  <div class="landing-ambient" aria-hidden="true">
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="landing-grid-lines"></div>
+  </div>
+
+  <div class="landing-stage">
+    <!-- Top Salutation / Eyebrow -->
+    <div class="landing-eyebrow-mask">
+      <p class="landing-eyebrow">
+        <span class="eyebrow-accent">//</span> HELLO, I'M
+      </p>
+    </div>
+
+    <!-- Monumental Name Headline -->
+    <div class="landing-name-mask">
+      <h1 class="landing-name">
+        <span class="name-first">ADITYA</span>
+        <span class="name-last">WALVEKAR</span>
+      </h1>
+    </div>
+
+    <!-- Minimalist Precision Separator -->
+    <div class="landing-rule" aria-hidden="true"></div>
+
+    <!-- Tagline Trio -->
+    <div class="landing-tagline-mask">
+      <p class="landing-tagline">
+        <span class="tag-word">Designer</span>
+        <span class="tag-dot">·</span>
+        <span class="tag-word">Developer</span>
+        <span class="tag-dot">·</span>
+        <span class="tag-word">Creator</span>
+      </p>
+    </div>
+
+    <!-- Minimalist Cue -->
+    <div class="landing-cue" id="landing-cue">
+      <span class="landing-cue-text">CLICK TO ENTER ↗</span>
+    </div>
+  </div>
+</div>
+
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <header class="shell nav">
 <a class="logo" href="#home" aria-label="Aditya Walvekar Portfolio Home">AW<b>.</b></a>
@@ -3955,6 +4311,53 @@ document.addEventListener('keydown', (e) => {
     closeCertModal();
   }
 });
+
+// ============================================================
+// CINEMATIC LANDING EXPERIENCE CONTROLLER
+// ============================================================
+(function() {
+  const portal = document.getElementById('landing-portal');
+  if (!portal) return;
+
+  // Add landing-active class to body
+  document.body.classList.add('landing-active');
+
+  let hasTransitioned = false;
+
+  function enterPortfolio() {
+    if (hasTransitioned) return;
+    hasTransitioned = true;
+
+    // Trigger leaving animation on portal
+    portal.classList.add('is-leaving');
+    // Reveal underlying homepage smoothly
+    document.body.classList.remove('landing-active');
+
+    // Clean up DOM after transition completes to save resources
+    setTimeout(() => {
+      portal.style.display = 'none';
+      portal.setAttribute('aria-hidden', 'true');
+    }, 900);
+  }
+
+  // Choreographed auto-transition after 3.2s
+  const autoTimer = setTimeout(enterPortfolio, 3200);
+
+  // Click anywhere to transition immediately
+  portal.addEventListener('click', () => {
+    clearTimeout(autoTimer);
+    enterPortfolio();
+  });
+
+  // Keyboard accessibility: ESC, Space, Enter
+  document.addEventListener('keydown', (e) => {
+    if (['Escape', ' ', 'Enter'].includes(e.key) && !hasTransitioned) {
+      clearTimeout(autoTimer);
+      enterPortfolio();
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
