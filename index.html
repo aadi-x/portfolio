@@ -240,27 +240,26 @@ section[id] {
 }
 
 /* ============================================================
-   THREE-COLUMN CINEMATIC HERO SECTION
+   HERO SECTION (2-Column Classical Editorial Layout)
    ============================================================ */
-.hero.hero-three-column {
+.hero {
   min-height: calc(100vh - 80px);
   display: grid;
-  grid-template-columns: 1.12fr 1.05fr 1fr;
+  grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
-  gap: clamp(20px, 2.5vw, 36px);
+  gap: clamp(28px, 4vw, 56px);
   padding: 30px 0 44px;
   position: relative;
 }
 
-.hero-col {
+.hero-content {
   position: relative;
   min-width: 0;
 }
 
-/* --- Left Column: Identity & Actions --- */
-.hero-col-left h1 {
-  font: 800 clamp(36px, 4.4vw, 68px) / 0.95 Syne;
-  letter-spacing: -0.055em;
+.hero h1 {
+  font: 800 clamp(44px, 5.8vw, 88px) / 0.92 Syne;
+  letter-spacing: -0.06em;
   margin: 14px 0 16px;
   white-space: nowrap;
 }
@@ -295,41 +294,48 @@ section[id] {
   color: #6B554B;
 }
 
+.intro, .section-intro {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.8;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 26px;
 }
 
-/* --- Center Column: Cutout Portrait with Golden Rim Glow --- */
-.hero-col-center.portrait {
-  height: 540px;
+/* Portrait & Backlight Rim Glow */
+.portrait {
+  height: 560px;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
-.hero-col-center.portrait:before {
+.portrait:before {
   display: none !important;
 }
 
 .hero-rim-glow {
   position: absolute;
-  width: 440px;
-  height: 480px;
-  top: 35%;
+  width: 480px;
+  height: 520px;
+  top: 36%;
   left: 55%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(circle at 62% 35%, 
     rgba(251, 191, 36, 0.48) 0%, 
-    rgba(245, 158, 11, 0.30) 32%, 
-    rgba(217, 119, 6, 0.14) 55%, 
+    rgba(245, 158, 11, 0.28) 32%, 
+    rgba(217, 119, 6, 0.12) 55%, 
     transparent 75%
   );
-  filter: blur(50px);
+  filter: blur(52px);
   pointer-events: none;
   z-index: 1;
   animation: rimGlowPulse 5.5s ease-in-out infinite alternate;
@@ -339,32 +345,16 @@ section[id] {
 .portrait img.hero-portrait-img {
   position: relative !important;
   z-index: 2 !important;
-  height: 520px !important;
+  height: 530px !important;
   width: auto !important;
   max-width: 100% !important;
   object-fit: contain !important;
   object-position: bottom !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.75)) !important;
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.75)) !important;
   animation: heroFloat 5s ease-in-out infinite alternate !important;
   will-change: transform;
-}
-
-@media (max-width: 1024px) {
-  .hero-portrait-img,
-  .portrait img.hero-portrait-img {
-    height: 420px !important;
-    width: auto !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-portrait-img,
-  .portrait img.hero-portrait-img {
-    height: 360px !important;
-    width: auto !important;
-  }
 }
 
 @keyframes heroFloat {
@@ -378,301 +368,67 @@ section[id] {
 }
 
 /* Floating Badges */
-.hero-col-center .float.f1 {
-  right: -6px;
-  top: 50px;
+.portrait .float.f1 {
+  right: 10px;
+  top: 40px;
 }
 
-.hero-col-center .float.f2 {
+.portrait .float.f2 {
   left: -8px;
-  bottom: 44px;
+  bottom: 40px;
 }
 
-/* --- Right Column: Liquid Glass Summary Card --- */
-.liquid-glass-card {
-  position: relative;
-  border-radius: 22px;
-  padding: clamp(22px, 2.5vw, 28px);
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.015) 100%);
-  backdrop-filter: blur(24px) saturate(175%);
-  -webkit-backdrop-filter: blur(24px) saturate(175%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45),
-              inset 0 1px 1px rgba(255, 255, 255, 0.22),
-              inset 0 -1px 1px rgba(0, 0, 0, 0.35);
-  animation: cardGentleFloat 6.5s ease-in-out infinite alternate;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              box-shadow 0.35s ease;
-}
-
-.liquid-glass-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(251, 191, 36, 0.35);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55),
-              0 0 30px rgba(245, 158, 11, 0.12),
-              inset 0 1px 1px rgba(255, 255, 255, 0.32);
-}
-
-@keyframes cardGentleFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-7px); }
-}
-
-/* Liquid Animated Mesh Background */
-.liquid-glass-mesh {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-  border-radius: inherit;
-}
-
-.liquid-blob {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.liquid-blob.blob-amber {
-  width: 220px;
-  height: 220px;
-  top: -40px;
-  right: -40px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.24) 0%, rgba(217, 119, 6, 0.10) 50%, transparent 75%);
-  filter: blur(32px);
-  animation: liquidBlob1 8s ease-in-out infinite alternate;
-}
-
-.liquid-blob.blob-cyan {
-  width: 190px;
-  height: 190px;
-  bottom: -35px;
-  left: -35px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, transparent 75%);
-  filter: blur(28px);
-  animation: liquidBlob2 9s ease-in-out infinite alternate;
-}
-
-@keyframes liquidBlob1 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-25px, 30px) scale(1.15); }
-  100% { transform: translate(15px, -15px) scale(0.92); }
-}
-
-@keyframes liquidBlob2 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, -20px) scale(1.18); }
-  100% { transform: translate(-20px, 20px) scale(0.95); }
-}
-
-/* Liquid Sheen Shimmer Reflection Wave */
-.liquid-sheen {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.04) 42%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0.04) 58%, transparent 80%);
-  animation: liquidSheen 6.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  pointer-events: none;
-}
-
-@keyframes liquidSheen {
-  0% { transform: translateX(-120%); }
-  35% { transform: translateX(120%); }
-  100% { transform: translateX(120%); }
-}
-
-/* Glass Card Content Typography */
-.liquid-glass-content {
-  position: relative;
-  z-index: 1;
-}
-
-.glass-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.glass-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font: 600 10.5px "DM Mono", monospace;
-  letter-spacing: 0.14em;
-  color: #fbbf24;
-  text-transform: uppercase;
-}
-
-.status-pulse-amber {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #fbbf24;
-  box-shadow: 0 0 10px #fbbf24;
-  display: inline-block;
-  animation: pulseAmber 2s infinite;
-}
-
-@keyframes pulseAmber {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-.glass-status {
-  font: 500 10px "DM Mono", monospace;
-  color: #71717a;
-  letter-spacing: 0.1em;
-}
-
-.glass-title {
-  font: 700 clamp(16px, 1.4vw, 20px) / 1.3 Syne;
-  color: #ffffff;
-  margin: 0 0 12px;
-}
-
-.glass-text {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.72;
-  margin: 0 0 18px;
-}
-
-.glass-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-
-.glass-pill {
-  font: 500 11px "DM Mono", monospace;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #d4d4d8;
-  letter-spacing: 0.05em;
-}
-
-.glass-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.glass-stat .stat-num {
-  font: 800 16px / 1 Syne;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-}
-
-.glass-stat .stat-lbl {
-  font: 500 9.5px "DM Mono", monospace;
-  color: #71717a;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 4px;
-}
-
-.glass-stat-divider {
-  width: 1px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* Responsive Overrides for Three-Column Hero */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .hero.hero-three-column {
-    grid-template-columns: 1.05fr 0.95fr 1fr;
-    gap: 20px;
-  }
-  .hero-col-left h1 {
-    font-size: clamp(32px, 3.8vw, 54px);
-  }
-  .hero-portrait-img {
-    height: 480px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hero.hero-three-column {
+/* Responsive Overrides */
+@media (max-width: 900px) {
+  .hero {
     grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 16px 0 36px;
-  }
-  .hero-col-left {
+    gap: 36px;
     text-align: center;
-    order: 1;
-  }
-  .hero-col-center.portrait {
-    order: 2;
-    height: 460px;
-    margin: 0 auto;
-  }
-  .hero-col-right {
-    order: 3;
-  }
-  .hero-col-left h1 {
-    font-size: clamp(34px, 7vw, 52px);
-    margin: 10px 0 12px;
+    padding-top: 16px;
   }
   .hero-tagline {
     justify-content: center;
-    margin-bottom: 14px;
   }
   .hero-actions {
     justify-content: center;
-    margin-top: 18px;
   }
   .hero-scroll-wrap {
     display: none;
   }
-  .hero-portrait-img {
-    height: 420px;
+  .portrait {
+    height: 480px;
+    margin: 0 auto;
+  }
+  .hero-portrait-img,
+  .portrait img.hero-portrait-img {
+    height: 440px !important;
+    width: auto !important;
   }
   .hero-rim-glow {
-    width: 360px;
-    height: 360px;
-    top: 42%;
-    left: 54%;
-  }
-  .hero-frame-ring {
-    width: 330px;
-    height: 330px;
-    top: 42%;
-    left: 50%;
-  }
-  .liquid-glass-card {
-    max-width: 580px;
-    margin: 0 auto;
+    width: 380px;
+    height: 380px;
+    top: 36%;
+    left: 55%;
   }
 }
 
 @media (max-width: 480px) {
-  .hero.hero-three-column {
-    gap: 20px;
-    padding: 10px 0 26px;
+  .hero {
+    gap: 24px;
+    padding: 10px 0 28px;
   }
-  .hero-col-left h1 {
-    font-size: clamp(28px, 8.5vw, 38px);
+  .hero h1 {
+    font-size: clamp(30px, 9vw, 42px);
     letter-spacing: -0.04em;
     margin: 8px 0 10px;
   }
-  .hero-col-center.portrait {
-    height: 380px;
+  .portrait {
+    height: 400px;
   }
-  .hero-portrait-img {
-    height: 360px;
+  .hero-portrait-img,
+  .portrait img.hero-portrait-img {
+    height: 370px !important;
+    width: auto !important;
   }
   .hero-rim-glow {
     width: 310px;
@@ -680,28 +436,17 @@ section[id] {
     top: 34%;
     left: 55%;
   }
-  .hero-col-center .float.f1 {
-    top: 20px;
-    right: 6px;
+  .portrait .float.f1 {
+    top: 24px;
+    right: 8px;
     padding: 8px 12px;
     font-size: 9.5px;
   }
-  .hero-col-center .float.f2 {
-    bottom: 20px;
-    left: 6px;
+  .portrait .float.f2 {
+    bottom: 24px;
+    left: 8px;
     padding: 8px 12px;
     font-size: 9.5px;
-  }
-  .liquid-glass-card {
-    padding: 20px 16px;
-    border-radius: 18px;
-  }
-  .glass-title {
-    font-size: 16px;
-  }
-  .glass-text {
-    font-size: 12.5px;
-    line-height: 1.65;
   }
   .hero-actions .button {
     padding: 11px 16px;
@@ -3236,9 +2981,8 @@ body:not(.landing-active) header.nav {
 </header>
 <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 <main>
-<section id="home" class="shell hero hero-three-column">
-  <!-- 1. LEFT COLUMN: Brand, Title, Tagline, Actions -->
-  <div class="hero-col hero-col-left">
+<section id="home" class="shell hero">
+  <div class="hero-content">
     <span class="eyebrow"><span class="status-pulse" aria-hidden="true"></span>AI/ML STUDENT · DEVELOPER · DESIGNER</span>
     <h1>ADITYA<br>
     <em class="accent">WALVEKAR</em>
@@ -3250,6 +2994,9 @@ body:not(.landing-active) header.nav {
       <span class="tag-dot">&middot;</span>
       <span class="tag-word">Creator</span>
     </div>
+    <p class="intro">
+      3rd-year Artificial Intelligence &amp; Machine Learning undergrad. I engineer practical machine learning pipelines, build interactive web applications, and craft precision visual systems.
+    </p>
     <div class="hero-actions">
       <a class="button primary" href="#projects">Explore Projects ↓</a>
       <a class="button" href="Aditya-Walvekar-CV.pdf" target="_blank" rel="noopener noreferrer">View Resume ↗</a>
@@ -3263,60 +3010,17 @@ body:not(.landing-active) header.nav {
     </div>
   </div>
 
-  <!-- 2. CENTER COLUMN: Hero Portrait with Golden-Amber Rim Glow & Bottom Fade -->
-  <div class="hero-col hero-col-center portrait" id="hero-portrait">
+  <div class="portrait" id="hero-portrait">
     <div class="hero-rim-glow" aria-hidden="true"></div>
     <picture>
       <source srcset="aditya-portrait-cutout.webp" type="image/webp">
-      <img class="hero-portrait-img" src="aditya-portrait-cutout.png" alt="Portrait of Aditya Walvekar" width="420" height="560" fetchpriority="high">
+      <img class="hero-portrait-img" src="aditya-portrait-cutout.png" alt="Portrait of Aditya Walvekar" width="380" height="520" fetchpriority="high">
     </picture>
     <div class="float f1">
       <span class="dot">●</span> CREATIVE SYSTEM<strong>ONLINE / 2026</strong>
     </div>
     <div class="float f2">
       <strong>AIML Undergrad</strong>Practical engineering &amp; design craft.
-    </div>
-  </div>
-
-  <!-- 3. RIGHT COLUMN: Liquid Glass Summary Card with Animated Sheen -->
-  <div class="hero-col hero-col-right">
-    <div class="liquid-glass-card">
-      <div class="liquid-glass-mesh" aria-hidden="true">
-        <div class="liquid-blob blob-amber"></div>
-        <div class="liquid-blob blob-cyan"></div>
-        <div class="liquid-sheen"></div>
-      </div>
-      <div class="liquid-glass-content">
-        <div class="glass-header">
-          <span class="glass-badge"><span class="status-pulse-amber" aria-hidden="true"></span>EXECUTIVE PROFILE</span>
-          <span class="glass-status">SANJEEVAN SIT</span>
-        </div>
-        <h3 class="glass-title">Engineering Intelligence.<br>Crafting Precision.</h3>
-        <p class="glass-text">
-          3rd-year Artificial Intelligence &amp; Machine Learning undergrad at Sanjeevan Institute of Technology. I engineer practical machine learning pipelines, build interactive web applications, and craft precision visual systems.
-        </p>
-        <div class="glass-pills">
-          <span class="glass-pill">Machine Learning</span>
-          <span class="glass-pill">Full-Stack Logic</span>
-          <span class="glass-pill">UI/UX Systems</span>
-        </div>
-        <div class="glass-footer">
-          <div class="glass-stat">
-            <span class="stat-num">8.46</span>
-            <span class="stat-lbl">CGPA Academic</span>
-          </div>
-          <div class="glass-stat-divider"></div>
-          <div class="glass-stat">
-            <span class="stat-num">10+</span>
-            <span class="stat-lbl">Live Repos</span>
-          </div>
-          <div class="glass-stat-divider"></div>
-          <div class="glass-stat">
-            <span class="stat-num">2026</span>
-            <span class="stat-lbl">Graduating</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
