@@ -348,17 +348,17 @@ section[id] {
 
 .hero-rim-glow {
   position: absolute;
-  width: 480px;
+  width: 500px;
   height: 520px;
-  top: 36%;
-  left: 55%;
+  top: 40%;
+  left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 62% 35%, 
-    rgba(251, 191, 36, 0.48) 0%, 
-    rgba(245, 158, 11, 0.28) 32%, 
-    rgba(217, 119, 6, 0.12) 55%, 
-    transparent 75%
+  background: radial-gradient(circle at 50% 35%, 
+    rgba(251, 191, 36, 0.46) 0%, 
+    rgba(245, 158, 11, 0.26) 32%, 
+    rgba(217, 119, 6, 0.10) 58%, 
+    transparent 78%
   );
   filter: blur(52px);
   pointer-events: none;
@@ -392,24 +392,24 @@ section[id] {
   100% { opacity: 1.15; transform: translate(-50%, -50%) scale(1.04); }
 }
 
-/* Floating Badges */
+/* Floating Badges Desktop */
 .portrait .float.f1 {
-  right: 10px;
-  top: 40px;
+  right: -12px;
+  top: 36px;
 }
 
 .portrait .float.f2 {
-  left: -8px;
-  bottom: 40px;
+  left: -20px;
+  bottom: 30px;
 }
 
-/* Responsive Overrides */
+/* Responsive Overrides Across Devices */
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
     text-align: center;
-    padding-top: 16px;
+    padding: 16px 0 32px;
   }
   .hero-tagline {
     justify-content: center;
@@ -422,7 +422,8 @@ section[id] {
   }
   .portrait {
     height: 480px;
-    margin: 0 auto;
+    max-width: 440px;
+    margin: 12px auto 0;
   }
   .hero-portrait-img,
   .portrait img.hero-portrait-img {
@@ -430,52 +431,128 @@ section[id] {
     width: auto !important;
   }
   .hero-rim-glow {
-    width: 380px;
-    height: 380px;
-    top: 36%;
-    left: 55%;
+    width: 390px;
+    height: 390px;
+    top: 38%;
+    left: 50%;
+  }
+  .portrait .float.f1 {
+    top: 14px;
+    right: 4px;
+    font-size: 10px;
+    padding: 9px 13px;
+  }
+  .portrait .float.f2 {
+    bottom: 16px;
+    left: 4px;
+    font-size: 10px;
+    padding: 9px 13px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .hero {
-    gap: 24px;
-    padding: 10px 0 28px;
+    gap: 22px;
+    padding: 10px 0 24px;
   }
   .hero h1 {
-    font-size: clamp(30px, 9vw, 42px);
-    letter-spacing: -0.04em;
+    font-size: clamp(34px, 9.5vw, 48px);
+    letter-spacing: -0.01em;
     margin: 8px 0 10px;
   }
+  .hero-tagline {
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .hero-tagline span.tag-word {
+    font-size: 10.5px;
+    padding: 3.5px 10px;
+  }
+  .intro {
+    font-size: 13.5px;
+    line-height: 1.7;
+    margin: 0 auto;
+  }
+  .hero-actions {
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .hero-actions .button {
+    padding: 11px 18px;
+    font-size: 12px;
+  }
   .portrait {
-    height: 400px;
+    height: 420px;
+    width: 100%;
+    max-width: 340px;
+    margin: 10px auto 0;
   }
   .hero-portrait-img,
   .portrait img.hero-portrait-img {
-    height: 370px !important;
+    height: 380px !important;
     width: auto !important;
+    max-width: 100% !important;
   }
   .hero-rim-glow {
     width: 310px;
     height: 310px;
-    top: 34%;
-    left: 55%;
+    top: 36%;
+    left: 50%;
   }
+  /* On mobile: keep badges from obscuring the face & hair */
   .portrait .float.f1 {
-    top: 24px;
-    right: 8px;
-    padding: 8px 12px;
-    font-size: 9.5px;
+    top: 6px;
+    right: -4px;
+    padding: 7px 11px;
+    font-size: 9px;
+    border-radius: 10px;
+    z-index: 5;
+    background: rgba(18, 18, 18, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
   .portrait .float.f2 {
-    bottom: 24px;
-    left: 8px;
-    padding: 8px 12px;
-    font-size: 9.5px;
+    bottom: 8px;
+    left: -4px;
+    padding: 7px 11px;
+    font-size: 9px;
+    border-radius: 10px;
+    z-index: 5;
+    background: rgba(18, 18, 18, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
-  .hero-actions .button {
-    padding: 11px 16px;
-    font-size: 12.5px;
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: clamp(28px, 9vw, 34px);
+  }
+  .portrait {
+    height: 360px;
+    max-width: 300px;
+  }
+  .hero-portrait-img,
+  .portrait img.hero-portrait-img {
+    height: 330px !important;
+  }
+  .hero-rim-glow {
+    width: 260px;
+    height: 260px;
+    top: 35%;
+    left: 50%;
+  }
+  .portrait .float.f1 {
+    top: 2px;
+    right: -2px;
+    font-size: 8.5px;
+    padding: 6px 9px;
+  }
+  .portrait .float.f2 {
+    bottom: 4px;
+    left: -2px;
+    font-size: 8.5px;
+    padding: 6px 9px;
   }
 }
 
@@ -2289,23 +2366,7 @@ body.has-custom-cursor * {
     padding: 10px 18px;
     font-size: 12px;
   }
-  .portrait {
-    grid-row: auto;
-    height: 380px;
-    margin-top: 14px;
-    position: relative;
-    display: grid;
-    place-items: center;
-    max-width: 100%;
-  }
-  .portrait:before {
-    width: 230px;
-    height: 290px;
-  }
-  .portrait img {
-    width: 205px;
-    height: 270px;
-  }
+  /* Portrait responsive rules handled in main block */
   .float {
     z-index: 3;
     padding: 10px 13px;
@@ -2539,36 +2600,7 @@ body.has-custom-cursor * {
   .cta p {
     font-size: 12.5px;
   }
-  .portrait {
-    height: 340px;
-    margin-top: 8px;
-  }
-  .portrait:before {
-    width: 200px;
-    height: 255px;
-  }
-  .portrait img {
-    width: 180px;
-    height: 235px;
-  }
-  .f1 {
-    right: 4px;
-    top: 18px;
-    padding: 7px 10px;
-    font-size: 9px;
-  }
-  .f1 strong {
-    font-size: 10.5px;
-  }
-  .f2 {
-    left: 4px;
-    bottom: 12px;
-    padding: 7px 10px;
-    font-size: 9px;
-  }
-  .f2 strong {
-    font-size: 10.5px;
-  }
+  /* Portrait responsive rules handled in main block */
   .personalities {
     height: 460px;
   }
@@ -2600,33 +2632,7 @@ body.has-custom-cursor * {
     padding: 10px 14px;
     font-size: 11.5px;
   }
-  .portrait {
-    height: 305px;
-  }
-  .portrait:before {
-    width: 175px;
-    height: 225px;
-  }
-  .portrait img {
-    width: 155px;
-    height: 205px;
-  }
-  .float {
-    padding: 6px 9px;
-    font-size: 8.5px;
-    border-radius: 10px;
-  }
-  .float strong {
-    font-size: 10px;
-  }
-  .f1 {
-    right: 0;
-    top: 8px;
-  }
-  .f2 {
-    left: 0;
-    bottom: 6px;
-  }
+  /* Portrait responsive rules handled in main block */
 }
 
 @media (max-width: 340px) {
