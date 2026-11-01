@@ -28,8 +28,33 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;600;700&family=DM+Mono&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Bruntsfield';
+  src: url('fonts/BruntsfieldCFBlack-Regular.woff') format('woff'),
+       url('fonts/BruntsfieldCFBlack-Regular.otf') format('opentype');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monda';
+  src: url('fonts/Monda-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monda';
+  src: url('fonts/Monda-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #090909;
   --surface: #151515;
@@ -66,7 +91,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: Manrope, Arial, sans-serif;
+  font-family: 'Monda', Manrope, Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -140,7 +165,7 @@ a {
 }
 
 .logo {
-  font: 800 23px Syne;
+  font: 800 25px 'Bruntsfield', serif;
   letter-spacing: -0.04em;
 }
 
@@ -226,7 +251,7 @@ a {
 }
 
 .eyebrow {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -258,7 +283,7 @@ section[id] {
 }
 
 .hero h1 {
-  font: 800 clamp(44px, 5.8vw, 88px) / 0.92 Syne;
+  font: 800 clamp(42px, 5.4vw, 82px) / 0.96 'Bruntsfield', serif;
   letter-spacing: -0.06em;
   margin: 14px 0 16px;
   white-space: nowrap;
@@ -273,7 +298,7 @@ section[id] {
 }
 
 .hero-tagline span.tag-word {
-  font: 600 11.5px "DM Mono", monospace;
+  font: 600 11.5px 'Monda', sans-serif;
   color: var(--accent);
   letter-spacing: 0.12em;
   padding: 4px 12px;
@@ -500,7 +525,7 @@ section[id] {
 }
 
 .title {
-  font: 700 clamp(35px, 4.2vw, 53px) / 1 Syne;
+  font: 700 clamp(35px, 4.2vw, 53px) / 1 'Bruntsfield', serif;
   letter-spacing: -0.06em;
   margin: 10px 0;
 }
@@ -520,7 +545,7 @@ section[id] {
 }
 
 .bio {
-  font: 600 24px / 1.45 Syne;
+  font: 600 24px / 1.45 'Bruntsfield', serif;
   letter-spacing: -0.035em;
 }
 
@@ -531,7 +556,7 @@ section[id] {
 }
 
 .journey small, .role small {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--accent);
 }
 
@@ -578,14 +603,14 @@ section[id] {
   z-index: 1;
   top: 25px;
   left: 28px;
-  font: 700 clamp(26px, 3vw, 42px) / 1 Syne;
+  font: 700 clamp(26px, 3vw, 42px) / 1 'Bruntsfield', serif;
   letter-spacing: -0.05em;
 }
 
 .persona-heading span {
   display: block;
   color: var(--accent);
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   letter-spacing: 0.14em;
   margin-bottom: 10px;
 }
@@ -617,11 +642,11 @@ section[id] {
 .persona .n {
   display: block;
   color: var(--accent);
-  font: 500 9px "DM Mono";
+  font: 500 9px 'Monda', sans-serif;
 }
 
 .persona strong {
-  font: 700 13px Syne;
+  font: 700 13px 'Bruntsfield', serif;
   display: block;
   margin-top: 7px;
 }
@@ -723,12 +748,12 @@ section[id] {
 }
 
 .skill-head span:first-child, .tag {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--accent);
 }
 
 .skill-category {
-  font: 600 9px "DM Mono";
+  font: 600 9px 'Monda', sans-serif;
   color: var(--muted);
   letter-spacing: 0.12em;
   padding: 3px 8px;
@@ -737,7 +762,7 @@ section[id] {
 }
 
 .skill h3 {
-  font: 700 20px Syne;
+  font: 700 20px 'Bruntsfield', serif;
   margin: 0 0 10px;
   letter-spacing: -0.02em;
 }
@@ -764,7 +789,7 @@ section[id] {
 
 .skill-tag {
   display: inline-block;
-  font: 500 9.5px "DM Mono";
+  font: 500 9.5px 'Monda', sans-serif;
   padding: 3px 8px;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.04);
@@ -803,7 +828,7 @@ section[id] {
 }
 
 .achieve-heading {
-  font: 700 22px Syne;
+  font: 700 22px 'Bruntsfield', serif;
   margin: 6px 0 18px;
   letter-spacing: -0.03em;
 }
@@ -836,13 +861,13 @@ section[id] {
 }
 
 .achieve-tag {
-  font: 600 10px "DM Mono";
+  font: 600 10px 'Monda', sans-serif;
   color: var(--accent);
   letter-spacing: 0.12em;
 }
 
 .achieve-status {
-  font: 500 9px "DM Mono";
+  font: 500 9px 'Monda', sans-serif;
   color: var(--muted);
   padding: 2px 7px;
   border-radius: 999px;
@@ -850,7 +875,7 @@ section[id] {
 }
 
 .achieve-card h4 {
-  font: 700 17px Syne;
+  font: 700 17px 'Bruntsfield', serif;
   margin: 0 0 6px;
 }
 
@@ -890,7 +915,7 @@ section[id] {
 }
 
 .art-badge {
-  font: 600 9.5px "DM Mono";
+  font: 600 9.5px 'Monda', sans-serif;
   letter-spacing: 0.12em;
   padding: 3px 9px;
   border-radius: 6px;
@@ -924,13 +949,13 @@ section[id] {
 }
 
 .bridge-text .bridge-tag {
-  font: 600 10px "DM Mono";
+  font: 600 10px 'Monda', sans-serif;
   color: var(--accent);
   letter-spacing: 0.12em;
 }
 
 .bridge-text h3 {
-  font: 700 19px Syne;
+  font: 700 19px 'Bruntsfield', serif;
   margin: 5px 0 6px;
   letter-spacing: -0.02em;
 }
@@ -968,13 +993,13 @@ section[id] {
 }
 
 .project h3 {
-  font: 700 20px Syne;
+  font: 700 20px 'Bruntsfield', serif;
   margin: 8px 0 6px;
   letter-spacing: -0.02em;
 }
 
 .project-role {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--accent);
   display: block;
   margin-bottom: 8px;
@@ -989,7 +1014,7 @@ section[id] {
 }
 
 .project-btn {
-  font: 700 11px "DM Mono";
+  font: 700 11px 'Monda', sans-serif;
   padding: 8px 16px;
   min-height: 40px;
   display: inline-flex;
@@ -1067,7 +1092,7 @@ section[id] {
 }
 
 .filter {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--muted);
   background: transparent;
   min-height: 44px;
@@ -1101,7 +1126,7 @@ section[id] {
 }
 
 .cta h2 {
-  font: 700 clamp(30px, 4vw, 49px) / 1 Syne;
+  font: 700 clamp(30px, 4vw, 49px) / 1 'Bruntsfield', serif;
   margin: 8px 0;
 }
 
@@ -1151,7 +1176,7 @@ section[id] {
 }
 
 .contact h2 {
-  font: 700 clamp(45px, 7vw, 82px) / 0.95 Syne;
+  font: 700 clamp(45px, 7vw, 82px) / 0.95 'Bruntsfield', serif;
   letter-spacing: -0.07em;
   margin: 15px 0;
 }
@@ -1172,7 +1197,7 @@ section[id] {
   justify-content: center;
   padding: 10px 18px;
   color: var(--muted);
-  font: 500 11px "DM Mono";
+  font: 500 11px 'Monda', sans-serif;
   transition: 0.2s;
 }
 
@@ -1188,7 +1213,7 @@ footer {
   padding: 20px 0 28px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
 }
 
 /* Scroll Progress Bar */
@@ -1242,7 +1267,7 @@ footer {
   align-items: center;
   gap: 10px;
   color: var(--muted);
-  font: 500 10.5px "DM Mono";
+  font: 500 10.5px 'Monda', sans-serif;
   letter-spacing: 0.14em;
   text-decoration: none;
   transition: color 0.25s, transform 0.25s;
@@ -1584,7 +1609,7 @@ body.has-custom-cursor * {
 }
 
 .cert-tab-btn {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--muted);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1680,12 +1705,12 @@ body.has-custom-cursor * {
 }
 
 .cert-card-num {
-  font: 500 11px "DM Mono";
+  font: 500 11px 'Monda', sans-serif;
   color: var(--accent);
 }
 
 .cert-badge {
-  font: 600 9.5px "DM Mono";
+  font: 600 9.5px 'Monda', sans-serif;
   color: var(--muted);
   letter-spacing: 0.12em;
   padding: 4px 10px;
@@ -1695,7 +1720,7 @@ body.has-custom-cursor * {
 }
 
 .cert-card h3 {
-  font: 700 20px Syne;
+  font: 700 20px 'Bruntsfield', serif;
   margin: 0 0 10px;
   letter-spacing: -0.02em;
   line-height: 1.3;
@@ -1720,7 +1745,7 @@ body.has-custom-cursor * {
 }
 
 .cert-status-dot {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
@@ -1741,7 +1766,7 @@ body.has-custom-cursor * {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--line);
   color: var(--ink);
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   min-height: 38px;
@@ -1781,19 +1806,19 @@ body.has-custom-cursor * {
 }
 
 .intern-card-header h3 {
-  font: 700 20px Syne;
+  font: 700 20px 'Bruntsfield', serif;
   margin: 6px 0 4px;
   letter-spacing: -0.02em;
 }
 
 .intern-role {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--accent);
   display: block;
 }
 
 .intern-status {
-  font: 600 9px "DM Mono";
+  font: 600 9px 'Monda', sans-serif;
   color: #4ade80;
   padding: 3px 8px;
   border-radius: 6px;
@@ -1818,7 +1843,7 @@ body.has-custom-cursor * {
 
 .intern-docs-label {
   display: block;
-  font: 600 9.5px "DM Mono";
+  font: 600 9.5px 'Monda', sans-serif;
   color: var(--muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1840,7 +1865,7 @@ body.has-custom-cursor * {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
   color: var(--ink);
-  font: 600 10.5px "DM Mono";
+  font: 600 10.5px 'Monda', sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   min-height: 36px;
@@ -1874,7 +1899,7 @@ body.has-custom-cursor * {
 }
 
 .intern-verify-link {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--accent);
   display: inline-flex;
   align-items: center;
@@ -1981,7 +2006,7 @@ body.has-custom-cursor * {
 }
 
 .cert-modal-subtitle {
-  font: 600 10px "DM Mono";
+  font: 600 10px 'Monda', sans-serif;
   color: var(--accent);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1989,7 +2014,7 @@ body.has-custom-cursor * {
 }
 
 .cert-modal-title {
-  font: 700 17px Syne;
+  font: 700 17px 'Bruntsfield', serif;
   margin: 3px 0 0;
   white-space: nowrap;
   overflow: hidden;
@@ -2187,7 +2212,7 @@ body.has-custom-cursor * {
   }
   .nav-group-title {
     display: block;
-    font: 600 10px "DM Mono";
+    font: 600 10px 'Monda', sans-serif;
     color: var(--accent);
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -2724,7 +2749,7 @@ body.has-custom-cursor * {
 }
 
 .landing-eyebrow {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Monda', monospace;
   font-size: clamp(12px, 1.2vw, 15px);
   font-weight: 500;
   letter-spacing: 0.32em;
@@ -2752,7 +2777,7 @@ body.has-custom-cursor * {
 }
 
 .landing-name {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bruntsfield', serif;
   font-size: clamp(38px, 7.2vw, 92px);
   font-weight: 800;
   line-height: 0.98;
@@ -2798,7 +2823,7 @@ body.has-custom-cursor * {
 }
 
 .landing-tagline {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Monda', monospace;
   font-size: clamp(11.5px, 1.15vw, 14.5px);
   font-weight: 500;
   letter-spacing: 0.28em;
@@ -3225,13 +3250,13 @@ body:not(.landing-active) header.nav {
             <circle cx="20" cy="18" r="4" fill="#ef4444"/>
             <circle cx="32" cy="18" r="4" fill="#f59e0b"/>
             <circle cx="44" cy="18" r="4" fill="#10b981"/>
-            <text x="185" y="21" font-family="'DM Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle" font-weight="600" letter-spacing="1">HABIT STUDIO · DAILY CONSISTENCY</text>
+            <text x="185" y="21" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#94a3b8" text-anchor="middle" font-weight="600" letter-spacing="1">HABIT STUDIO · DAILY CONSISTENCY</text>
             <line x1="0" y1="32" x2="370" y2="32" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
             <g transform="translate(62, 90)">
               <circle cx="0" cy="0" r="32" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="6"/>
               <circle cx="0" cy="0" r="32" fill="none" stroke="url(#hb-grad)" stroke-width="6" stroke-dasharray="201" stroke-dashoffset="30" stroke-linecap="round" transform="rotate(-90)"/>
-              <text x="0" y="3" font-family="'Syne', sans-serif" font-size="14" font-weight="700" fill="#f8fafc" text-anchor="middle">88%</text>
-              <text x="0" y="16" font-family="'DM Mono', monospace" font-size="7.5" fill="#38bdf8" text-anchor="middle" font-weight="600">STREAK</text>
+              <text x="0" y="3" font-family="''Bruntsfield', serif', sans-serif" font-size="14" font-weight="700" fill="#f8fafc" text-anchor="middle">88%</text>
+              <text x="0" y="16" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#38bdf8" text-anchor="middle" font-weight="600">STREAK</text>
             </g>
             <g transform="translate(125, 42)">
               <rect x="0" y="0" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1"/>
@@ -3239,36 +3264,36 @@ body:not(.landing-active) header.nav {
               <path d="M 11 11 L 13 13 L 17 9" fill="none" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               <text x="26" y="15" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Morning Workout</text>
               <rect x="116" y="5" width="26" height="12" rx="3" fill="rgba(56, 189, 248, 0.15)"/>
-              <text x="129" y="14" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
+              <text x="129" y="14" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
               
               <rect x="0" y="27" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(129, 140, 248, 0.25)" stroke-width="1"/>
               <rect x="8" y="32" width="12" height="12" rx="3" fill="#818cf8"/>
               <path d="M 11 38 L 13 40 L 17 36" fill="none" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               <text x="26" y="42" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Algorithm Practice</text>
               <rect x="116" y="32" width="26" height="12" rx="3" fill="rgba(129, 140, 248, 0.15)"/>
-              <text x="129" y="41" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#818cf8" text-anchor="middle">DONE</text>
+              <text x="129" y="41" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#818cf8" text-anchor="middle">DONE</text>
 
               <rect x="0" y="54" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
               <rect x="8" y="59" width="12" height="12" rx="3" fill="#38bdf8"/>
               <path d="M 11 65 L 13 67 L 17 63" fill="none" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               <text x="26" y="69" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Read 30 Mins</text>
               <rect x="116" y="59" width="26" height="12" rx="3" fill="rgba(56, 189, 248, 0.15)"/>
-              <text x="129" y="68" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
+              <text x="129" y="68" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
 
               <rect x="0" y="81" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
               <rect x="8" y="86" width="12" height="12" rx="3" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5"/>
               <text x="26" y="96" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#94a3b8">Deep Work Block</text>
               <rect x="116" y="86" width="26" height="12" rx="3" fill="rgba(255, 255, 255, 0.05)"/>
-              <text x="129" y="95" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#94a3b8" text-anchor="middle">0/1</text>
+              <text x="129" y="95" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#94a3b8" text-anchor="middle">0/1</text>
             </g>
             <g transform="translate(290, 48)">
               <rect x="0" y="0" width="68" height="38" rx="6" fill="rgba(56, 189, 248, 0.08)" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1"/>
-              <text x="34" y="15" font-family="'DM Mono', monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">ACTIVE</text>
-              <text x="34" y="30" font-family="'Syne', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">14 Days</text>
+              <text x="34" y="15" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">ACTIVE</text>
+              <text x="34" y="30" font-family="''Bruntsfield', serif', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">14 Days</text>
               
               <rect x="0" y="44" width="68" height="38" rx="6" fill="rgba(129, 140, 248, 0.08)" stroke="rgba(129, 140, 248, 0.2)" stroke-width="1"/>
-              <text x="34" y="59" font-family="'DM Mono', monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">TOTAL</text>
-              <text x="34" y="74" font-family="'Syne', sans-serif" font-size="13" font-weight="700" fill="#818cf8" text-anchor="middle">8 Habits</text>
+              <text x="34" y="59" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">TOTAL</text>
+              <text x="34" y="74" font-family="''Bruntsfield', serif', sans-serif" font-size="13" font-weight="700" fill="#818cf8" text-anchor="middle">8 Habits</text>
             </g>
           </g>
         </svg>
@@ -3326,10 +3351,10 @@ body:not(.landing-active) header.nav {
 
           <g transform="translate(30, 16)">
             <rect x="0" y="0" width="400" height="24" rx="6" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(192, 132, 252, 0.3)" stroke-width="1"/>
-            <text x="14" y="16" font-family="'DM Mono', monospace" font-size="9" fill="#c084fc" font-weight="600" letter-spacing="1">SCORE: 002840</text>
-            <text x="155" y="16" font-family="'DM Mono', monospace" font-size="9" fill="#38bdf8" font-weight="600" letter-spacing="1">SURVIVAL: 02:45</text>
-            <text x="290" y="16" font-family="'DM Mono', monospace" font-size="9" fill="#ef4444" font-weight="600" letter-spacing="1">SHIELDS: ♥ ♥ ♥</text>
-            <text x="365" y="16" font-family="'DM Mono', monospace" font-size="8.5" fill="#4ade80" font-weight="600">60 FPS</text>
+            <text x="14" y="16" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#c084fc" font-weight="600" letter-spacing="1">SCORE: 002840</text>
+            <text x="155" y="16" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#38bdf8" font-weight="600" letter-spacing="1">SURVIVAL: 02:45</text>
+            <text x="290" y="16" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#ef4444" font-weight="600" letter-spacing="1">SHIELDS: ♥ ♥ ♥</text>
+            <text x="365" y="16" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#4ade80" font-weight="600">60 FPS</text>
           </g>
 
           <g transform="translate(100, 95)">
@@ -3395,12 +3420,12 @@ body:not(.landing-active) header.nav {
           </defs>
           <g transform="translate(25, 20)">
             <rect x="0" y="0" width="410" height="22" rx="6" fill="rgba(13, 31, 30, 0.85)" stroke="rgba(20, 184, 166, 0.3)" stroke-width="1"/>
-            <text x="14" y="15" font-family="'DM Mono', monospace" font-size="8.5" fill="#2dd4bf" font-weight="600" letter-spacing="1">DATA ALCOTT AI PIPELINE · COMPREHENSIVE TEXT NLP</text>
-            <text x="345" y="15" font-family="'DM Mono', monospace" font-size="8.5" fill="#99f6e4" font-weight="600">TOKENS: 512</text>
+            <text x="14" y="15" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#2dd4bf" font-weight="600" letter-spacing="1">DATA ALCOTT AI PIPELINE · COMPREHENSIVE TEXT NLP</text>
+            <text x="345" y="15" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#99f6e4" font-weight="600">TOKENS: 512</text>
             
             <g transform="translate(10, 40)">
               <rect width="84" height="62" rx="8" fill="url(#nlp-node-bg)" stroke="rgba(20, 184, 166, 0.4)" stroke-width="1"/>
-              <text x="42" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#5eead4" text-anchor="middle" font-weight="600">INPUT TEXT</text>
+              <text x="42" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#5eead4" text-anchor="middle" font-weight="600">INPUT TEXT</text>
               <line x1="12" y1="26" x2="72" y2="26" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
               <text x="42" y="38" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Tokenize &amp;</text>
               <text x="42" y="50" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Stopwords</text>
@@ -3411,7 +3436,7 @@ body:not(.landing-active) header.nav {
 
             <g transform="translate(116, 40)">
               <rect width="86" height="62" rx="8" fill="url(#nlp-node-bg)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1"/>
-              <text x="43" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#22d3ee" text-anchor="middle" font-weight="600">TF-IDF MATRIX</text>
+              <text x="43" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#22d3ee" text-anchor="middle" font-weight="600">TF-IDF MATRIX</text>
               <line x1="12" y1="26" x2="74" y2="26" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
               <text x="43" y="38" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">N-Gram Vectors</text>
               <text x="43" y="50" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Weights (w_ij)</text>
@@ -3422,7 +3447,7 @@ body:not(.landing-active) header.nav {
 
             <g transform="translate(224, 40)">
               <rect width="86" height="62" rx="8" fill="url(#nlp-node-bg)" stroke="rgba(59, 130, 246, 0.4)" stroke-width="1"/>
-              <text x="43" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#60a5fa" text-anchor="middle" font-weight="600">CLASSIFIER</text>
+              <text x="43" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#60a5fa" text-anchor="middle" font-weight="600">CLASSIFIER</text>
               <line x1="12" y1="26" x2="74" y2="26" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
               <circle cx="25" cy="40" r="3.5" fill="#2dd4bf"/>
               <circle cx="25" cy="50" r="3.5" fill="#2dd4bf"/>
@@ -3436,21 +3461,21 @@ body:not(.landing-active) header.nav {
 
             <g transform="translate(332, 40)">
               <rect width="68" height="62" rx="8" fill="rgba(20, 184, 166, 0.12)" stroke="rgba(45, 212, 191, 0.5)" stroke-width="1"/>
-              <text x="34" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#2dd4bf" text-anchor="middle" font-weight="600">RESULT</text>
+              <text x="34" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#2dd4bf" text-anchor="middle" font-weight="600">RESULT</text>
               <line x1="10" y1="26" x2="58" y2="26" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1"/>
-              <text x="34" y="39" font-family="'Syne', sans-serif" font-size="10" font-weight="700" fill="#f8fafc" text-anchor="middle">POSITIVE</text>
-              <text x="34" y="51" font-family="'DM Mono', monospace" font-size="8" font-weight="600" fill="#2dd4bf" text-anchor="middle">98.4% CONF</text>
+              <text x="34" y="39" font-family="''Bruntsfield', serif', sans-serif" font-size="10" font-weight="700" fill="#f8fafc" text-anchor="middle">POSITIVE</text>
+              <text x="34" y="51" font-family="'Monda', sans-serif, monospace" font-size="8" font-weight="600" fill="#2dd4bf" text-anchor="middle">98.4% CONF</text>
             </g>
             
             <g transform="translate(10, 112)">
               <rect x="0" y="0" width="124" height="20" rx="5" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
-              <text x="62" y="14" font-family="'DM Mono', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">PRECISION: 0.982</text>
+              <text x="62" y="14" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#94a3b8" text-anchor="middle">PRECISION: 0.982</text>
               
               <rect x="134" y="0" width="124" height="20" rx="5" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
-              <text x="196" y="14" font-family="'DM Mono', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">RECALL: 0.976</text>
+              <text x="196" y="14" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#94a3b8" text-anchor="middle">RECALL: 0.976</text>
 
               <rect x="268" y="0" width="132" height="20" rx="5" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
-              <text x="334" y="14" font-family="'DM Mono', monospace" font-size="8" fill="#2dd4bf" text-anchor="middle">F1-SCORE: 0.979</text>
+              <text x="334" y="14" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#2dd4bf" text-anchor="middle">F1-SCORE: 0.979</text>
             </g>
           </g>
         </svg>
@@ -3494,8 +3519,8 @@ body:not(.landing-active) header.nav {
           </defs>
           <g transform="translate(35, 18)">
             <rect x="0" y="0" width="390" height="154" rx="12" fill="url(#ml-chart-bg)" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1"/>
-            <text x="16" y="21" font-family="'DM Mono', monospace" font-size="8.5" fill="#fbbf24" font-weight="600" letter-spacing="1">REGRESSION &amp; EDA OPTIMIZATION MATRIX</text>
-            <text x="374" y="21" font-family="'DM Mono', monospace" font-size="8.5" fill="#4ade80" font-weight="600" text-anchor="end">R²: 0.942 · 5-FOLD CV</text>
+            <text x="16" y="21" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#fbbf24" font-weight="600" letter-spacing="1">REGRESSION &amp; EDA OPTIMIZATION MATRIX</text>
+            <text x="374" y="21" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#4ade80" font-weight="600" text-anchor="end">R²: 0.942 · 5-FOLD CV</text>
             <line x1="0" y1="32" x2="390" y2="32" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
 
             <g transform="translate(30, 44)">
@@ -3521,11 +3546,11 @@ body:not(.landing-active) header.nav {
               <circle cx="140" cy="65" r="2.5" fill="#f87171" opacity="0.6"/>
 
               <path d="M 5,72 Q 90,48 215,8" fill="none" stroke="url(#ml-curve-grad)" stroke-width="2.5" stroke-linecap="round"/>
-              <text x="110" y="93" font-family="'DM Mono', monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">FEATURE DIMENSIONS (X)</text>
+              <text x="110" y="93" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">FEATURE DIMENSIONS (X)</text>
             </g>
 
             <g transform="translate(265, 46)">
-              <text x="0" y="8" font-family="'DM Mono', monospace" font-size="7.5" fill="#fbbf24" font-weight="600">FEATURE IMPORTANCE</text>
+              <text x="0" y="8" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#fbbf24" font-weight="600">FEATURE IMPORTANCE</text>
               
               <text x="0" y="24" font-family="'Manrope', sans-serif" font-size="7.5" fill="#cbd5e1">Variance Scale</text>
               <rect x="0" y="28" width="105" height="5" rx="2.5" fill="rgba(255, 255, 255, 0.08)"/>
@@ -4037,7 +4062,7 @@ body:not(.landing-active) header.nav {
   <a href="https://www.youtube.com/@OldHopes" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
   <a href="https://www.instagram.com/aadix_99" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
 </div>
-<div class="contact-meta" style="margin-top:24px; font:500 11px 'DM Mono'; color:var(--muted); letter-spacing:0.08em;">
+<div class="contact-meta" style="margin-top:24px; font:500 11px 'Monda', sans-serif; color:var(--muted); letter-spacing:0.08em;">
   📍 KOLHAPUR, MAHARASHTRA, INDIA · TIMEZONE: IST (UTC+5:30)
 </div>
 </section>
