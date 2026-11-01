@@ -16,12 +16,37 @@
 <meta name="twitter:description" content="A commercial portfolio of brand visualisations, promotional posters, product renders, and client creatives crafted at Suyash Graphics.">
 <meta name="twitter:image" content="https://aadi-x.github.io/portfolio/og-card.svg">
 <link rel="canonical" href="https://aadi-x.github.io/portfolio/graphics.html">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Riking,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
 <title>Graphic Design Portfolio — Aditya Walvekar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;600;700&family=DM+Mono&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Riking';
+  src: url('fonts/Riking.woff') format('woff'),
+       url('fonts/Riking.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monda';
+  src: url('fonts/Monda-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monda';
+  src: url('fonts/Monda-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #090909;
   --surface: #141414;
@@ -42,7 +67,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: Manrope, Arial, sans-serif;
+  font-family: 'Monda', Manrope, Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -76,7 +101,8 @@ body:before {
 }
 
 .logo {
-  font: 800 23px Syne;
+  font: 800 24px 'Riking', sans-serif;
+  letter-spacing: 0.01em;
 }
 
 .logo b, .accent {
@@ -98,7 +124,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font: 700 12px Manrope;
+  font: 700 12px 'Monda', sans-serif;
   cursor: pointer;
   transition: 0.25s;
 }
@@ -113,14 +139,15 @@ a {
 }
 
 .eyebrow {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--a);
 }
 
 h1 {
-  font: 800 clamp(48px, 8vw, 100px) / 0.9 Syne;
+  font: 800 clamp(44px, 7.5vw, 92px) / 0.98 'Riking', sans-serif;
+  letter-spacing: -0.01em;
   letter-spacing: -0.07em;
   margin: 15px 0;
 }
@@ -142,7 +169,7 @@ h1 {
 .filter {
   color: var(--muted);
   background: transparent;
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
 }
 
 .filter.active, .filter:hover {
@@ -188,7 +215,7 @@ h1 {
   background: rgba(14, 14, 14, 0.85);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  font: 500 9px "DM Mono";
+  font: 500 9px 'Monda', sans-serif;
   opacity: 0;
   transform: translateY(8px);
   transition: 0.3s;
@@ -285,7 +312,7 @@ h1 {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  font: 500 11px "DM Mono";
+  font: 500 11px 'Monda', sans-serif;
   color: var(--a);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -319,7 +346,8 @@ h1 {
 }
 
 .agency-text h2 {
-  font: 700 22px Syne;
+  font: 700 22px 'Riking', sans-serif;
+  letter-spacing: -0.01em;
   letter-spacing: -0.03em;
   margin: 0 0 8px;
   color: #fff;
@@ -345,7 +373,7 @@ h1 {
   border-radius: 999px;
   background: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
   color: #ffffff;
-  font: 600 12px Manrope;
+  font: 600 12px 'Monda', sans-serif;
   letter-spacing: 0.02em;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 24px rgba(225, 48, 108, 0.35);
@@ -369,7 +397,7 @@ h1 {
   background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #fff;
-  font: 600 9px "DM Mono";
+  font: 600 9px 'Monda', sans-serif;
   letter-spacing: 0.04em;
   backdrop-filter: blur(6px);
   z-index: 2;
@@ -400,7 +428,8 @@ h1 {
 }
 
 .lightbox-title {
-  font: 600 13px Manrope;
+  font: 600 14px 'Riking', sans-serif;
+  letter-spacing: 0.01em;
   color: #ffffff;
 }
 
@@ -413,7 +442,7 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
-  font: 500 11px "DM Mono";
+  font: 500 11px 'Monda', sans-serif;
   transition: 0.2s;
   text-decoration: none;
   white-space: nowrap;
