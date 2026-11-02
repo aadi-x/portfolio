@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Security & Privacy Hardening -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), accelerometer=(), vr=(), interest-cohort=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <meta name="description" content="Personal archive of games, movies, Marvel Cinematic Universe releases, web series, and anime enjoyed by Aditya Walvekar.">
 <meta name="author" content="Aditya Walvekar">
 <meta name="theme-color" content="#090909">
@@ -112,15 +118,396 @@ body {
   overflow-x: hidden;
 }
 
-body:before {
-  content: "";
+/* Dynamic Atmospheric Backdrop System */
+.dynamic-backdrop {
   position: fixed;
   inset: 0;
-  z-index: -1;
-  background: radial-gradient(circle at 10% 8%, #2a2a2a, transparent 30%),
-              radial-gradient(circle at 94% 64%, #181818, transparent 27%),
-              linear-gradient(115deg, #090909, #141414);
-  animation: ambient 12s ease-in-out infinite alternate;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  background: #090a0d;
+}
+
+.backdrop-layer {
+  position: absolute;
+  inset: -30px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(6px) saturate(125%) brightness(0.72);
+  will-change: opacity, transform, filter;
+}
+
+.backdrop-layer.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dynamic-backdrop.is-shifting .backdrop-layer.active {
+  filter: blur(28px) saturate(160%) brightness(0.5);
+  transform: scale(1.06);
+}
+
+/* Games: High-End Cyberpunk / Neon Gaming Setup */
+#bg-games {
+  background-image: url('assets/img/backgrounds/gaming_desktop.jpg');
+}
+@media (max-width: 768px) {
+  #bg-games {
+    background-image: url('assets/img/backgrounds/gaming_mobile.jpg');
+  }
+}
+
+/* Movies: Thalapathy Vijay Atmosphere */
+#bg-movies {
+  background-image: url('assets/img/backgrounds/ott-desktop.png');
+  background-position: center center;
+}
+@media (max-width: 768px) {
+  #bg-movies {
+    background-image: url('assets/img/backgrounds/ott-mobile.png');
+    background-position: center top;
+  }
+}
+
+/* MCU: Iron Man Arc Reactor (Desktop) / Avengers Painting (Mobile) */
+#bg-mcu {
+  background-image: url('assets/img/backgrounds/mcu-desktop.jpg');
+  background-position: center 36%;
+}
+@media (max-width: 768px) {
+  #bg-mcu {
+    background-image: url('assets/img/backgrounds/mcu-mobile.jpg');
+    background-position: center top;
+  }
+}
+
+/* OTT & Series: Thalapathy Vijay (Peace Over Everything Desktop / LEO Mobile) */
+#bg-series {
+  background-image: url('assets/img/backgrounds/ott-desktop.png');
+  background-position: center center;
+}
+@media (max-width: 768px) {
+  #bg-series {
+    background-image: url('assets/img/backgrounds/ott-mobile.png');
+    background-position: center top;
+  }
+}
+
+/* Anime: Satoru Gojo Atmosphere */
+#bg-anime {
+  background-image: url('assets/img/backgrounds/anime-desktop.jpg');
+  background-position: center center;
+}
+@media (max-width: 768px) {
+  #bg-anime {
+    background-image: url('assets/img/backgrounds/anime-mobile.jpg');
+    background-position: center top;
+  }
+}
+
+.backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 32%, rgba(10, 11, 14, 0.32) 0%, rgba(8, 9, 11, 0.65) 55%, rgba(6, 7, 9, 0.88) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* 3D Liquid Glass Cover Flow Carousel */
+.coverflow-wrap {
+  position: relative;
+  width: 100%;
+  margin: 16px 0 32px;
+  perspective: 1200px;
+  user-select: none;
+  overflow: hidden;
+  padding: 8px 0 16px;
+}
+
+.coverflow-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.coverflow-heading {
+  font: 600 19px 'Plus Jakarta Sans', sans-serif;
+  color: var(--ink);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coverflow-hint {
+  font: 500 10.5px 'Monda', sans-serif;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.coverflow-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  padding: 10px 0;
+}
+
+.coverflow-track {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.cover-card {
+  position: absolute;
+  width: 245px;
+  height: 360px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), inset 0 1px 1.5px rgba(255, 255, 255, 0.35);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.45s ease,
+              filter 0.45s ease,
+              box-shadow 0.45s ease,
+              border-color 0.45s ease;
+  will-change: transform, opacity;
+  cursor: pointer;
+}
+
+.cover-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.cover-card.is-center {
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8),
+              0 0 35px rgba(255, 107, 0, 0.25),
+              inset 0 1px 2px rgba(255, 255, 255, 0.55);
+}
+
+.cover-poster-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cover-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cover-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 9, 12, 0.95) 0%, rgba(8, 9, 12, 0.55) 45%, rgba(8, 9, 12, 0.05) 75%, transparent 100%);
+  pointer-events: none;
+}
+
+.cover-top-badges {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 4;
+}
+
+.cover-badge-provider {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 6px;
+  font: 700 10px 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.04em;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.cover-badge-provider.netflix { color: #e50914; border-color: rgba(229, 9, 20, 0.45); }
+.cover-badge-provider.disney { color: #38bdf8; border-color: rgba(56, 189, 248, 0.45); }
+.cover-badge-provider.prime { color: #00a8e1; border-color: rgba(0, 168, 225, 0.45); }
+.cover-badge-provider.hbo { color: #c084fc; border-color: rgba(192, 132, 252, 0.45); }
+.cover-badge-provider.rockstar { color: #fbbf24; border-color: rgba(251, 191, 36, 0.45); }
+.cover-badge-provider.crunchyroll { color: #fb923c; border-color: rgba(251, 146, 60, 0.45); }
+
+.cover-badge-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font: 700 11px 'Plus Jakarta Sans', sans-serif;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.cover-badge-rating .star {
+  color: #fbbf24;
+}
+
+.cover-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 16px 14px;
+  z-index: 4;
+}
+
+.cover-title {
+  font: 700 17px 'Plus Jakarta Sans', sans-serif;
+  color: #fff;
+  margin: 0 0 6px;
+  line-height: 1.25;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.cover-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.cover-meta-pill {
+  font: 500 9.5px 'Monda', sans-serif;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 2.5px 7px;
+  border-radius: 5px;
+}
+
+/* Navigation arrows */
+.coverflow-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.22s ease;
+}
+
+.coverflow-nav:hover {
+  background: var(--glass-bg-hover);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.coverflow-nav.prev {
+  left: 6px;
+}
+
+.coverflow-nav.next {
+  right: 6px;
+}
+
+/* Dots */
+.coverflow-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.coverflow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.coverflow-dot.active {
+  width: 22px;
+  background: var(--accent, #ff6b00);
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .coverflow-stage {
+    min-height: 330px;
+  }
+  .coverflow-track {
+    height: 300px;
+  }
+  .cover-card {
+    width: 190px;
+    height: 280px;
+    border-radius: 16px;
+  }
+  .cover-title {
+    font-size: 14px;
+  }
+  .cover-top-badges {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+  .coverflow-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  .coverflow-nav.prev {
+    left: -4px;
+  }
+  .coverflow-nav.next {
+    right: -4px;
+  }
 }
 
 @keyframes ambient {
@@ -230,6 +617,7 @@ a {
     margin: 10px auto;
     padding: 6px 14px;
     border-radius: 999px;
+    z-index: 960;
   }
   .menu-toggle {
     display: grid;
@@ -413,28 +801,45 @@ h1 {
 .feature {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 18px;
+  margin: 24px 0 28px;
 }
 
 .panel {
+  position: relative;
   padding: 28px;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  box-shadow: var(--glass-shadow);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+              0 20px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease,
               box-shadow 0.35s ease,
               background-color 0.35s ease;
 }
 
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  pointer-events: none;
+}
+
 .panel:hover {
-  border-color: var(--glass-border-hover);
-  background: var(--glass-bg-hover);
-  box-shadow: var(--glass-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.42),
+              0 24px 60px rgba(0, 0, 0, 0.55),
+              0 0 28px rgba(255, 255, 255, 0.08);
   transform: translateY(-3px);
 }
 
@@ -442,12 +847,13 @@ h1 {
   font: 600 24px 'Plus Jakarta Sans', sans-serif;
   letter-spacing: -0.01em;
   margin: 8px 0 14px;
+  color: #ffffff;
 }
 
 .panel p {
   color: var(--m);
   line-height: 1.7;
-  font-size: 13px;
+  font-size: 13.5px;
 }
 
 .chips {
@@ -457,33 +863,53 @@ h1 {
 }
 
 .chip {
-  padding: 10px 14px;
+  padding: 8px 14px;
   min-height: 38px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--s);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   font-size: 12px;
-  color: var(--m);
-  transition: 0.25s;
+  color: var(--ink);
+  transition: all 0.25s ease;
 }
 
 .chip:hover {
-  border-color: var(--ink);
-  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(2, 8, 12, 0.46);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 8px 20px rgba(0, 0, 0, 0.46);
 }
 
 .fav {
-  background: linear-gradient(145deg, #222222, #141414);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(26px) saturate(200%);
+  -webkit-backdrop-filter: blur(26px) saturate(200%);
   border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+              0 24px 54px rgba(0, 0, 0, 0.5);
+}
+
+.fav:hover {
+  background: rgba(255, 255, 255, 0.095);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .fav .chip {
-  border-color: rgba(255, 255, 255, 0.2);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.fav .chip:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .list-title {
@@ -518,8 +944,17 @@ h1 {
   .hero {
     padding-top: 40px;
   }
+  .feature {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
   .panel {
-    padding: 20px;
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .nav {
+    height: 56px;
+    margin: 8px auto;
   }
 }
 
@@ -612,6 +1047,14 @@ body.has-custom-cursor * {
 </style>
 </head>
 <body>
+<div class="dynamic-backdrop" id="dynamic-backdrop" aria-hidden="true">
+  <div class="backdrop-layer active" id="bg-games"></div>
+  <div class="backdrop-layer" id="bg-movies"></div>
+  <div class="backdrop-layer" id="bg-mcu"></div>
+  <div class="backdrop-layer" id="bg-series"></div>
+  <div class="backdrop-layer" id="bg-anime"></div>
+  <div class="backdrop-overlay"></div>
+</div>
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <header class="shell nav">
   <a class="logo" href="index.html" aria-label="Aditya Walvekar Portfolio Home">AW<b>.</b></a>
@@ -640,14 +1083,162 @@ body.has-custom-cursor * {
     <span class="eyebrow">Casual gamer / screen stories</span>
     <h1>Games &<br><em class="accent">OTT worlds.</em></h1>
     <p class="intro">A personal archive of the worlds, stories and characters I have spent time with — arranged from earlier releases to newer ones where release dates are known.</p>
+    
     <div class="tabs" role="tablist" aria-label="Entertainment categories">
       <button class="tab active" role="tab" id="tab-games" aria-selected="true" aria-controls="games" data-view="games" tabindex="0">Games</button>
       <button class="tab" role="tab" id="tab-movies" aria-selected="false" aria-controls="movies" data-view="movies" tabindex="-1">Movies</button>
-      <button class="tab" role="tab" id="tab-series" aria-selected="false" aria-controls="series" data-view="series" tabindex="-1">Web series</button>
+      <button class="tab" role="tab" id="tab-mcu" aria-selected="false" aria-controls="mcu" data-view="mcu" tabindex="-1">Marvel (MCU)</button>
+      <button class="tab" role="tab" id="tab-series" aria-selected="false" aria-controls="series" data-view="series" tabindex="-1">Web Series &amp; OTT</button>
       <button class="tab" role="tab" id="tab-anime" aria-selected="false" aria-controls="anime" data-view="anime" tabindex="-1">Anime</button>
     </div>
 
+    <!-- 1. GAMES VIEW -->
     <div class="view" id="games" role="tabpanel" aria-labelledby="tab-games" tabindex="0">
+      <div class="coverflow-wrap" data-cf-id="games">
+        <div class="coverflow-header">
+          <h2 class="coverflow-heading">Featured Games</h2>
+          </div>
+        <div class="coverflow-stage">
+          <button class="coverflow-nav prev" aria-label="Previous game">‹</button>
+          <div class="coverflow-track">
+            <article class="cover-card" data-idx="0">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/rdr2.jpg" alt="Red Dead Redemption 2" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider rockstar">Rockstar</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 9.7</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Red Dead Redemption 2</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2018</span>
+                    <span class="cover-meta-pill">Open World</span>
+                    <span class="cover-meta-pill">Western</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="1">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/gta_v.jpg" alt="GTA V" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider rockstar">Rockstar</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 9.5</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Grand Theft Auto V</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2013</span>
+                    <span class="cover-meta-pill">Action</span>
+                    <span class="cover-meta-pill">Los Santos</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="2">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/cyberpunk_2077.jpg" alt="Cyberpunk 2077" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider">CDPR</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.8</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Cyberpunk 2077</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2020</span>
+                    <span class="cover-meta-pill">Night City</span>
+                    <span class="cover-meta-pill">RPG</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="3">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/forza_horizon_5.jpg" alt="Forza Horizon 5" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider">Xbox</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 9.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Forza Horizon 5</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2021</span>
+                    <span class="cover-meta-pill">Mexico</span>
+                    <span class="cover-meta-pill">Racing</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="4">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/nfs_heat.jpg" alt="Need for Speed Heat" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider">EA</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Need for Speed Heat</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2019</span>
+                    <span class="cover-meta-pill">Palm City</span>
+                    <span class="cover-meta-pill">Street Racing</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="5">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/minecraft.jpg" alt="Minecraft" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider">Mojang</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 9.0</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Minecraft</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2011</span>
+                    <span class="cover-meta-pill">Sandbox</span>
+                    <span class="cover-meta-pill">Survival</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="6">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/valorant.jpg" alt="Valorant" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider">Riot</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.5</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Valorant</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2020</span>
+                    <span class="cover-meta-pill">Tactical</span>
+                    <span class="cover-meta-pill">5v5 Shooter</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <button class="coverflow-nav next" aria-label="Next game">›</button>
+        </div>
+        <div class="coverflow-dots"></div>
+      </div>
+
       <div class="feature">
         <article class="panel fav">
           <span class="eyebrow">Favourite games</span>
@@ -661,10 +1252,11 @@ body.has-custom-cursor * {
         </article>
         <article class="panel">
           <span class="eyebrow">Play style</span>
-          <h2>Exploration, stories & speed.</h2>
+          <h2>Exploration, stories &amp; speed.</h2>
           <p>From competitive multiplayer sessions to cinematic single-player campaigns, I enjoy games that make every world feel memorable.</p>
         </article>
       </div>
+
       <h2 class="list-title">Games I’ve played</h2>
       <p class="note">Release order · earliest to latest</p>
       <div class="chips">
@@ -694,51 +1286,175 @@ body.has-custom-cursor * {
       </div>
     </div>
 
+    <!-- 2. MOVIES VIEW -->
     <div class="view" id="movies" role="tabpanel" aria-labelledby="tab-movies" tabindex="0" hidden>
-      <h2 class="list-title">Marvel Cinematic Universe</h2>
-      <p class="note">Feature films · release order</p>
-      <div class="chips">
-        <span class="chip">Iron Man · 2008</span>
-        <span class="chip">The Incredible Hulk · 2008</span>
-        <span class="chip">Iron Man 2 · 2010</span>
-        <span class="chip">Thor · 2011</span>
-        <span class="chip">Captain America: The First Avenger · 2011</span>
-        <span class="chip">The Avengers · 2012</span>
-        <span class="chip">Iron Man 3 · 2013</span>
-        <span class="chip">Thor: The Dark World · 2013</span>
-        <span class="chip">Captain America: The Winter Soldier · 2014</span>
-        <span class="chip">Guardians of the Galaxy · 2014</span>
-        <span class="chip">Avengers: Age of Ultron · 2015</span>
-        <span class="chip">Ant-Man · 2015</span>
-        <span class="chip">Captain America: Civil War · 2016</span>
-        <span class="chip">Doctor Strange · 2016</span>
-        <span class="chip">Guardians of the Galaxy Vol. 2 · 2017</span>
-        <span class="chip">Spider-Man: Homecoming · 2017</span>
-        <span class="chip">Thor: Ragnarok · 2017</span>
-        <span class="chip">Black Panther · 2018</span>
-        <span class="chip">Avengers: Infinity War · 2018</span>
-        <span class="chip">Ant-Man and the Wasp · 2018</span>
-        <span class="chip">Captain Marvel · 2019</span>
-        <span class="chip">Avengers: Endgame · 2019</span>
-        <span class="chip">Spider-Man: Far From Home · 2019</span>
-        <span class="chip">Black Widow · 2021</span>
-        <span class="chip">Shang-Chi and the Legend of the Ten Rings · 2021</span>
-        <span class="chip">Eternals · 2021</span>
-        <span class="chip">Spider-Man: No Way Home · 2021</span>
-        <span class="chip">Doctor Strange in the Multiverse of Madness · 2022</span>
-        <span class="chip">Thor: Love and Thunder · 2022</span>
-        <span class="chip">Black Panther: Wakanda Forever · 2022</span>
-        <span class="chip">Ant-Man and the Wasp: Quantumania · 2023</span>
-        <span class="chip">Guardians of the Galaxy Vol. 3 · 2023</span>
-        <span class="chip">The Marvels · 2023</span>
-        <span class="chip">Deadpool & Wolverine · 2024</span>
-        <span class="chip">Captain America: Brave New World · 2025</span>
-        <span class="chip">Thunderbolts* · 2025</span>
-        <span class="chip">The Fantastic Four: First Steps · 2025</span>
+      <div class="coverflow-wrap" data-cf-id="movies">
+        <div class="coverflow-header">
+          <h2 class="coverflow-heading">Featured Movies</h2>
+          </div>
+        <div class="coverflow-stage">
+          <button class="coverflow-nav prev" aria-label="Previous movie">‹</button>
+          <div class="coverflow-track">
+            <article class="cover-card" data-idx="0">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/interstellar.jpg" alt="Interstellar" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.7</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Interstellar</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2014</span>
+                    <span class="cover-meta-pill">2h 49m</span>
+                    <span class="cover-meta-pill">Sci-Fi</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="1">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/inception.jpg" alt="Inception" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider prime">Prime</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.8</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Inception</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2010</span>
+                    <span class="cover-meta-pill">2h 28m</span>
+                    <span class="cover-meta-pill">Action</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="2">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/john_wick.jpg" alt="John Wick" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider">Lionsgate</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 7.4</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">John Wick</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2014</span>
+                    <span class="cover-meta-pill">1h 41m</span>
+                    <span class="cover-meta-pill">Action / Thriller</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="3">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/wolf_of_wall_street.jpg" alt="The Wolf of Wall Street" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider">Paramount</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Wolf of Wall Street</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2013</span>
+                    <span class="cover-meta-pill">3h 0m</span>
+                    <span class="cover-meta-pill">Biography</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="4">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/pirates_caribbean.jpg" alt="Pirates of the Caribbean" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.1</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Pirates of Caribbean</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2003</span>
+                    <span class="cover-meta-pill">2h 23m</span>
+                    <span class="cover-meta-pill">Adventure</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="5">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/leo.jpg" alt="Leo" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 7.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Leo</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2023</span>
+                    <span class="cover-meta-pill">2h 44m</span>
+                    <span class="cover-meta-pill">LCU / Action</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="6">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/tumbbad.jpg" alt="Tumbbad" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider prime">Prime</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Tumbbad</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2018</span>
+                    <span class="cover-meta-pill">1h 44m</span>
+                    <span class="cover-meta-pill">Myth / Horror</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="7">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/kantara.jpg" alt="Kantara" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Kantara</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2022</span>
+                    <span class="cover-meta-pill">2h 28m</span>
+                    <span class="cover-meta-pill">Folklore</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <button class="coverflow-nav next" aria-label="Next movie">›</button>
+        </div>
+        <div class="coverflow-dots"></div>
       </div>
-      <h2 class="list-title">Other movies</h2>
+
+      <h2 class="list-title">All Watched &amp; Followed Movies</h2>
       <div class="chips">
-        <span class="chip">Fast & Furious (all)</span>
+        <span class="chip">Fast &amp; Furious (all)</span>
         <span class="chip">Pirates of the Caribbean</span>
         <span class="chip">Inception</span>
         <span class="chip">The Wolf of Wall Street</span>
@@ -778,9 +1494,215 @@ body.has-custom-cursor * {
       </div>
     </div>
 
-    <div class="view" id="series" role="tabpanel" aria-labelledby="tab-series" tabindex="0" hidden>
-      <h2 class="list-title">Marvel Cinematic Universe series & specials</h2>
-      <p class="note">Release order</p>
+    <!-- 3. MARVEL CINEMATIC UNIVERSE (SEPARATED DEDICATED SECTION) -->
+    <div class="view" id="mcu" role="tabpanel" aria-labelledby="tab-mcu" tabindex="0" hidden>
+      <div class="coverflow-wrap" data-cf-id="mcu">
+        <div class="coverflow-header">
+          <h2 class="coverflow-heading">Marvel Cinematic Universe</h2>
+          </div>
+        <div class="coverflow-stage">
+          <button class="coverflow-nav prev" aria-label="Previous MCU title">‹</button>
+          <div class="coverflow-track">
+            <article class="cover-card" data-idx="0">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/avengers_endgame.jpg" alt="Avengers: Endgame" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.4</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Avengers: Endgame</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2019</span>
+                    <span class="cover-meta-pill">3h 1m</span>
+                    <span class="cover-meta-pill">Infinity Saga Finale</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="1">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/avengers_infinity_war.jpg" alt="Avengers: Infinity War" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.4</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Avengers: Infinity War</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2018</span>
+                    <span class="cover-meta-pill">2h 29m</span>
+                    <span class="cover-meta-pill">Thanos Quest</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="2">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/iron_man.jpg" alt="Iron Man" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 7.9</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Iron Man</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2008</span>
+                    <span class="cover-meta-pill">2h 6m</span>
+                    <span class="cover-meta-pill">The Origin</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="3">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/spiderman_no_way_home.jpg" alt="Spider-Man: No Way Home" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Spider-Man: No Way Home</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2021</span>
+                    <span class="cover-meta-pill">2h 28m</span>
+                    <span class="cover-meta-pill">Multiverse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="4">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/captain_america_civil_war.jpg" alt="Captain America: Civil War" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 7.8</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Captain America: Civil War</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2016</span>
+                    <span class="cover-meta-pill">2h 27m</span>
+                    <span class="cover-meta-pill">Divided Heroes</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="5">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/thor_ragnarok.jpg" alt="Thor: Ragnarok" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 7.9</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Thor: Ragnarok</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2017</span>
+                    <span class="cover-meta-pill">2h 10m</span>
+                    <span class="cover-meta-pill">Cosmic Arena</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="6">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/deadpool_wolverine.jpg" alt="Deadpool & Wolverine" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 7.8</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Deadpool &amp; Wolverine</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2024</span>
+                    <span class="cover-meta-pill">2h 8m</span>
+                    <span class="cover-meta-pill">Phase 5</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="7">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/loki.jpg" alt="Loki" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider disney">Disney+</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Loki</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2021–2023</span>
+                    <span class="cover-meta-pill">2 Seasons</span>
+                    <span class="cover-meta-pill">TVA Saga</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <button class="coverflow-nav next" aria-label="Next MCU title">›</button>
+        </div>
+        <div class="coverflow-dots"></div>
+      </div>
+
+      <h2 class="list-title">Marvel Cinematic Universe — Feature Films</h2>
+      <p class="note">Release order · chronological continuity</p>
+      <div class="chips">
+        <span class="chip">Iron Man · 2008</span>
+        <span class="chip">The Incredible Hulk · 2008</span>
+        <span class="chip">Iron Man 2 · 2010</span>
+        <span class="chip">Thor · 2011</span>
+        <span class="chip">Captain America: The First Avenger · 2011</span>
+        <span class="chip">The Avengers · 2012</span>
+        <span class="chip">Iron Man 3 · 2013</span>
+        <span class="chip">Thor: The Dark World · 2013</span>
+        <span class="chip">Captain America: The Winter Soldier · 2014</span>
+        <span class="chip">Guardians of the Galaxy · 2014</span>
+        <span class="chip">Avengers: Age of Ultron · 2015</span>
+        <span class="chip">Ant-Man · 2015</span>
+        <span class="chip">Captain America: Civil War · 2016</span>
+        <span class="chip">Doctor Strange · 2016</span>
+        <span class="chip">Guardians of the Galaxy Vol. 2 · 2017</span>
+        <span class="chip">Spider-Man: Homecoming · 2017</span>
+        <span class="chip">Thor: Ragnarok · 2017</span>
+        <span class="chip">Black Panther · 2018</span>
+        <span class="chip">Avengers: Infinity War · 2018</span>
+        <span class="chip">Ant-Man and the Wasp · 2018</span>
+        <span class="chip">Captain Marvel · 2019</span>
+        <span class="chip">Avengers: Endgame · 2019</span>
+        <span class="chip">Spider-Man: Far From Home · 2019</span>
+        <span class="chip">Black Widow · 2021</span>
+        <span class="chip">Shang-Chi and the Legend of the Ten Rings · 2021</span>
+        <span class="chip">Eternals · 2021</span>
+        <span class="chip">Spider-Man: No Way Home · 2021</span>
+        <span class="chip">Doctor Strange in the Multiverse of Madness · 2022</span>
+        <span class="chip">Thor: Love and Thunder · 2022</span>
+        <span class="chip">Black Panther: Wakanda Forever · 2022</span>
+        <span class="chip">Ant-Man and the Wasp: Quantumania · 2023</span>
+        <span class="chip">Guardians of the Galaxy Vol. 3 · 2023</span>
+        <span class="chip">The Marvels · 2023</span>
+        <span class="chip">Deadpool &amp; Wolverine · 2024</span>
+        <span class="chip">Captain America: Brave New World · 2025</span>
+        <span class="chip">Thunderbolts* · 2025</span>
+        <span class="chip">The Fantastic Four: First Steps · 2025</span>
+      </div>
+
+      <h2 class="list-title" style="margin-top: 36px;">Marvel Cinematic Universe — Series &amp; Specials</h2>
       <div class="chips">
         <span class="chip">WandaVision · 2021</span>
         <span class="chip">The Falcon and the Winter Soldier · 2021</span>
@@ -808,7 +1730,137 @@ body.has-custom-cursor * {
         <span class="chip">Marvel Zombies · 2025</span>
         <span class="chip">Wonder Man · 2026</span>
       </div>
-      <h2 class="list-title">Web series</h2>
+    </div>
+
+    <!-- 4. WEB SERIES & OTT VIEW -->
+    <div class="view" id="series" role="tabpanel" aria-labelledby="tab-series" tabindex="0" hidden>
+      <div class="coverflow-wrap" data-cf-id="series">
+        <div class="coverflow-header">
+          <h2 class="coverflow-heading">Web Series &amp; OTT Shows</h2>
+          </div>
+        <div class="coverflow-stage">
+          <button class="coverflow-nav prev" aria-label="Previous series">‹</button>
+          <div class="coverflow-track">
+            <article class="cover-card" data-idx="0">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/breaking_bad.jpg" alt="Breaking Bad" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 9.5</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Breaking Bad</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2008–2013</span>
+                    <span class="cover-meta-pill">5 Seasons</span>
+                    <span class="cover-meta-pill">Crime Drama</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="1">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/game_of_thrones.jpg" alt="Game of Thrones" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider hbo">HBO</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 9.2</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Game of Thrones</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2011–2019</span>
+                    <span class="cover-meta-pill">8 Seasons</span>
+                    <span class="cover-meta-pill">Fantasy Epic</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="2">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/peaky_blinders.jpg" alt="Peaky Blinders" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.8</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Peaky Blinders</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2013–2022</span>
+                    <span class="cover-meta-pill">6 Seasons</span>
+                    <span class="cover-meta-pill">Shelby Clan</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="3">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/stranger_things.jpg" alt="Stranger Things" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.7</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Stranger Things</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2016–Present</span>
+                    <span class="cover-meta-pill">4 Seasons</span>
+                    <span class="cover-meta-pill">Hawkins / Upside Down</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="4">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/the_boys.jpg" alt="The Boys" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider prime">Prime</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.7</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">The Boys</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2019–Present</span>
+                    <span class="cover-meta-pill">4 Seasons</span>
+                    <span class="cover-meta-pill">Anti-Hero Action</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="5">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/squid_game.jpg" alt="Squid Game" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.0</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Squid Game</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2021–Present</span>
+                    <span class="cover-meta-pill">2 Seasons</span>
+                    <span class="cover-meta-pill">Survival Thriller</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <button class="coverflow-nav next" aria-label="Next series">›</button>
+        </div>
+        <div class="coverflow-dots"></div>
+      </div>
+
+      <h2 class="list-title">All Followed Web Series</h2>
       <div class="chips">
         <span class="chip">Game of Thrones</span>
         <span class="chip">Breaking Bad</span>
@@ -866,8 +1918,116 @@ body.has-custom-cursor * {
       </div>
     </div>
 
+    <!-- 5. ANIME VIEW -->
     <div class="view" id="anime" role="tabpanel" aria-labelledby="tab-anime" tabindex="0" hidden>
-      <h2 class="list-title">Anime</h2>
+      <div class="coverflow-wrap" data-cf-id="anime">
+        <div class="coverflow-header">
+          <h2 class="coverflow-heading">Featured Anime Series</h2>
+          </div>
+        <div class="coverflow-stage">
+          <button class="coverflow-nav prev" aria-label="Previous anime">‹</button>
+          <div class="coverflow-track">
+            <article class="cover-card" data-idx="0">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/attack_on_titan.jpg" alt="Attack on Titan" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider crunchyroll">Crunchyroll</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 9.1</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Attack on Titan</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2013–2023</span>
+                    <span class="cover-meta-pill">4 Seasons</span>
+                    <span class="cover-meta-pill">Shingeki no Kyojin</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="1">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/death_note.jpg" alt="Death Note" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider netflix">Netflix</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.9</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Death Note</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2006–2007</span>
+                    <span class="cover-meta-pill">1 Season</span>
+                    <span class="cover-meta-pill">Kira vs L</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="2">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/demon_slayer.jpg" alt="Demon Slayer" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider crunchyroll">Crunchyroll</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.6</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Demon Slayer</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2019–Present</span>
+                    <span class="cover-meta-pill">4 Seasons</span>
+                    <span class="cover-meta-pill">Kimetsu no Yaiba</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="3">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/jujutsu_kaisen.jpg" alt="Jujutsu Kaisen" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider crunchyroll">Crunchyroll</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.5</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Jujutsu Kaisen</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2020–Present</span>
+                    <span class="cover-meta-pill">2 Seasons</span>
+                    <span class="cover-meta-pill">Sorcery &amp; Curses</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="cover-card" data-idx="4">
+              <div class="cover-poster-wrap">
+                <img src="assets/img/posters/solo_leveling.jpg" alt="Solo Leveling" class="cover-poster" loading="lazy">
+                <div class="cover-gradient"></div>
+                <div class="cover-top-badges">
+                  <span class="cover-badge-provider crunchyroll">Crunchyroll</span>
+                  <span class="cover-badge-rating"><span class="star">★</span> 8.4</span>
+                </div>
+                <div class="cover-info">
+                  <h3 class="cover-title">Solo Leveling</h3>
+                  <div class="cover-meta">
+                    <span class="cover-meta-pill">2024–Present</span>
+                    <span class="cover-meta-pill">1 Season</span>
+                    <span class="cover-meta-pill">Shadow Monarch</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <button class="coverflow-nav next" aria-label="Next anime">›</button>
+        </div>
+        <div class="coverflow-dots"></div>
+      </div>
+
+      <h2 class="list-title">Followed Anime</h2>
       <p class="note">Release order</p>
       <div class="chips">
         <span class="chip">Death Note · 2006</span>
@@ -882,8 +2042,11 @@ body.has-custom-cursor * {
 </main>
 
 <script>
+// Tab & Dynamic Backdrop Controller
 const tabs = [...document.querySelectorAll('.tab')];
 const views = [...document.querySelectorAll('.view')];
+const backdropLayers = [...document.querySelectorAll('.backdrop-layer')];
+const dynamicBackdrop = document.getElementById('dynamic-backdrop');
 
 function activateTab(index) {
   tabs.forEach((tab, i) => {
@@ -893,25 +2056,33 @@ function activateTab(index) {
     tab.setAttribute('tabindex', isActive ? '0' : '-1');
     if (isActive) tab.focus();
   });
+
   const targetView = tabs[index].dataset.view;
+
+  // Crossfade views
   views.forEach(v => {
     v.hidden = v.id !== targetView;
   });
+
+  // Crossfade background layer
+  backdropLayers.forEach(layer => {
+    layer.classList.toggle('active', layer.id === `bg-${targetView}`);
+  });
+
+  // Re-render coverflow in the newly active view
+  const activeView = document.getElementById(targetView);
+  if (activeView) {
+    const cf = activeView.querySelector('.coverflow-wrap');
+    if (cf && cf._render) cf._render();
+  }
 }
 
 tabs.forEach((t, i) => {
   t.addEventListener('click', () => activateTab(i));
   t.addEventListener('keydown', e => {
     let newIndex = null;
-    if (e.key === 'ArrowRight') {
-      newIndex = (i + 1) % tabs.length;
-    } else if (e.key === 'ArrowLeft') {
-      newIndex = (i - 1 + tabs.length) % tabs.length;
-    } else if (e.key === 'Home') {
-      newIndex = 0;
-    } else if (e.key === 'End') {
-      newIndex = tabs.length - 1;
-    }
+    if (e.key === 'ArrowRight') newIndex = (i + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft') newIndex = (i - 1 + tabs.length) % tabs.length;
     if (newIndex !== null) {
       e.preventDefault();
       activateTab(newIndex);
@@ -919,15 +2090,171 @@ tabs.forEach((t, i) => {
   });
 });
 
-// Scroll Progress Bar
-const scrollProgressBar = document.querySelector('#scroll-progress');
-if (scrollProgressBar) {
-  window.addEventListener('scroll', () => {
-    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
-    scrollProgressBar.style.width = `${progress}%`;
+// Interactive 3D Cover Flow Engine
+function initCoverFlow(wrapEl) {
+  const track = wrapEl.querySelector('.coverflow-track');
+  const cards = [...wrapEl.querySelectorAll('.cover-card')];
+  const prevBtn = wrapEl.querySelector('.coverflow-nav.prev');
+  const nextBtn = wrapEl.querySelector('.coverflow-nav.next');
+  const dotsContainer = wrapEl.querySelector('.coverflow-dots');
+
+  if (!cards.length) return;
+
+  let activeIndex = Math.floor(cards.length / 2);
+
+  // Build dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    cards.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = 'coverflow-dot' + (idx === activeIndex ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+      dot.addEventListener('click', () => updateActive(idx));
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function triggerShiftingBlur() {
+    if (dynamicBackdrop) {
+      dynamicBackdrop.classList.add('is-shifting');
+      setTimeout(() => dynamicBackdrop.classList.remove('is-shifting'), 450);
+    }
+  }
+
+  function updateActive(newIndex) {
+    if (newIndex < 0 || newIndex >= cards.length || newIndex === activeIndex) return;
+    triggerShiftingBlur();
+    activeIndex = newIndex;
+    render();
+  }
+
+  function render() {
+    const isMobile = window.innerWidth <= 768;
+    const cardStep = isMobile ? 120 : 190;
+    const zStep = isMobile ? 35 : 55;
+    const rotStep = isMobile ? 16 : 22;
+
+    cards.forEach((card, idx) => {
+      const offset = idx - activeIndex;
+      const absOffset = Math.abs(offset);
+
+      if (absOffset === 0) {
+        card.style.transform = `translateX(0px) translateZ(80px) rotateY(0deg) scale(1.08)`;
+        card.style.zIndex = '25';
+        card.style.opacity = '1';
+        card.style.filter = 'none';
+        card.style.pointerEvents = 'auto';
+        card.classList.add('is-center');
+      } else if (absOffset <= 2) {
+        const sign = offset < 0 ? -1 : 1;
+        const tx = sign * (cardStep + (absOffset - 1) * (isMobile ? 70 : 110));
+        const tz = -absOffset * zStep;
+        const ry = -sign * rotStep;
+        const scale = Math.max(0.72, 1 - absOffset * 0.12);
+        const opacity = Math.max(0.3, 1 - absOffset * 0.32);
+        const blur = absOffset * 0.7;
+
+        card.style.transform = `translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
+        card.style.zIndex = String(20 - absOffset);
+        card.style.opacity = String(opacity);
+        card.style.filter = `blur(${blur}px) brightness(${0.92 - absOffset * 0.22})`;
+        card.style.pointerEvents = 'auto';
+        card.classList.remove('is-center');
+      } else {
+        const sign = offset < 0 ? -1 : 1;
+        card.style.transform = `translateX(${sign * 360}px) translateZ(-160px) scale(0.6)`;
+        card.style.zIndex = '0';
+        card.style.opacity = '0';
+        card.style.filter = 'blur(4px)';
+        card.style.pointerEvents = 'none';
+        card.classList.remove('is-center');
+      }
+    });
+
+    // Update dots
+    if (dotsContainer) {
+      const dots = dotsContainer.querySelectorAll('.coverflow-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === activeIndex);
+      });
+    }
+  }
+
+  // Expose render for tab changes
+  wrapEl._render = render;
+
+  // Card click
+  cards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      if (idx !== activeIndex) updateActive(idx);
+    });
+  });
+
+  // Buttons
+  if (prevBtn) prevBtn.addEventListener('click', () => updateActive(Math.max(0, activeIndex - 1)));
+  if (nextBtn) nextBtn.addEventListener('click', () => updateActive(Math.min(cards.length - 1, activeIndex + 1)));
+
+  // Touch Swipe for mobile
+  let touchStartX = 0;
+  wrapEl.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
   }, { passive: true });
+
+  wrapEl.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(diff) > 35) {
+      if (diff > 0) updateActive(Math.max(0, activeIndex - 1));
+      else updateActive(Math.min(cards.length - 1, activeIndex + 1));
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', render);
+  render();
 }
+
+// Initialize all Cover Flows
+document.querySelectorAll('.coverflow-wrap').forEach(initCoverFlow);
+
+// Mobile Nav Drawer Toggle
+(function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const siteLinks = document.getElementById('site-links');
+  const navBackdrop = document.getElementById('nav-backdrop');
+
+  if (!menuToggle || !siteLinks) return;
+
+  function setMenuState(open) {
+    const shouldOpen = typeof open === 'boolean' ? open : !siteLinks.classList.contains('is-open');
+    siteLinks.classList.toggle('is-open', shouldOpen);
+    if (navBackdrop) navBackdrop.classList.toggle('is-active', shouldOpen);
+    menuToggle.setAttribute('aria-expanded', String(shouldOpen));
+    menuToggle.setAttribute('aria-label', shouldOpen ? 'Close navigation menu' : 'Open navigation menu');
+    menuToggle.textContent = shouldOpen ? '✕' : '☰';
+    document.body.style.overflow = shouldOpen ? 'hidden' : '';
+  }
+
+  menuToggle.addEventListener('click', () => setMenuState());
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', () => setMenuState(false));
+  }
+
+  siteLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && siteLinks.classList.contains('is-open')) {
+      setMenuState(false);
+      menuToggle.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && siteLinks.classList.contains('is-open')) {
+      setMenuState(false);
+    }
+  });
+})();
 
 // Fluid Custom Cursor
 (function() {
@@ -980,7 +2307,7 @@ if (scrollProgressBar) {
     document.addEventListener('mousedown', () => ring.classList.add('is-clicking'));
     document.addEventListener('mouseup', () => ring.classList.remove('is-clicking'));
 
-    const hoverSelectors = 'a, button, .tab, .btn, .chip, .panel, .fav, .item';
+    const hoverSelectors = 'a, button, [role="button"], [role="tab"], .tab-btn, .media-card, .deck-nav, .chip, .card, .portfolio-back-pill, .hub-pill';
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(hoverSelectors)) {
         ring.classList.add('is-hovering');
@@ -1012,24 +2339,6 @@ if (scrollProgressBar) {
     if (dot) dot.classList.add('cursor-hidden');
     if (ring) ring.classList.add('cursor-hidden');
   }, { passive: true });
-})();
-
-// Mobile Navigation Drawer Controller
-(function() {
-  const menuBtn = document.querySelector('#menu-toggle');
-  const siteLinks = document.querySelector('#site-links');
-  const navBackdrop = document.querySelector('#nav-backdrop');
-  if (menuBtn && siteLinks) {
-    function toggle(open) {
-      siteLinks.classList.toggle('is-open', open);
-      if (navBackdrop) navBackdrop.classList.toggle('is-active', open);
-      menuBtn.setAttribute('aria-expanded', String(open));
-      menuBtn.textContent = open ? '✕' : '☰';
-    }
-    menuBtn.addEventListener('click', () => toggle(!siteLinks.classList.contains('is-open')));
-    if (navBackdrop) navBackdrop.addEventListener('click', () => toggle(false));
-    siteLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => toggle(false)));
-  }
 })();
 </script>
 </body>

@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Security & Privacy Hardening -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), accelerometer=(), vr=(), interest-cohort=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <meta name="description" content="Working web applications, live interactive games, and applied engineering projects across 6 industry internships built by Aditya Walvekar.">
 <meta name="author" content="Aditya Walvekar">
 <meta name="theme-color" content="#090909">
@@ -215,6 +221,7 @@ body {
     margin: 10px auto;
     padding: 6px 14px;
     border-radius: 999px;
+    z-index: 960;
   }
   .menu-toggle {
     display: grid;
@@ -1229,6 +1236,47 @@ projectCards.forEach(card => {
     if (dot) dot.classList.add('cursor-hidden');
     if (ring) ring.classList.add('cursor-hidden');
   }, { passive: true });
+})();
+
+// Mobile Nav Drawer Toggle
+(function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const siteLinks = document.getElementById('site-links');
+  const navBackdrop = document.getElementById('nav-backdrop');
+
+  if (!menuToggle || !siteLinks) return;
+
+  function setMenuState(open) {
+    const shouldOpen = typeof open === 'boolean' ? open : !siteLinks.classList.contains('is-open');
+    siteLinks.classList.toggle('is-open', shouldOpen);
+    if (navBackdrop) navBackdrop.classList.toggle('is-active', shouldOpen);
+    menuToggle.setAttribute('aria-expanded', String(shouldOpen));
+    menuToggle.setAttribute('aria-label', shouldOpen ? 'Close navigation menu' : 'Open navigation menu');
+    menuToggle.textContent = shouldOpen ? '✕' : '☰';
+    document.body.style.overflow = shouldOpen ? 'hidden' : '';
+  }
+
+  menuToggle.addEventListener('click', () => setMenuState());
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', () => setMenuState(false));
+  }
+
+  siteLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && siteLinks.classList.contains('is-open')) {
+      setMenuState(false);
+      menuToggle.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && siteLinks.classList.contains('is-open')) {
+      setMenuState(false);
+    }
+  });
 })();
 </script>
 

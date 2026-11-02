@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Security & Privacy Hardening -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), accelerometer=(), vr=(), interest-cohort=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <meta name="description" content="Graphic design portfolio by Aditya Walvekar at Suyash Graphics — product visualisations, social media creatives, posters and flyers.">
 <meta name="author" content="Aditya Walvekar">
 <meta name="theme-color" content="#090909">
@@ -221,6 +227,7 @@ body:before {
     margin: 10px auto;
     padding: 6px 14px;
     border-radius: 999px;
+    z-index: 960;
   }
   .menu-toggle {
     display: grid;
@@ -478,6 +485,7 @@ h1 span.accent {
 }
 
 .lightbox button {
+  z-index: 1005;
   position: absolute;
   top: 20px;
   right: 22px;
@@ -715,6 +723,13 @@ h1 span.accent {
     width: 100%;
     justify-content: center;
   }
+  .lightbox button {
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
   .lightbox-meta {
     flex-direction: column;
     align-items: flex-start;
@@ -806,6 +821,222 @@ body.has-custom-cursor * {
     display: none !important;
   }
 }
+
+/* Video-Inspired 3D Cover Flow Showcase */
+.showcase-section {
+  position: relative;
+  width: 100%;
+  margin: 32px 0 54px;
+  user-select: none;
+}
+
+.art-headline-deck {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 540px;
+  margin: 0 auto 28px;
+  padding: 0 16px;
+  font: 800 clamp(18px, 4vw, 28px) 'Riking', sans-serif;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.art-headline-deck span:nth-child(2) {
+  color: var(--a);
+}
+
+.graphics-cf-wrap {
+  position: relative;
+  width: 100%;
+  perspective: 1200px;
+}
+
+.graphics-cf-stage {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graphics-cf-track {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.graphics-cf-card {
+  position: absolute;
+  width: 310px;
+  height: 440px;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s ease,
+              border-color 0.45s ease;
+  will-change: transform, opacity, filter;
+}
+
+.graphics-cf-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.graphics-cf-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+}
+
+.graphics-cf-card.is-center {
+  border-color: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.8),
+              0 0 35px rgba(255, 255, 255, 0.12),
+              inset 0 1px 2px 0 rgba(255, 255, 255, 0.45);
+}
+
+.graphics-cf-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 35;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(14, 14, 18, 0.72);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  font-size: 22px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.graphics-cf-nav:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.graphics-cf-nav.prev {
+  left: 8px;
+}
+
+.graphics-cf-nav.next {
+  right: 8px;
+}
+
+/* Active Details Below Deck */
+.cf-active-details {
+  text-align: center;
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cf-active-title {
+  font: 800 clamp(20px, 3.5vw, 30px) 'Riking', sans-serif;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin: 0;
+  text-transform: uppercase;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cf-active-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font: 600 11px 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.15em;
+  color: var(--a);
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.cf-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.cf-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cf-dot.active {
+  width: 22px;
+  background: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .graphics-cf-stage {
+    min-height: 380px;
+  }
+  .graphics-cf-track {
+    height: 360px;
+  }
+  .graphics-cf-card {
+    width: 230px;
+    height: 340px;
+    border-radius: 20px;
+  }
+  .graphics-cf-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  .graphics-cf-nav.prev {
+    left: 2px;
+  }
+  .graphics-cf-nav.next {
+    right: 2px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -838,6 +1069,33 @@ body.has-custom-cursor * {
     <h1>IDEAS, MADE<br><span class="accent">VISIBLE.</span></h1>
     <p class="intro">A direct portfolio of commercial branding, festival campaigns, promotional posters, and product visualisations crafted at Suyash Graphics. Select a category to explore, and click any visual for high-resolution details.</p>
   </div>
+
+  <!-- Video-Inspired 3D Cover Flow Showcase -->
+  <section class="showcase-section" aria-label="Featured Graphic Artworks 3D Showcase">
+    <div class="art-headline-deck" aria-hidden="true">
+      <span>ART</span>
+      <span>OF</span>
+      <span>2025</span>
+    </div>
+
+    <div class="graphics-cf-wrap" id="graphics-cf-wrap">
+      <div class="graphics-cf-stage">
+        <button class="graphics-cf-nav prev" aria-label="Previous artwork">‹</button>
+        <div class="graphics-cf-track" id="graphics-cf-track">
+          <!-- Dynamically populated from featured designs -->
+        </div>
+        <button class="graphics-cf-nav next" aria-label="Next artwork">›</button>
+      </div>
+
+      <div class="cf-active-details">
+        <h2 class="cf-active-title" id="cf-active-title">Loading...</h2>
+        <span class="cf-active-pill" id="cf-active-pill">Commercial Practice</span>
+      </div>
+
+      <div class="cf-dots" id="cf-dots"></div>
+    </div>
+  </section>
+
 
   <!-- Agency Callout Banner -->
   <div class="agency-callout">
@@ -1092,6 +1350,192 @@ cards.forEach(card => {
     card.style.setProperty('--mouse-y', `${y}px`);
   });
 });
+
+// 3D Cover Flow Showcase Controller (Featured Highlights)
+const featuredArtworks = [
+  { file: 'suyash_DdQe1M_seFX.webp', title: 'GANESHOTSAV BRANDING', tag: 'SUYASH GRAPHICS · FESTIVAL IDENTITY', type: 'suyash poster' },
+  { file: 'bb05a43fa559a1f6.webp', title: 'RED BULL VISUALISATION', tag: 'PRODUCT ADVERTISING · 3D CANISTER', type: 'product' },
+  { file: 'suyash_DctzQdVs_x3.webp', title: 'AGENCY RECRUITMENT', tag: 'SUYASH GRAPHICS · PRINT CAMPAIGN', type: 'suyash poster' },
+  { file: 'f53cdd6152ef3dd1.webp', title: 'PORSCHE GT VISUAL', tag: 'AUTOMOTIVE PRODUCT RENDER', type: 'product' },
+  { file: 'suyash_Dc1TI-1sdci.webp', title: 'JANMASHTAMI CAMPAIGN', tag: 'SUYASH GRAPHICS · FESTIVE POSTER', type: 'suyash social' },
+  { file: '8878983202f6b5bc.webp', title: 'BOAT AUDIO SHOWCASE', tag: 'PRODUCT VISUALISATION · LIFESTYLE', type: 'product' },
+  { file: 'suyash_DYIRGKmyoum.webp', title: 'BRAND IDENTITY SUITE', tag: 'SUYASH GRAPHICS · LOGO & BRANDING', type: 'suyash social' },
+  { file: 'c6aa1222a64c520e.webp', title: 'EVENT MOTION POSTER', tag: 'EXTENDED GRAPHIC · TYPOGRAPHY', type: 'poster' },
+  { file: '2893c9bcf67573cf.webp', title: 'TITAN HOROLOGY', tag: 'PRODUCT VISUALISATION · MINIMALIST', type: 'product' },
+  { file: 'suyash_DGkS5i4sVb7.webp', title: 'STUDIO SHOWCASE', tag: 'SUYASH GRAPHICS · SOCIAL CREATIVE', type: 'suyash social' }
+];
+
+const cfTrack = document.getElementById('graphics-cf-track');
+const cfTitle = document.getElementById('cf-active-title');
+const cfPill = document.getElementById('cf-active-pill');
+const cfDots = document.getElementById('cf-dots');
+const cfWrap = document.getElementById('graphics-cf-wrap');
+const cfPrev = cfWrap.querySelector('.graphics-cf-nav.prev');
+const cfNext = cfWrap.querySelector('.graphics-cf-nav.next');
+
+if (cfTrack) {
+  cfTrack.innerHTML = featuredArtworks.map((item, idx) => `
+    <article class="graphics-cf-card" data-idx="${idx}" tabindex="0" role="button" aria-label="View ${item.title}">
+      <img src="designs/${item.file}" alt="${item.title}" loading="${idx < 3 ? 'eager' : 'lazy'}">
+    </article>
+  `).join('');
+
+  const cfCards = [...cfTrack.querySelectorAll('.graphics-cf-card')];
+  let activeCfIndex = 0;
+
+  // Build dots
+  cfDots.innerHTML = '';
+  featuredArtworks.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.className = 'cf-dot' + (idx === activeCfIndex ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+    dot.addEventListener('click', () => updateCfActive(idx));
+    cfDots.appendChild(dot);
+  });
+
+  function updateCfActive(newIdx) {
+    if (newIdx < 0 || newIdx >= cfCards.length) return;
+    activeCfIndex = newIdx;
+    renderCf();
+  }
+
+  function renderCf() {
+    const isMobile = window.innerWidth <= 768;
+    const cardStep = isMobile ? 125 : 185;
+    const zStep = isMobile ? 36 : 56;
+    const rotStep = isMobile ? 18 : 24;
+
+    cfCards.forEach((card, idx) => {
+      const offset = idx - activeCfIndex;
+      const absOffset = Math.abs(offset);
+
+      if (absOffset === 0) {
+        card.style.transform = `translateX(0px) translateZ(80px) rotateY(0deg) scale(1.08)`;
+        card.style.zIndex = '25';
+        card.style.opacity = '1';
+        card.style.filter = 'none';
+        card.style.pointerEvents = 'auto';
+        card.classList.add('is-center');
+      } else if (absOffset <= 2) {
+        const sign = offset < 0 ? -1 : 1;
+        const tx = sign * (cardStep + (absOffset - 1) * (isMobile ? 70 : 105));
+        const tz = -absOffset * zStep;
+        const ry = -sign * rotStep;
+        const scale = Math.max(0.72, 1 - absOffset * 0.12);
+        const opacity = Math.max(0.3, 1 - absOffset * 0.3);
+        const blur = absOffset * 0.8;
+
+        card.style.transform = `translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
+        card.style.zIndex = String(20 - absOffset);
+        card.style.opacity = String(opacity);
+        card.style.filter = `blur(${blur}px) brightness(${0.92 - absOffset * 0.2})`;
+        card.style.pointerEvents = 'auto';
+        card.classList.remove('is-center');
+      } else {
+        const sign = offset < 0 ? -1 : 1;
+        card.style.transform = `translateX(${sign * 360}px) translateZ(-160px) scale(0.6)`;
+        card.style.zIndex = '0';
+        card.style.opacity = '0';
+        card.style.filter = 'blur(4px)';
+        card.style.pointerEvents = 'none';
+        card.classList.remove('is-center');
+      }
+    });
+
+    // Update active details
+    const current = featuredArtworks[activeCfIndex];
+    if (cfTitle && current) cfTitle.textContent = current.title;
+    if (cfPill && current) cfPill.textContent = current.tag;
+
+    // Update dots
+    const dots = cfDots.querySelectorAll('.cf-dot');
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === activeCfIndex);
+    });
+  }
+
+  // Click handler: if center card, open lightbox; if side card, bring to center
+  cfCards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      if (idx === activeCfIndex) {
+        // Open lightbox
+        const art = featuredArtworks[idx];
+        const dummyCard = {
+          querySelector: () => ({ src: `designs/${art.file}` }),
+          dataset: {
+            title: art.title,
+            ig: art.file.startsWith('suyash') ? 'https://www.instagram.com/suyashgraphics09/' : ''
+          }
+        };
+        openLightbox(dummyCard);
+      } else {
+        updateCfActive(idx);
+      }
+    });
+  });
+
+  if (cfPrev) cfPrev.addEventListener('click', () => updateCfActive(Math.max(0, activeCfIndex - 1)));
+  if (cfNext) cfNext.addEventListener('click', () => updateCfActive(Math.min(cfCards.length - 1, activeCfIndex + 1)));
+
+  // Touch Swipe on mobile
+  let touchStartX = 0;
+  cfWrap.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  cfWrap.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(diff) > 35) {
+      if (diff > 0) updateCfActive(Math.max(0, activeCfIndex - 1));
+      else updateCfActive(Math.min(cfCards.length - 1, activeCfIndex + 1));
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', renderCf);
+  renderCf();
+}
+
+
+// Mobile Nav Drawer Toggle
+(function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const siteLinks = document.getElementById('site-links');
+  const navBackdrop = document.getElementById('nav-backdrop');
+
+  if (!menuToggle || !siteLinks) return;
+
+  function setMenuState(open) {
+    const shouldOpen = typeof open === 'boolean' ? open : !siteLinks.classList.contains('is-open');
+    siteLinks.classList.toggle('is-open', shouldOpen);
+    if (navBackdrop) navBackdrop.classList.toggle('is-active', shouldOpen);
+    menuToggle.setAttribute('aria-expanded', String(shouldOpen));
+    menuToggle.setAttribute('aria-label', shouldOpen ? 'Close navigation menu' : 'Open navigation menu');
+    menuToggle.textContent = shouldOpen ? '✕' : '☰';
+    document.body.style.overflow = shouldOpen ? 'hidden' : '';
+  }
+
+  menuToggle.addEventListener('click', () => setMenuState());
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', () => setMenuState(false));
+  }
+
+  siteLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && siteLinks.classList.contains('is-open')) {
+      setMenuState(false);
+      menuToggle.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && siteLinks.classList.contains('is-open')) {
+      setMenuState(false);
+    }
+  });
+})();
 </script>
 </body>
 </html>
