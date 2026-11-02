@@ -81,14 +81,40 @@
 
 :root {
   --bg: #090909;
-  --surface: #151515;
-  --card: rgba(21, 21, 21, 0.94);
+  --surface: rgba(255, 255, 255, 0.04);
+  --card: rgba(255, 255, 255, 0.045);
   --ink: #f2f2f2;
-  --muted: #aaa;
+  --muted: #a1a1aa;
   --line: rgba(255, 255, 255, 0.14);
   --accent: #d8d8d8;
   --deep: #252525;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.62);
+  --shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), 0 20px 48px rgba(0, 0, 0, 0.45);
+  
+  /* Liquid Glass Core Variables (from visual reference) */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-hover: rgba(255, 255, 255, 0.075);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-hover: rgba(255, 255, 255, 0.32);
+  --glass-blur: blur(22px) saturate(180%);
+  --glass-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+                  0 20px 48px rgba(0, 0, 0, 0.45);
+  --glass-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 0.38),
+                        0 24px 60px rgba(0, 0, 0, 0.55),
+                        0 0 28px rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg-hover: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(112, 91, 79, 0.2);
+  --glass-border-hover: rgba(112, 91, 79, 0.45);
+  --glass-blur: blur(20px) saturate(160%);
+  --glass-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95),
+                  0 16px 40px rgba(87, 68, 57, 0.12);
+  --glass-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 1),
+                        0 22px 50px rgba(87, 68, 57, 0.18),
+                        0 0 20px rgba(107, 85, 75, 0.12);
 }
 
 [data-theme="light"] {
@@ -181,16 +207,40 @@ a {
 }
 
 .nav {
-  height: 80px;
+  position: sticky;
+  top: 14px;
+  z-index: 900;
+  width: min(1180px, calc(100% - 32px));
+  margin: 14px auto 0;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 14px;
+  padding: 8px 20px;
+  background: rgba(14, 14, 18, 0.72);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+[data-theme="light"] .nav {
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .logo {
   font: 800 24px 'Riking', sans-serif;
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
 }
 
 .accent, .logo b, .eyebrow {
@@ -199,18 +249,66 @@ a {
 
 .links {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  gap: 3px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11.5px;
 }
 
-.links a:hover {
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active-section {
   color: var(--ink);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active-section {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+.nav-divider {
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background: var(--glass-border);
+  margin: 0 4px;
+}
+
+.nav-portal-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+.nav-portal-chip:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #ffffff;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), 0 4px 14px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
 }
 
 .nav-backdrop,
-.nav-group-title,
-.nav-divider {
+.nav-group-title {
   display: none;
 }
 
@@ -463,10 +561,23 @@ section[id] {
 
 .panel {
   padding: 28px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.panel:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-3px);
 }
 
 .bio {
@@ -623,11 +734,24 @@ section[id] {
 }
 
 .skill, .project {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
   overflow: hidden;
-  transition: 0.3s;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.skill:hover, .project:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px);
 }
 
 .project {
@@ -1039,11 +1163,23 @@ section[id] {
   justify-content: space-between;
   gap: 22px;
   padding: 34px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(120deg, #252525, #121212);
-  box-shadow: var(--shadow);
-  transition: 0.3s;
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.cta:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-3px);
 }
 
 .cta:hover {
@@ -1320,7 +1456,7 @@ body.has-custom-cursor * {
   border-radius: 50%;
   background: #ffffff;
   pointer-events: none;
-  z-index: 99999;
+  z-index: 10000000;
   transform: translate(-50%, -50%);
   transition: opacity 0.2s, transform 0.08s ease-out;
 }
@@ -1334,7 +1470,7 @@ body.has-custom-cursor * {
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.45);
   pointer-events: none;
-  z-index: 99998;
+  z-index: 9999999;
   transform: translate(-50%, -50%);
   transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
@@ -1590,16 +1726,29 @@ body.has-custom-cursor * {
 }
 
 .cert-card {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
   padding: 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
   min-height: 240px;
+}
+
+.cert-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px);
 }
 
 .cert-card:before, .intern-card:before {
@@ -1713,15 +1862,28 @@ body.has-custom-cursor * {
 }
 
 .intern-card {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
   padding: 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.intern-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px);
 }
 
 .intern-card-header {
@@ -2945,14 +3107,14 @@ body:not(.landing-active) header.nav {
   <a href="#about" class="nav-link">About</a>
   <a href="#skills" class="nav-link">Skills</a>
   <a href="#projects" class="nav-link">Projects</a>
-  <a href="#experience" class="nav-link">Experience</a>
+  <a href="#experience" class="nav-link">Experiences</a>
   <a href="#certifications" class="nav-link">Credentials</a>
   <a href="#contact" class="nav-link">Contact</a>
-  <div class="nav-divider" role="separator"></div>
+  <span class="nav-divider" role="separator"></span>
   <span class="nav-group-title">Dedicated Portals</span>
-  <a href="live-projects.html" class="nav-link">Projects Archive (8) <span class="nav-arrow" aria-hidden="true">↗</span></a>
-  <a href="graphics.html" class="nav-link">Graphic Designs <span class="nav-arrow" aria-hidden="true">↗</span></a>
-  <a href="games.html" class="nav-link">Games &amp; Media <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="live-projects.html" class="nav-link nav-portal-chip">Project Archive <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="graphics.html" class="nav-link nav-portal-chip">Graphics Design <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="games.html" class="nav-link nav-portal-chip">Games &amp; Media <span class="nav-arrow" aria-hidden="true">↗</span></a>
 </nav>
 <div class="actions">
   <button class="theme" id="theme" aria-label="Toggle colour theme">☼</button>
@@ -3062,11 +3224,11 @@ body:not(.landing-active) header.nav {
 <strong>Content Creator</strong>
 <small>Open OldHopes on YouTube ↗</small>
 </a>
-<button class="persona" type="button" id="persona-private" aria-label="Personal life — private and grounded">
+<a class="persona" href="javascript:void(0)" id="persona-private" role="button" aria-label="Personal life — private and grounded">
 <span class="n">05</span>
 <strong>Personal Life</strong>
 <small>Private and grounded.</small>
-</button>
+</a>
 </div>
 </div>
 </section>
