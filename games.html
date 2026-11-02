@@ -157,14 +157,14 @@ body {
   }
 }
 
-/* Movies: Avengers Cinematic Atmosphere */
+/* Movies: Thalapathy Vijay Atmosphere */
 #bg-movies {
-  background-image: url('assets/img/backgrounds/mcu-mobile.jpg');
-  background-position: center 26%;
+  background-image: url('assets/img/backgrounds/ott-desktop.png');
+  background-position: center center;
 }
 @media (max-width: 768px) {
   #bg-movies {
-    background-image: url('assets/img/backgrounds/mcu-mobile.jpg');
+    background-image: url('assets/img/backgrounds/ott-mobile.png');
     background-position: center top;
   }
 }
@@ -193,11 +193,16 @@ body {
   }
 }
 
-/* Anime: Dark Fantasy Aura */
+/* Anime: Satoru Gojo Atmosphere */
 #bg-anime {
-  background-image: radial-gradient(circle at 75% 25%, rgba(239, 68, 68, 0.35), transparent 50%),
-                    radial-gradient(circle at 20% 75%, rgba(59, 130, 246, 0.3), transparent 50%),
-                    linear-gradient(135deg, #090912, #14121e);
+  background-image: url('assets/img/backgrounds/anime-desktop.jpg');
+  background-position: center center;
+}
+@media (max-width: 768px) {
+  #bg-anime {
+    background-image: url('assets/img/backgrounds/anime-mobile.jpg');
+    background-position: center top;
+  }
 }
 
 .backdrop-overlay {
@@ -1024,20 +1029,19 @@ body.has-custom-cursor * {
     <p class="intro">A personal archive of the worlds, stories and characters I have spent time with — arranged from earlier releases to newer ones where release dates are known.</p>
     
     <div class="tabs" role="tablist" aria-label="Entertainment categories">
-      <button class="tab active" role="tab" id="tab-games" aria-selected="true" aria-controls="games" data-view="games" tabindex="0">🎮 Games</button>
-      <button class="tab" role="tab" id="tab-movies" aria-selected="false" aria-controls="movies" data-view="movies" tabindex="-1">🎬 Movies</button>
-      <button class="tab" role="tab" id="tab-mcu" aria-selected="false" aria-controls="mcu" data-view="mcu" tabindex="-1">🦸 Marvel (MCU)</button>
-      <button class="tab" role="tab" id="tab-series" aria-selected="false" aria-controls="series" data-view="series" tabindex="-1">📺 Web Series &amp; OTT</button>
-      <button class="tab" role="tab" id="tab-anime" aria-selected="false" aria-controls="anime" data-view="anime" tabindex="-1">⛩️ Anime</button>
+      <button class="tab active" role="tab" id="tab-games" aria-selected="true" aria-controls="games" data-view="games" tabindex="0">Games</button>
+      <button class="tab" role="tab" id="tab-movies" aria-selected="false" aria-controls="movies" data-view="movies" tabindex="-1">Movies</button>
+      <button class="tab" role="tab" id="tab-mcu" aria-selected="false" aria-controls="mcu" data-view="mcu" tabindex="-1">Marvel (MCU)</button>
+      <button class="tab" role="tab" id="tab-series" aria-selected="false" aria-controls="series" data-view="series" tabindex="-1">Web Series &amp; OTT</button>
+      <button class="tab" role="tab" id="tab-anime" aria-selected="false" aria-controls="anime" data-view="anime" tabindex="-1">Anime</button>
     </div>
 
     <!-- 1. GAMES VIEW -->
     <div class="view" id="games" role="tabpanel" aria-labelledby="tab-games" tabindex="0">
       <div class="coverflow-wrap" data-cf-id="games">
         <div class="coverflow-header">
-          <h2 class="coverflow-heading"><span>🎮</span> Featured Game Universes</h2>
-          <span class="coverflow-hint">Interactive 3D Deck · Click or swipe</span>
-        </div>
+          <h2 class="coverflow-heading">Featured Games</h2>
+          </div>
         <div class="coverflow-stage">
           <button class="coverflow-nav prev" aria-label="Previous game">‹</button>
           <div class="coverflow-track">
@@ -1230,9 +1234,8 @@ body.has-custom-cursor * {
     <div class="view" id="movies" role="tabpanel" aria-labelledby="tab-movies" tabindex="0" hidden>
       <div class="coverflow-wrap" data-cf-id="movies">
         <div class="coverflow-header">
-          <h2 class="coverflow-heading"><span>🎬</span> Featured Films Archive</h2>
-          <span class="coverflow-hint">Interactive 3D Deck · Click or swipe</span>
-        </div>
+          <h2 class="coverflow-heading">Featured Movies</h2>
+          </div>
         <div class="coverflow-stage">
           <button class="coverflow-nav prev" aria-label="Previous movie">‹</button>
           <div class="coverflow-track">
@@ -1439,9 +1442,8 @@ body.has-custom-cursor * {
     <div class="view" id="mcu" role="tabpanel" aria-labelledby="tab-mcu" tabindex="0" hidden>
       <div class="coverflow-wrap" data-cf-id="mcu">
         <div class="coverflow-header">
-          <h2 class="coverflow-heading"><span>🦸‍♂️</span> Marvel Cinematic Universe — Highlights</h2>
-          <span class="coverflow-hint">Interactive 3D Deck · Click or swipe</span>
-        </div>
+          <h2 class="coverflow-heading">Marvel Cinematic Universe</h2>
+          </div>
         <div class="coverflow-stage">
           <button class="coverflow-nav prev" aria-label="Previous MCU title">‹</button>
           <div class="coverflow-track">
@@ -1678,9 +1680,8 @@ body.has-custom-cursor * {
     <div class="view" id="series" role="tabpanel" aria-labelledby="tab-series" tabindex="0" hidden>
       <div class="coverflow-wrap" data-cf-id="series">
         <div class="coverflow-header">
-          <h2 class="coverflow-heading"><span>📺</span> Web Series &amp; OTT Shows</h2>
-          <span class="coverflow-hint">Interactive 3D Deck · Click or swipe</span>
-        </div>
+          <h2 class="coverflow-heading">Web Series &amp; OTT Shows</h2>
+          </div>
         <div class="coverflow-stage">
           <button class="coverflow-nav prev" aria-label="Previous series">‹</button>
           <div class="coverflow-track">
@@ -1865,9 +1866,8 @@ body.has-custom-cursor * {
     <div class="view" id="anime" role="tabpanel" aria-labelledby="tab-anime" tabindex="0" hidden>
       <div class="coverflow-wrap" data-cf-id="anime">
         <div class="coverflow-header">
-          <h2 class="coverflow-heading"><span>⛩️</span> Featured Anime Series</h2>
-          <span class="coverflow-hint">Interactive 3D Deck · Click or swipe</span>
-        </div>
+          <h2 class="coverflow-heading">Featured Anime Series</h2>
+          </div>
         <div class="coverflow-stage">
           <button class="coverflow-nav prev" aria-label="Previous anime">‹</button>
           <div class="coverflow-track">
