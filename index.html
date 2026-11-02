@@ -25,21 +25,96 @@
 <meta name="twitter:description" content="Portfolio of Aditya Walvekar — 3rd-year AI/ML engineering student, developer, and designer. Explore live web apps, machine learning pipelines, and verified credentials.">
 <meta name="twitter:image" content="https://aadi-x.github.io/portfolio/og-card.svg">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Syne,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23090909%22/><text x=%2250%22 y=%2266%22 font-family=%22Riking,sans-serif%22 font-size=%2252%22 font-weight=%22800%22 fill=%22%23f2f2f2%22 text-anchor=%22middle%22>AW<tspan fill=%22%23d8d8d8%22>.</tspan></text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Monda:wght@400;700&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Riking';
+  src: url('fonts/Riking.woff') format('woff'),
+       url('fonts/Riking.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-600.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-500.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('fonts/PlusJakartaSans-700.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monda';
+  src: url('fonts/Monda-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monda';
+  src: url('fonts/Monda-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #090909;
-  --surface: #151515;
-  --card: rgba(21, 21, 21, 0.94);
+  --surface: rgba(255, 255, 255, 0.04);
+  --card: rgba(255, 255, 255, 0.045);
   --ink: #f2f2f2;
-  --muted: #aaa;
+  --muted: #a1a1aa;
   --line: rgba(255, 255, 255, 0.14);
   --accent: #d8d8d8;
   --deep: #252525;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.62);
+  --shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), 0 20px 48px rgba(0, 0, 0, 0.45);
+  
+  /* Liquid Glass Core Variables (from visual reference) */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-hover: rgba(255, 255, 255, 0.075);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-hover: rgba(255, 255, 255, 0.32);
+  --glass-blur: blur(22px) saturate(180%);
+  --glass-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+                  0 20px 48px rgba(0, 0, 0, 0.45);
+  --glass-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 0.38),
+                        0 24px 60px rgba(0, 0, 0, 0.55),
+                        0 0 28px rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg-hover: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(112, 91, 79, 0.2);
+  --glass-border-hover: rgba(112, 91, 79, 0.45);
+  --glass-blur: blur(20px) saturate(160%);
+  --glass-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95),
+                  0 16px 40px rgba(87, 68, 57, 0.12);
+  --glass-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 1),
+                        0 22px 50px rgba(87, 68, 57, 0.18),
+                        0 0 20px rgba(107, 85, 75, 0.12);
 }
 
 [data-theme="light"] {
@@ -66,7 +141,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: Manrope, Arial, sans-serif;
+  font-family: 'Monda', Manrope, Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -132,16 +207,40 @@ a {
 }
 
 .nav {
-  height: 80px;
+  position: sticky;
+  top: 14px;
+  z-index: 900;
+  width: min(1180px, calc(100% - 32px));
+  margin: 14px auto 0;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 14px;
+  padding: 8px 20px;
+  background: rgba(14, 14, 18, 0.72);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+[data-theme="light"] .nav {
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .logo {
-  font: 800 23px Syne;
-  letter-spacing: -0.04em;
+  font: 800 24px 'Riking', sans-serif;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
 }
 
 .accent, .logo b, .eyebrow {
@@ -150,18 +249,66 @@ a {
 
 .links {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  gap: 3px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11.5px;
 }
 
-.links a:hover {
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active-section {
   color: var(--ink);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active-section {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+.nav-divider {
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background: var(--glass-border);
+  margin: 0 4px;
+}
+
+.nav-portal-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+.nav-portal-chip:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #ffffff;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), 0 4px 14px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
 }
 
 .nav-backdrop,
-.nav-group-title,
-.nav-divider {
+.nav-group-title {
   display: none;
 }
 
@@ -186,7 +333,7 @@ a {
   color: var(--ink);
   border-radius: 999px;
   padding: 12px 16px;
-  font: 700 12px Manrope;
+  font: 700 12px 'Monda', sans-serif;
   cursor: pointer;
   transition: 0.25s;
 }
@@ -221,12 +368,12 @@ a {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  font: 700 18px Manrope;
+  font: 700 18px 'Monda', sans-serif;
   cursor: pointer;
 }
 
 .eyebrow {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -239,18 +386,28 @@ section[id] {
   scroll-margin-top: 88px;
 }
 
+/* ============================================================
+   HERO SECTION (2-Column Classical Editorial Layout)
+   ============================================================ */
 .hero {
   min-height: calc(100vh - 80px);
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
-  gap: clamp(24px, 3.5vw, 44px);
+  gap: clamp(28px, 4vw, 56px);
+  padding: 30px 0 44px;
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  min-width: 0;
 }
 
 .hero h1 {
-  font: 800 clamp(44px, 6vw, 92px) / 0.9 Syne;
-  letter-spacing: -0.065em;
-  margin: 15px 0 16px;
+  font: 800 clamp(40px, 5.2vw, 78px) / 1.0 'Riking', sans-serif;
+  letter-spacing: -0.01em;
+  margin: 14px 0 16px;
   white-space: nowrap;
 }
 
@@ -258,13 +415,14 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
 }
 
-.hero-tagline span {
-  font: 600 12px "DM Mono";
+.hero-tagline span.tag-word {
+  font: 600 11.5px 'Monda', sans-serif;
   color: var(--accent);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   padding: 4px 12px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
@@ -272,25 +430,32 @@ section[id] {
   text-transform: uppercase;
 }
 
-[data-theme="light"] .hero-tagline span {
+.hero-tagline span.tag-dot {
+  color: #64748b;
+  font-size: 13px;
+}
+
+[data-theme="light"] .hero-tagline span.tag-word {
   background: rgba(0, 0, 0, 0.04);
   border-color: rgba(112, 91, 79, 0.25);
   color: #6B554B;
 }
 
 .intro, .section-intro {
-  max-width: 560px;
+  max-width: 540px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.8;
 }
 
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 26px;
 }
 
+/* Portrait (Classic Live Arched Floating Card) */
 .portrait {
   height: 560px;
   position: relative;
@@ -300,6 +465,7 @@ section[id] {
 
 .portrait:before {
   content: "";
+  position: absolute;
   width: 395px;
   height: 470px;
   border: 1px solid var(--line);
@@ -321,6 +487,19 @@ section[id] {
   border-radius: 165px 165px 20px;
   box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.04), 0 0 78px rgba(255, 255, 255, 0.14);
   animation: float 5s ease-in-out infinite;
+}
+
+.f1 {
+  right: 14px;
+  top: 60px;
+  white-space: nowrap;
+}
+
+.f2 {
+  left: 10px;
+  bottom: 42px;
+  animation-delay: -2s;
+  white-space: nowrap;
 }
 
 .float {
@@ -369,8 +548,8 @@ section[id] {
 }
 
 .title {
-  font: 700 clamp(35px, 4.2vw, 53px) / 1 Syne;
-  letter-spacing: -0.06em;
+  font: 700 clamp(32px, 4vw, 50px) / 1.05 'Riking', sans-serif;
+  letter-spacing: -0.01em;
   margin: 10px 0;
 }
 
@@ -382,15 +561,27 @@ section[id] {
 
 .panel {
   padding: 28px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.panel:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-3px);
 }
 
 .bio {
-  font: 600 24px / 1.45 Syne;
-  letter-spacing: -0.035em;
+  font: 600 22px / 1.55 'Monda', sans-serif;
 }
 
 .journey div, .role {
@@ -400,7 +591,7 @@ section[id] {
 }
 
 .journey small, .role small {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--accent);
 }
 
@@ -447,14 +638,14 @@ section[id] {
   z-index: 1;
   top: 25px;
   left: 28px;
-  font: 700 clamp(26px, 3vw, 42px) / 1 Syne;
-  letter-spacing: -0.05em;
+  font: 700 clamp(24px, 2.8vw, 38px) / 1.05 'Riking', sans-serif;
+  letter-spacing: -0.01em;
 }
 
 .persona-heading span {
   display: block;
   color: var(--accent);
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   letter-spacing: 0.14em;
   margin-bottom: 10px;
 }
@@ -486,11 +677,12 @@ section[id] {
 .persona .n {
   display: block;
   color: var(--accent);
-  font: 500 9px "DM Mono";
+  font: 500 9px 'Monda', sans-serif;
 }
 
 .persona strong {
-  font: 700 13px Syne;
+  font: 600 13px 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.01em;
   display: block;
   margin-top: 7px;
 }
@@ -542,11 +734,24 @@ section[id] {
 }
 
 .skill, .project {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
   overflow: hidden;
-  transition: 0.3s;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.skill:hover, .project:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px);
 }
 
 .project {
@@ -592,12 +797,12 @@ section[id] {
 }
 
 .skill-head span:first-child, .tag {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--accent);
 }
 
 .skill-category {
-  font: 600 9px "DM Mono";
+  font: 600 9px 'Monda', sans-serif;
   color: var(--muted);
   letter-spacing: 0.12em;
   padding: 3px 8px;
@@ -606,9 +811,9 @@ section[id] {
 }
 
 .skill h3 {
-  font: 700 20px Syne;
+  font: 600 20px 'Plus Jakarta Sans', sans-serif;
   margin: 0 0 10px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .skill p, .project p {
@@ -632,29 +837,212 @@ section[id] {
 }
 
 .skill-tag {
-  display: inline-block;
-  font: 500 9.5px "DM Mono";
-  padding: 3px 8px;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5.5px;
+  font: 500 10px 'Monda', sans-serif;
+  padding: 4px 9px;
+  border-radius: 7px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
   color: var(--muted);
-  transition: 0.2s;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.skill-tag svg.tag-icon {
+  width: 12.5px;
+  height: 12.5px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .skill:hover .skill-tag {
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.25);
   color: var(--ink);
   background: rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="light"] .skill-tag {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.035);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .skill:hover .skill-tag {
   background: rgba(0, 0, 0, 0.08);
   border-color: var(--accent);
+  color: var(--ink);
+}
+
+/* Production Software & Tools Showcase (Liquid Glass Suite) */
+.software-tools-section {
+  margin-top: 24px;
+  padding: 28px 30px;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.software-tools-section:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+}
+
+.software-tools-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.software-tools-title {
+  font: 600 20px 'Plus Jakarta Sans', sans-serif;
+  color: var(--ink);
+  margin: 4px 0 0;
+  letter-spacing: -0.01em;
+}
+
+.software-tools-badge {
+  font: 600 10px 'Monda', sans-serif;
+  color: var(--accent);
+  background: rgba(255, 107, 0, 0.08);
+  border: 1px solid rgba(255, 107, 0, 0.25);
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 14px 10px;
+}
+
+.tool-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 6px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  position: relative;
+}
+
+.tool-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.tool-item svg.tool-icon {
+  width: 42px;
+  height: 42px;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tool-item:hover svg.tool-icon {
+  transform: scale(1.08);
+}
+
+.tool-name {
+  font: 600 11px 'Plus Jakarta Sans', sans-serif;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.tool-cat {
+  font: 500 8.5px 'Monda', sans-serif;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+[data-theme="light"] .software-tools-section {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .tool-item {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .tool-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .tools-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .software-tools-section {
+    padding: 22px 18px;
+  }
+  .tools-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 8px;
+  }
+  .tool-item {
+    padding: 12px 4px;
+  }
+  .tool-item svg.tool-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .tool-name {
+    font-size: 10px;
+  }
+  .tool-cat {
+    display: none;
+  }
+  .software-tools-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 6px;
+  }
+  .tool-item svg.tool-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 /* Achievements Component */
@@ -672,9 +1060,9 @@ section[id] {
 }
 
 .achieve-heading {
-  font: 700 22px Syne;
+  font: 600 21px 'Plus Jakarta Sans', sans-serif;
   margin: 6px 0 18px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 
 .achievements-grid {
@@ -705,13 +1093,13 @@ section[id] {
 }
 
 .achieve-tag {
-  font: 600 10px "DM Mono";
+  font: 600 10px 'Monda', sans-serif;
   color: var(--accent);
   letter-spacing: 0.12em;
 }
 
 .achieve-status {
-  font: 500 9px "DM Mono";
+  font: 500 9px 'Monda', sans-serif;
   color: var(--muted);
   padding: 2px 7px;
   border-radius: 999px;
@@ -719,8 +1107,9 @@ section[id] {
 }
 
 .achieve-card h4 {
-  font: 700 17px Syne;
+  font: 600 17px 'Plus Jakarta Sans', sans-serif;
   margin: 0 0 6px;
+  letter-spacing: -0.01em;
 }
 
 .achieve-card p {
@@ -759,7 +1148,7 @@ section[id] {
 }
 
 .art-badge {
-  font: 600 9.5px "DM Mono";
+  font: 600 9.5px 'Monda', sans-serif;
   letter-spacing: 0.12em;
   padding: 3px 9px;
   border-radius: 6px;
@@ -793,15 +1182,15 @@ section[id] {
 }
 
 .bridge-text .bridge-tag {
-  font: 600 10px "DM Mono";
+  font: 600 10px 'Monda', sans-serif;
   color: var(--accent);
   letter-spacing: 0.12em;
 }
 
 .bridge-text h3 {
-  font: 700 19px Syne;
+  font: 600 19px 'Plus Jakarta Sans', sans-serif;
   margin: 5px 0 6px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .bridge-text p {
@@ -837,13 +1226,13 @@ section[id] {
 }
 
 .project h3 {
-  font: 700 20px Syne;
+  font: 600 20px 'Plus Jakarta Sans', sans-serif;
   margin: 8px 0 6px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .project-role {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--accent);
   display: block;
   margin-bottom: 8px;
@@ -858,7 +1247,7 @@ section[id] {
 }
 
 .project-btn {
-  font: 700 11px "DM Mono";
+  font: 700 11px 'Monda', sans-serif;
   padding: 8px 16px;
   min-height: 40px;
   display: inline-flex;
@@ -936,7 +1325,7 @@ section[id] {
 }
 
 .filter {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--muted);
   background: transparent;
   min-height: 44px;
@@ -957,11 +1346,23 @@ section[id] {
   justify-content: space-between;
   gap: 22px;
   padding: 34px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(120deg, #252525, #121212);
-  box-shadow: var(--shadow);
-  transition: 0.3s;
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.cta:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-3px);
 }
 
 .cta:hover {
@@ -970,7 +1371,8 @@ section[id] {
 }
 
 .cta h2 {
-  font: 700 clamp(30px, 4vw, 49px) / 1 Syne;
+  font: 700 clamp(28px, 3.8vw, 46px) / 1.05 'Riking', sans-serif;
+  letter-spacing: -0.01em;
   margin: 8px 0;
 }
 
@@ -1020,8 +1422,8 @@ section[id] {
 }
 
 .contact h2 {
-  font: 700 clamp(45px, 7vw, 82px) / 0.95 Syne;
-  letter-spacing: -0.07em;
+  font: 700 clamp(42px, 6.5vw, 76px) / 0.98 'Riking', sans-serif;
+  letter-spacing: -0.01em;
   margin: 15px 0;
 }
 
@@ -1041,7 +1443,7 @@ section[id] {
   justify-content: center;
   padding: 10px 18px;
   color: var(--muted);
-  font: 500 11px "DM Mono";
+  font: 500 11px 'Monda', sans-serif;
   transition: 0.2s;
 }
 
@@ -1057,7 +1459,7 @@ footer {
   padding: 20px 0 28px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
 }
 
 /* Scroll Progress Bar */
@@ -1111,7 +1513,7 @@ footer {
   align-items: center;
   gap: 10px;
   color: var(--muted);
-  font: 500 10.5px "DM Mono";
+  font: 500 10.5px 'Monda', sans-serif;
   letter-spacing: 0.14em;
   text-decoration: none;
   transition: color 0.25s, transform 0.25s;
@@ -1237,7 +1639,7 @@ body.has-custom-cursor * {
   border-radius: 50%;
   background: #ffffff;
   pointer-events: none;
-  z-index: 99999;
+  z-index: 10000000;
   transform: translate(-50%, -50%);
   transition: opacity 0.2s, transform 0.08s ease-out;
 }
@@ -1251,7 +1653,7 @@ body.has-custom-cursor * {
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.45);
   pointer-events: none;
-  z-index: 99998;
+  z-index: 9999999;
   transform: translate(-50%, -50%);
   transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
@@ -1453,7 +1855,7 @@ body.has-custom-cursor * {
 }
 
 .cert-tab-btn {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--muted);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1507,16 +1909,29 @@ body.has-custom-cursor * {
 }
 
 .cert-card {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
   padding: 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
   min-height: 240px;
+}
+
+.cert-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px);
 }
 
 .cert-card:before, .intern-card:before {
@@ -1549,12 +1964,12 @@ body.has-custom-cursor * {
 }
 
 .cert-card-num {
-  font: 500 11px "DM Mono";
+  font: 500 11px 'Monda', sans-serif;
   color: var(--accent);
 }
 
 .cert-badge {
-  font: 600 9.5px "DM Mono";
+  font: 600 9.5px 'Monda', sans-serif;
   color: var(--muted);
   letter-spacing: 0.12em;
   padding: 4px 10px;
@@ -1564,10 +1979,10 @@ body.has-custom-cursor * {
 }
 
 .cert-card h3 {
-  font: 700 20px Syne;
+  font: 600 19px 'Plus Jakarta Sans', sans-serif;
   margin: 0 0 10px;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
 }
 
 .cert-desc {
@@ -1589,7 +2004,7 @@ body.has-custom-cursor * {
 }
 
 .cert-status-dot {
-  font: 500 10px "DM Mono";
+  font: 500 10px 'Monda', sans-serif;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
@@ -1610,7 +2025,7 @@ body.has-custom-cursor * {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--line);
   color: var(--ink);
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   min-height: 38px;
@@ -1630,15 +2045,28 @@ body.has-custom-cursor * {
 }
 
 .intern-card {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
   padding: 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.intern-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px);
 }
 
 .intern-card-header {
@@ -1650,19 +2078,19 @@ body.has-custom-cursor * {
 }
 
 .intern-card-header h3 {
-  font: 700 20px Syne;
+  font: 600 20px 'Plus Jakarta Sans', sans-serif;
   margin: 6px 0 4px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .intern-role {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--accent);
   display: block;
 }
 
 .intern-status {
-  font: 600 9px "DM Mono";
+  font: 600 9px 'Monda', sans-serif;
   color: #4ade80;
   padding: 3px 8px;
   border-radius: 6px;
@@ -1687,7 +2115,7 @@ body.has-custom-cursor * {
 
 .intern-docs-label {
   display: block;
-  font: 600 9.5px "DM Mono";
+  font: 600 9.5px 'Monda', sans-serif;
   color: var(--muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1709,7 +2137,7 @@ body.has-custom-cursor * {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
   color: var(--ink);
-  font: 600 10.5px "DM Mono";
+  font: 600 10.5px 'Monda', sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   min-height: 36px;
@@ -1743,7 +2171,7 @@ body.has-custom-cursor * {
 }
 
 .intern-verify-link {
-  font: 600 11px "DM Mono";
+  font: 600 11px 'Monda', sans-serif;
   color: var(--accent);
   display: inline-flex;
   align-items: center;
@@ -1790,7 +2218,9 @@ body.has-custom-cursor * {
 .cert-modal {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 999999;
   display: grid;
   place-items: center;
   padding: 16px;
@@ -1801,23 +2231,23 @@ body.has-custom-cursor * {
 }
 
 .cert-modal.is-open {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
 }
 
 .cert-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.82);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 1001;
+  z-index: 1000000;
 }
 
 .cert-modal-dialog {
   position: relative;
-  z-index: 1002;
+  z-index: 1000001;
   width: min(860px, calc(100vw - 32px));
   max-height: calc(100vh - 40px);
   background: var(--surface);
@@ -1850,7 +2280,7 @@ body.has-custom-cursor * {
 }
 
 .cert-modal-subtitle {
-  font: 600 10px "DM Mono";
+  font: 600 10px 'Monda', sans-serif;
   color: var(--accent);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1858,11 +2288,10 @@ body.has-custom-cursor * {
 }
 
 .cert-modal-title {
-  font: 700 17px Syne;
+  font: 600 17px 'Plus Jakarta Sans', sans-serif;
   margin: 3px 0 0;
+  letter-spacing: -0.01em;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .cert-modal-actions {
@@ -2056,7 +2485,7 @@ body.has-custom-cursor * {
   }
   .nav-group-title {
     display: block;
-    font: 600 10px "DM Mono";
+    font: 600 10px 'Monda', sans-serif;
     color: var(--accent);
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -2130,7 +2559,7 @@ body.has-custom-cursor * {
     padding: 10px 18px;
     font-size: 12px;
   }
-  .portrait {
+    .portrait {
     grid-row: auto;
     height: 380px;
     margin-top: 14px;
@@ -2191,11 +2620,8 @@ body.has-custom-cursor * {
     line-height: 1.5;
   }
   .personalities {
-    height: 480px;
+    height: 570px;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     position: relative;
     overflow: hidden;
   }
@@ -2205,52 +2631,48 @@ body.has-custom-cursor * {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center 22%;
     opacity: 0.9;
   }
   .persona-heading {
-    position: relative;
-    top: auto;
-    left: auto;
-    padding: 24px 20px 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
     z-index: 2;
   }
   .personas {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 10px;
-    padding: 12px 18px 20px;
+    position: absolute;
     z-index: 2;
-    scrollbar-width: none;
-  }
-  .personas::-webkit-scrollbar {
-    display: none;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0;
+    overflow: visible;
   }
   .persona {
-    flex: 0 0 185px;
-    scroll-snap-align: start;
-    min-height: 86px;
-    padding: 13px;
-    border-radius: 14px;
-    background: rgba(12, 12, 12, 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    min-height: 72px;
+    padding: 11px 12px;
+    border-radius: 12px;
+    background: rgba(12, 12, 12, 0.84);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.18);
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
   }
   .persona:last-child {
-    grid-column: auto;
-    margin-right: 8px;
+    grid-column: 1 / -1;
   }
   .persona strong {
-    font-size: 13px;
-    margin-top: 5px;
+    font: 600 13px 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: 0.01em;
+    display: block;
+    margin-top: 7px;
   }
   .persona small {
     display: block;
@@ -2278,8 +2700,11 @@ body.has-custom-cursor * {
     padding: 12px 14px;
   }
   .cert-modal-title {
-    font-size: 15px;
-  }
+  font: 600 17px 'Plus Jakarta Sans', sans-serif;
+  margin: 3px 0 0;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
   .cert-modal-body {
     padding: 12px;
   }
@@ -2291,8 +2716,10 @@ body.has-custom-cursor * {
     padding: 20px;
   }
   .skill h3 {
-    margin: 0 0 8px;
-  }
+  font: 600 20px 'Plus Jakarta Sans', sans-serif;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
   .projects {
     grid-template-columns: 1fr;
   }
@@ -2380,41 +2807,25 @@ body.has-custom-cursor * {
   .cta p {
     font-size: 12.5px;
   }
-  .portrait {
-    height: 340px;
-    margin-top: 8px;
+    .portrait {
+    grid-row: auto;
+    height: 380px;
+    margin-top: 14px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    max-width: 100%;
   }
   .portrait:before {
-    width: 200px;
-    height: 255px;
+    width: 230px;
+    height: 290px;
   }
   .portrait img {
-    width: 180px;
-    height: 235px;
-  }
-  .f1 {
-    right: 4px;
-    top: 18px;
-    padding: 7px 10px;
-    font-size: 9px;
-  }
-  .f1 strong {
-    font-size: 10.5px;
-  }
-  .f2 {
-    left: 4px;
-    bottom: 12px;
-    padding: 7px 10px;
-    font-size: 9px;
-  }
-  .f2 strong {
-    font-size: 10.5px;
+    width: 205px;
+    height: 270px;
   }
   .personalities {
-    height: 460px;
-  }
-  .persona {
-    flex: 0 0 170px;
+    height: 580px;
   }
 }
 
@@ -2441,32 +2852,22 @@ body.has-custom-cursor * {
     padding: 10px 14px;
     font-size: 11.5px;
   }
-  .portrait {
-    height: 305px;
+    .portrait {
+    grid-row: auto;
+    height: 380px;
+    margin-top: 14px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    max-width: 100%;
   }
   .portrait:before {
-    width: 175px;
-    height: 225px;
+    width: 230px;
+    height: 290px;
   }
   .portrait img {
-    width: 155px;
-    height: 205px;
-  }
-  .float {
-    padding: 6px 9px;
-    font-size: 8.5px;
-    border-radius: 10px;
-  }
-  .float strong {
-    font-size: 10px;
-  }
-  .f1 {
-    right: 0;
-    top: 8px;
-  }
-  .f2 {
-    left: 0;
-    bottom: 6px;
+    width: 205px;
+    height: 270px;
   }
 }
 
@@ -2593,7 +2994,7 @@ body.has-custom-cursor * {
 }
 
 .landing-eyebrow {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Monda', monospace;
   font-size: clamp(12px, 1.2vw, 15px);
   font-weight: 500;
   letter-spacing: 0.32em;
@@ -2621,11 +3022,11 @@ body.has-custom-cursor * {
 }
 
 .landing-name {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(38px, 7.2vw, 92px);
+  font-family: 'Riking', sans-serif;
+  font-size: clamp(38px, 7.2vw, 90px);
   font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
+  line-height: 1.0;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   margin: 0;
   display: flex;
@@ -2667,7 +3068,7 @@ body.has-custom-cursor * {
 }
 
 .landing-tagline {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Monda', monospace;
   font-size: clamp(11.5px, 1.15vw, 14.5px);
   font-weight: 500;
   letter-spacing: 0.28em;
@@ -2700,6 +3101,66 @@ body.has-custom-cursor * {
     opacity: 0.95;
     transition: opacity 0.8s ease;
   }
+
+@media (max-width: 600px) {
+  .landing-portal {
+    height: 100dvh;
+    min-height: 100vh;
+    padding: 24px 16px;
+    touch-action: manipulation;
+  }
+  .landing-stage {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 8px;
+  }
+  .landing-eyebrow-mask {
+    margin-bottom: 8px;
+    padding: 4px 0;
+  }
+  .landing-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    gap: 6px;
+  }
+  .landing-name-mask {
+    padding: 6px 0;
+    margin-bottom: 6px;
+    overflow: visible;
+  }
+  .landing-name {
+    font-size: clamp(30px, 9.2vw, 42px);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    gap: 8px 14px;
+    justify-content: center;
+  }
+  .landing-name .name-first,
+  .landing-name .name-last {
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .landing-rule {
+    width: min(220px, 55%);
+    margin: 14px auto;
+  }
+  .landing-tagline-mask {
+    padding: 4px 0;
+  }
+  .landing-tagline {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    gap: 8px;
+    justify-content: center;
+  }
+  .landing-tagline .tag-word {
+    white-space: nowrap;
+  }
+  .landing-tagline .tag-dot {
+    font-size: 12px;
+  }
+}
+
 
 /* Kinetic Keyframes */
 @keyframes landingMaskReveal {
@@ -2821,6 +3282,154 @@ body:not(.landing-active) header.nav {
   </div>
 </div>
 
+<svg style="display:none;" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="canva-gradient" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C4CC"/>
+      <stop offset="1" stop-color="#7D2AE8"/>
+    </linearGradient>
+  </defs>
+  <symbol id="icon-photoshop" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="11" fill="#001E36" stroke="#31A8FF" stroke-width="1.8"/>
+    <text x="24" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#31A8FF" text-anchor="middle" letter-spacing="-0.5">Ps</text>
+  </symbol>
+  <symbol id="icon-illustrator" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="11" fill="#330000" stroke="#FF9A00" stroke-width="1.8"/>
+    <text x="24" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#FF9A00" text-anchor="middle" letter-spacing="-0.5">Ai</text>
+  </symbol>
+  <symbol id="icon-premiere" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="11" fill="#00005B" stroke="#9999FF" stroke-width="1.8"/>
+    <text x="24" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#9999FF" text-anchor="middle" letter-spacing="-0.5">Pr</text>
+  </symbol>
+  <symbol id="icon-aftereffects" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="11" fill="#1E0038" stroke="#CF96FD" stroke-width="1.8"/>
+    <text x="24" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#CF96FD" text-anchor="middle" letter-spacing="-0.5">Ae</text>
+  </symbol>
+  <symbol id="icon-coreldraw" viewBox="0 0 48 48">
+    <path d="M24 4C14.8 4 7.5 11.3 7.5 20.5c0 6.1 3.3 11.6 8.3 14.5l2.2 6.5h12l2.2-6.5c5-2.9 8.3-8.4 8.3-14.5C40.5 11.3 33.2 4 24 4z" fill="#009A44"/>
+    <path d="M24 4c-5.2 0-9.6 7.4-9.6 16.5 0 5.6 1.6 10.5 4.2 13.2l2.4 7h6l2.4-7c2.6-2.7 4.2-7.6 4.2-13.2C33.6 11.4 29.2 4 24 4z" fill="#78BE20"/>
+    <path d="M24 4c-2.3 0-4.2 7.4-4.2 16.5 0 5.6.8 10.5 1.8 13.2l.9 7h3l.9-7c1-2.7 1.8-7.6 1.8-13.2C28.2 11.4 26.3 4 24 4z" fill="#FFFFFF"/>
+    <rect x="20" y="44" width="8" height="3" rx="1.5" fill="#E6A15C"/>
+  </symbol>
+  <symbol id="icon-canva" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="21" fill="url(#canva-gradient)"/>
+    <path d="M29.5 20.4c-.9-2.2-3-3.4-5.5-3.4-4.8 0-8.5 4.2-8.5 9.6 0 5.1 3.5 8.1 8 8.1 3 0 5.2-1.3 6.4-3.4l-2.4-1.5c-.7 1.2-2.2 2.1-4 2.1-2.8 0-4.9-1.9-5.1-5.1h13.6c.1-.6.1-1.2.1-1.8 0-1.6-.2-3.1-1-4.6zm-11 3.7c.3-2.5 2.2-4.2 5.1-4.2 2.7 0 4.6 1.6 4.9 4.2h-10z" fill="#FFFFFF"/>
+  </symbol>
+  <symbol id="icon-figma" viewBox="0 0 48 48">
+    <rect x="14" y="6" width="10" height="10" rx="5" fill="#F24E1E"/>
+    <rect x="24" y="6" width="10" height="10" rx="5" fill="#FF7262"/>
+    <rect x="14" y="16" width="10" height="10" rx="5" fill="#A259FF"/>
+    <circle cx="29" cy="21" r="5" fill="#1ABCFE"/>
+    <rect x="14" y="26" width="10" height="10" rx="5" fill="#0ACF83"/>
+  </symbol>
+  <symbol id="icon-python" viewBox="0 0 48 48">
+    <path d="M23.8 5C13.2 5 13.6 9.6 13.6 9.6l.02 4.8h10.4v1.5H9.4S5 15.3 5 26c0 10.7 4 10.4 4 10.4h2.4v-5s-.1-6 5.8-6h10.1s5.7.1 5.7-5.6V10.6S33.5 5 23.8 5zm-3.4 2.8a1.7 1.7 0 1 1 0 3.5 1.7 1.7 0 0 1 0-3.5z" fill="#3776AB"/>
+    <path d="M24.2 43c10.6 0 10.2-4.6 10.2-4.6l-.02-4.8H24v-1.5h14.6s4.4.6 4.4-10.1c0-10.7-4-10.4-4-10.4h-2.4v5s.1 6-5.8 6H20.7s-5.7-.1-5.7 5.6v9.2s-.5 5.6 9.2 5.6zm3.4-2.8a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5z" fill="#FFD438"/>
+  </symbol>
+  <symbol id="icon-cpp" viewBox="0 0 48 48">
+    <path d="M42 24 33.3 9H14.7L6 24l8.7 15h18.6L42 24z" fill="#00599C"/>
+    <path d="M19 28.5a6.5 6.5 0 0 1-1.5-4.5 6.5 6.5 0 0 1 1.5-4.5 5.5 5.5 0 0 1 4.2-1.6c1.8 0 3.2.7 4 2l-2 1.4c-.5-.8-1.3-1.2-2.1-1.2-1.6 0-2.8 1.3-2.8 2.9s1.2 2.9 2.8 2.9c.8 0 1.5-.4 2.1-1.2l2 1.4c-.8 1.3-2.2 2-4 2a5.5 5.5 0 0 1-4.2-1.6zm12.5-3.5h-1v1h-1v-1h-1v-1h1v-1h1v1h1v1zm4 0h-1v1h-1v-1h-1v-1h1v-1h1v1h1v1z" fill="#FFFFFF"/>
+  </symbol>
+  <symbol id="icon-c" viewBox="0 0 48 48">
+    <path d="M42 24 33.3 9H14.7L6 24l8.7 15h18.6L42 24z" fill="#659AD2"/>
+    <path d="M20 29a7 7 0 0 1-1.6-4.9 7 7 0 0 1 1.6-4.9 5.8 5.8 0 0 1 4.5-1.7c1.9 0 3.5.7 4.4 2.1l-2.2 1.5c-.6-.9-1.4-1.3-2.3-1.3-1.7 0-3 1.4-3 3.1s1.3 3.1 3 3.1c.9 0 1.7-.4 2.3-1.3l2.2 1.5c-.9 1.4-2.5 2.1-4.4 2.1A5.8 5.8 0 0 1 20 29z" fill="#FFFFFF"/>
+  </symbol>
+  <symbol id="icon-git" viewBox="0 0 48 48">
+    <path d="M42.2 21.6 26.4 5.8a3.4 3.4 0 0 0-4.8 0l-4.7 4.7 6.1 6.1a4 4 0 0 1 5.1 5.1l5.9 5.9a4 4 0 1 1-2.4 2.4l-5.5-5.5v8.3a4 4 0 1 1-3.4 0V24.2a4 4 0 0 1-2.2-5.3L13.4 13 5.8 20.6a3.4 3.4 0 0 0 0 4.8l15.8 15.8a3.4 3.4 0 0 0 4.8 0l15.8-15.8a3.4 3.4 0 0 0 0-4.8z" fill="#F05032"/>
+  </symbol>
+  <symbol id="icon-github" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="21" fill="#24292E"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M24 10c-7.7 0-14 6.3-14 14 0 6.2 4 11.4 9.6 13.3.7.1 1-.3 1-.7v-2.4c-3.9.8-4.7-1.9-4.7-1.9-.6-1.6-1.6-2.1-1.6-2.1-1.3-.9.1-.9.1-.9 1.4.1 2.2 1.5 2.2 1.5 1.2 2.1 3.3 1.5 4.1 1.2.1-.9.5-1.5.9-1.9-3.1-.4-6.4-1.6-6.4-6.9 0-1.5.5-2.8 1.4-3.8-.1-.4-.6-1.8.1-3.7 0 0 1.2-.4 3.8 1.4 1.1-.3 2.3-.5 3.5-.5s2.4.2 3.5.5c2.6-1.8 3.8-1.4 3.8-1.4.7 1.9.3 3.3.1 3.7.9 1 1.4 2.3 1.4 3.8 0 5.4-3.3 6.5-6.4 6.9.5.4 1 1.3 1 2.6v3.8c0 .4.3.8 1 .7C38 35.4 42 30.2 42 24c0-7.7-6.3-14-14-14z" fill="#FFFFFF"/>
+  </symbol>
+  <symbol id="icon-streamlit" viewBox="0 0 48 48">
+    <path d="M33.9 22.5 46.8 33a1.2 1.2 0 0 1-.8 2.1H2a1.2 1.2 0 0 1-.9-2l14.6-16.2a1.2 1.2 0 0 1 1.7-.1l8.7 7.9 7.8-2.2zm-10.1-11.8 7 6.4-5.5 1.6-5-4.6a1.2 1.2 0 0 1-.1-1.7l2.4-2.2a1.2 1.2 0 0 1 1.2-.5 1.2 1.2 0 0 1 .8.5l-.8.5z" fill="#FF4B4B"/>
+  </symbol>
+  <symbol id="icon-scikit" viewBox="0 0 48 48">
+    <circle cx="18" cy="24" r="12" fill="#F89939"/>
+    <circle cx="30" cy="24" r="12" fill="#3499CD" fill-opacity="0.85"/>
+    <text x="24" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#FFFFFF" text-anchor="middle">sk</text>
+  </symbol>
+  <symbol id="icon-pandas" viewBox="0 0 48 48">
+    <rect x="8" y="15" width="6" height="23" rx="2.5" fill="#130754"/>
+    <rect x="17" y="7" width="6" height="31" rx="2.5" fill="#FFD43B"/>
+    <rect x="26" y="13" width="6" height="25" rx="2.5" fill="#E70488"/>
+    <rect x="35" y="19" width="6" height="19" rx="2.5" fill="#4B8BBE"/>
+  </symbol>
+  <symbol id="icon-numpy" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#013243"/>
+    <path d="M12 12h5.2l12 16.8V12H34v24h-5.2L16.8 19.2V36H12V12z" fill="#4DABCF"/>
+  </symbol>
+  <symbol id="icon-matplotlib" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="21" fill="#11557C"/>
+    <circle cx="24" cy="24" r="15" stroke="#FFF" stroke-dasharray="3 3" stroke-width="1.2"/>
+    <path d="M24 9v30M9 24h30" stroke="#FFF" stroke-width="1.2"/>
+    <circle cx="17" cy="18" r="3.5" fill="#FF7F0E"/>
+    <circle cx="31" cy="19" r="3.5" fill="#2CA02C"/>
+    <circle cx="27" cy="31" r="3.5" fill="#D62728"/>
+  </symbol>
+  <symbol id="icon-vscode" viewBox="0 0 48 48">
+    <path d="M35.6 4.3 25.1 14l-9.8-7.5c-.8-.6-2-.3-2.5.6l-2.4 4c-.5.8-.3 1.8.4 2.4l8.3 6.5-8.3 6.5c-.7.6-.9 1.6-.4 2.4l2.4 4c.5.9 1.7 1.2 2.5.6l9.8-7.5 10.5 9.7c.9.8 2.4.2 2.4-1.1V5.4c0-1.3-1.5-1.9-2.4-1.1z" fill="#007ACC"/>
+    <path d="m35.6 4.3-10.5 9.7L15.3 6.5c-.8-.6-2-.3-2.5.6l-2.4 4c-.5.8-.3 1.8.4 2.4l8.3 6.5-8.3 6.5c-.7.6-.9 1.6-.4 2.4l2.4 4c.5.9 1.7 1.2 2.5.6l9.8-7.5 10.5 9.7" fill="#1F9CF0"/>
+    <path d="M38 5.4v37.2c0 1.3-1.5 1.9-2.4 1.1L25.1 34V14L35.6 4.3c.9-.8 2.4-.2 2.4 1.1z" fill="#0066B8"/>
+  </symbol>
+  <symbol id="icon-seaborn" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#0A192F"/>
+    <path d="M9 33c6-12 12 3 18-6s6-12 12-6" stroke="#48CAE4" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M9 39c6-9 12 0 18-9s6-9 12-3" stroke="#90E0EF" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.6" fill="none"/>
+  </symbol>
+  <symbol id="icon-nltk" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#1E293B"/>
+    <circle cx="24" cy="15" r="4.5" fill="#38BDF8"/>
+    <circle cx="15" cy="33" r="4.5" fill="#818CF8"/>
+    <circle cx="33" cy="33" r="4.5" fill="#818CF8"/>
+    <path d="M24 19.5l-7.5 9m7.5-9l7.5 9" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="icon-nlp" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#161B22"/>
+    <path d="M38 28a4 4 0 0 1-4 4H18l-8 8V14a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4z" fill="none" stroke="#58A6FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 20h12M18 26h8" stroke="#58A6FF" stroke-width="2.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="icon-tfidf" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#161B22"/>
+    <path d="M12 12v24h24" stroke="#F0883E" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+    <path d="m32 20-8 8-6-6-4 4" stroke="#F0883E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="32" cy="20" r="2.5" fill="#F0883E"/>
+  </symbol>
+  <symbol id="icon-bayes" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#161B22"/>
+    <circle cx="24" cy="14" r="4.5" fill="none" stroke="#7EE787" stroke-width="2.8"/>
+    <circle cx="14" cy="34" r="4.5" fill="none" stroke="#7EE787" stroke-width="2.8"/>
+    <circle cx="34" cy="34" r="4.5" fill="none" stroke="#7EE787" stroke-width="2.8"/>
+    <path d="m21 17.5-5 12.5m11-12.5 5 12.5" stroke="#7EE787" stroke-width="2.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="icon-eda" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#161B22"/>
+    <circle cx="21" cy="21" r="10" fill="none" stroke="#A371F7" stroke-width="2.8"/>
+    <path d="m36 36-7.5-7.5M21 16v10M16 21h10" stroke="#A371F7" stroke-width="2.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="icon-dataviz" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#161B22"/>
+    <path d="M10 10v28h28" stroke="#38BDF8" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+    <rect x="16" y="24" width="4.5" height="10" rx="1.5" fill="#38BDF8"/>
+    <rect x="24" y="18" width="4.5" height="16" rx="1.5" fill="#818CF8"/>
+    <rect x="32" y="14" width="4.5" height="20" rx="1.5" fill="#C084FC"/>
+  </symbol>
+  <symbol id="icon-dsa" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#161B22"/>
+    <circle cx="24" cy="12" r="3.5" fill="#3FB950"/>
+    <circle cx="14" cy="24" r="3.5" fill="#3FB950"/>
+    <circle cx="34" cy="24" r="3.5" fill="#3FB950"/>
+    <circle cx="14" cy="36" r="2.5" fill="#2EA043"/>
+    <circle cx="34" cy="36" r="2.5" fill="#2EA043"/>
+    <path d="m21.5 15-5 6m11-6 5 6M14 27.5v6M34 27.5v6" stroke="#3FB950" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="icon-problem-solving" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="10" fill="#161B22"/>
+    <path d="M24 10a9 9 0 0 0-9 9c0 3.8 2.3 6.8 3.5 9h11c1.2-2.2 3.5-5.2 3.5-9a9 9 0 0 0-9-9z" fill="none" stroke="#FFA657" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19 32h10M20 36h8" stroke="#FFA657" stroke-width="2.8" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <header class="shell nav">
 <a class="logo" href="#home" aria-label="Aditya Walvekar Portfolio Home">AW<b>.</b></a>
@@ -2829,14 +3438,14 @@ body:not(.landing-active) header.nav {
   <a href="#about" class="nav-link">About</a>
   <a href="#skills" class="nav-link">Skills</a>
   <a href="#projects" class="nav-link">Projects</a>
-  <a href="#experience" class="nav-link">Experience</a>
+  <a href="#experience" class="nav-link">Experiences</a>
   <a href="#certifications" class="nav-link">Credentials</a>
   <a href="#contact" class="nav-link">Contact</a>
-  <div class="nav-divider" role="separator"></div>
+  <span class="nav-divider" role="separator"></span>
   <span class="nav-group-title">Dedicated Portals</span>
-  <a href="live-projects.html" class="nav-link">Projects Archive (8) <span class="nav-arrow" aria-hidden="true">↗</span></a>
-  <a href="graphics.html" class="nav-link">Graphic Designs <span class="nav-arrow" aria-hidden="true">↗</span></a>
-  <a href="games.html" class="nav-link">Games &amp; Media <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="live-projects.html" class="nav-link nav-portal-chip">Project Archive <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="graphics.html" class="nav-link nav-portal-chip">Graphics Design <span class="nav-arrow" aria-hidden="true">↗</span></a>
+  <a href="games.html" class="nav-link nav-portal-chip">Games &amp; Media <span class="nav-arrow" aria-hidden="true">↗</span></a>
 </nav>
 <div class="actions">
   <button class="theme" id="theme" aria-label="Toggle colour theme">☼</button>
@@ -2946,11 +3555,11 @@ body:not(.landing-active) header.nav {
 <strong>Content Creator</strong>
 <small>Open OldHopes on YouTube ↗</small>
 </a>
-<button class="persona" type="button" id="persona-private" aria-label="Personal life — private and grounded">
+<a class="persona" href="javascript:void(0)" id="persona-private" role="button" aria-label="Personal life — private and grounded">
 <span class="n">05</span>
 <strong>Personal Life</strong>
 <small>Private and grounded.</small>
-</button>
+</a>
 </div>
 </div>
 </section>
@@ -2970,13 +3579,13 @@ body:not(.landing-active) header.nav {
   <h3>Machine Learning<br>& NLP</h3>
   <p>End-to-end ML classification pipelines, text preprocessing, TF-IDF feature extraction, and real-time Streamlit app deployment.</p>
   <div class="skill-tags">
-    <span class="skill-tag">Python</span>
-    <span class="skill-tag">Scikit-learn</span>
-    <span class="skill-tag">NLP</span>
-    <span class="skill-tag">NLTK</span>
-    <span class="skill-tag">TF-IDF</span>
-    <span class="skill-tag">Naive Bayes</span>
-    <span class="skill-tag">Streamlit</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-python"/></svg>Python</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-scikit"/></svg>Scikit-learn</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-nlp"/></svg>NLP</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-nltk"/></svg>NLTK</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-tfidf"/></svg>TF-IDF</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-bayes"/></svg>Naive Bayes</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-streamlit"/></svg>Streamlit</span>
   </div>
 </article>
 
@@ -2988,12 +3597,12 @@ body:not(.landing-active) header.nav {
   <h3>Data Analytics<br>& Insights</h3>
   <p>Exploratory data analysis (EDA), data cleaning, statistical modeling, and deriving actionable visual insights from complex datasets.</p>
   <div class="skill-tags">
-    <span class="skill-tag">Pandas</span>
-    <span class="skill-tag">NumPy</span>
-    <span class="skill-tag">Matplotlib</span>
-    <span class="skill-tag">Seaborn</span>
-    <span class="skill-tag">EDA</span>
-    <span class="skill-tag">Data Visualization</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-pandas"/></svg>Pandas</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-numpy"/></svg>NumPy</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-matplotlib"/></svg>Matplotlib</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-seaborn"/></svg>Seaborn</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-eda"/></svg>EDA</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-dataviz"/></svg>Data Visualization</span>
   </div>
 </article>
 
@@ -3005,13 +3614,13 @@ body:not(.landing-active) header.nav {
   <h3>Core Programming<br>& Algorithms</h3>
   <p>Solid foundation in object-oriented programming, data structures, algorithmic problem solving, and modern Git workflows.</p>
   <div class="skill-tags">
-    <span class="skill-tag">Python</span>
-    <span class="skill-tag">C</span>
-    <span class="skill-tag">C++</span>
-    <span class="skill-tag">DSA</span>
-    <span class="skill-tag">Problem Solving</span>
-    <span class="skill-tag">Git</span>
-    <span class="skill-tag">GitHub</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-python"/></svg>Python</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-c"/></svg>C</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-cpp"/></svg>C++</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-dsa"/></svg>DSA</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-problem-solving"/></svg>Problem Solving</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-git"/></svg>Git</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-github"/></svg>GitHub</span>
   </div>
 </article>
 
@@ -3023,14 +3632,117 @@ body:not(.landing-active) header.nav {
   <h3>Visual Design<br>& Motion Media</h3>
   <p>Professional brand identity, social creatives, commercial product visualization at Suyash Graphics, and dynamic video editing.</p>
   <div class="skill-tags">
-    <span class="skill-tag">Photoshop</span>
-    <span class="skill-tag">Illustrator</span>
-    <span class="skill-tag">CorelDRAW</span>
-    <span class="skill-tag">Premiere Pro</span>
-    <span class="skill-tag">After Effects</span>
-    <span class="skill-tag">Canva</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-photoshop"/></svg>Photoshop</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-illustrator"/></svg>Illustrator</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-coreldraw"/></svg>CorelDRAW</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-premiere"/></svg>Premiere Pro</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-aftereffects"/></svg>After Effects</span>
+    <span class="skill-tag"><svg class="tag-icon" aria-hidden="true"><use href="#icon-canva"/></svg>Canva</span>
   </div>
 </article>
+</div>
+
+<!-- Production Software & Tools Showcase (Inspired by Reference UI) -->
+<div class="software-tools-section motion">
+  <div class="software-tools-header">
+    <div>
+      <span class="eyebrow">Production Software &amp; Tech Stack</span>
+      <h3 class="software-tools-title">Tools &amp; software I build with.</h3>
+    </div>
+    <span class="software-tools-badge">18 Production Tools</span>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-item" title="Adobe Photoshop — Commercial raster design & image retouching">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-photoshop"/></svg>
+      <span class="tool-name">Photoshop</span>
+      <span class="tool-cat">Raster Design</span>
+    </div>
+    <div class="tool-item" title="Adobe Illustrator — Precision vector art & brand identity">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-illustrator"/></svg>
+      <span class="tool-name">Illustrator</span>
+      <span class="tool-cat">Vector Craft</span>
+    </div>
+    <div class="tool-item" title="Adobe Premiere Pro — Commercial video editing & timeline assembly">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-premiere"/></svg>
+      <span class="tool-name">Premiere Pro</span>
+      <span class="tool-cat">Video Editing</span>
+    </div>
+    <div class="tool-item" title="Adobe After Effects — Dynamic motion graphics & visual effects">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-aftereffects"/></svg>
+      <span class="tool-name">After Effects</span>
+      <span class="tool-cat">Motion / VFX</span>
+    </div>
+    <div class="tool-item" title="CorelDRAW — Commercial print layout, flex hoardings & signage">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-coreldraw"/></svg>
+      <span class="tool-name">CorelDRAW</span>
+      <span class="tool-cat">Commercial Print</span>
+    </div>
+    <div class="tool-item" title="Canva — Rapid social creatives & marketing collateral">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-canva"/></svg>
+      <span class="tool-name">Canva</span>
+      <span class="tool-cat">Rapid Graphics</span>
+    </div>
+    <div class="tool-item" title="Figma — Modern UI/UX wireframing & prototyping">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-figma"/></svg>
+      <span class="tool-name">Figma</span>
+      <span class="tool-cat">UI / Prototyping</span>
+    </div>
+    <div class="tool-item" title="Python — Core language for ML models, data pipelines & scripts">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-python"/></svg>
+      <span class="tool-name">Python</span>
+      <span class="tool-cat">Core Language</span>
+    </div>
+    <div class="tool-item" title="C++ — High-performance algorithmic problem solving & DSA">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-cpp"/></svg>
+      <span class="tool-name">C++</span>
+      <span class="tool-cat">Algorithms</span>
+    </div>
+    <div class="tool-item" title="C Language — Fundamental data structures & system foundations">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-c"/></svg>
+      <span class="tool-name">C Language</span>
+      <span class="tool-cat">Foundations</span>
+    </div>
+    <div class="tool-item" title="Git — Distributed version control & collaborative branching">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-git"/></svg>
+      <span class="tool-name">Git</span>
+      <span class="tool-cat">Version Control</span>
+    </div>
+    <div class="tool-item" title="GitHub — Repository hosting, code reviews & open source">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-github"/></svg>
+      <span class="tool-name">GitHub</span>
+      <span class="tool-cat">Repositories</span>
+    </div>
+    <div class="tool-item" title="Streamlit — Rapid deployment for machine learning web apps">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-streamlit"/></svg>
+      <span class="tool-name">Streamlit</span>
+      <span class="tool-cat">ML Web Apps</span>
+    </div>
+    <div class="tool-item" title="Scikit-Learn — Predictive machine learning classification & pipelines">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-scikit"/></svg>
+      <span class="tool-name">Scikit-Learn</span>
+      <span class="tool-cat">Machine Learning</span>
+    </div>
+    <div class="tool-item" title="Pandas — High-performance data manipulation & tabular analysis">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-pandas"/></svg>
+      <span class="tool-name">Pandas</span>
+      <span class="tool-cat">Data Analysis</span>
+    </div>
+    <div class="tool-item" title="NumPy — Multidimensional scientific computation & linear algebra">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-numpy"/></svg>
+      <span class="tool-name">NumPy</span>
+      <span class="tool-cat">Array Math</span>
+    </div>
+    <div class="tool-item" title="Matplotlib — Statistical charts & publication-grade plots">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-matplotlib"/></svg>
+      <span class="tool-name">Matplotlib</span>
+      <span class="tool-cat">Visualization</span>
+    </div>
+    <div class="tool-item" title="VS Code — Primary code editor & development environment">
+      <svg class="tool-icon" aria-hidden="true"><use href="#icon-vscode"/></svg>
+      <span class="tool-name">VS Code</span>
+      <span class="tool-cat">Code Editor</span>
+    </div>
+  </div>
 </div>
 
 <div class="achievements-section motion">
@@ -3088,50 +3800,50 @@ body:not(.landing-active) header.nav {
             <circle cx="20" cy="18" r="4" fill="#ef4444"/>
             <circle cx="32" cy="18" r="4" fill="#f59e0b"/>
             <circle cx="44" cy="18" r="4" fill="#10b981"/>
-            <text x="185" y="21" font-family="'DM Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle" font-weight="600" letter-spacing="1">HABIT STUDIO · DAILY CONSISTENCY</text>
+            <text x="185" y="21" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#94a3b8" text-anchor="middle" font-weight="600" letter-spacing="1">HABIT STUDIO · DAILY CONSISTENCY</text>
             <line x1="0" y1="32" x2="370" y2="32" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
             <g transform="translate(62, 90)">
               <circle cx="0" cy="0" r="32" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="6"/>
               <circle cx="0" cy="0" r="32" fill="none" stroke="url(#hb-grad)" stroke-width="6" stroke-dasharray="201" stroke-dashoffset="30" stroke-linecap="round" transform="rotate(-90)"/>
-              <text x="0" y="3" font-family="'Syne', sans-serif" font-size="14" font-weight="700" fill="#f8fafc" text-anchor="middle">88%</text>
-              <text x="0" y="16" font-family="'DM Mono', monospace" font-size="7.5" fill="#38bdf8" text-anchor="middle" font-weight="600">STREAK</text>
+              <text x="0" y="3" font-family="'Riking', sans-serif" font-size="14" font-weight="700" fill="#f8fafc" text-anchor="middle">88%</text>
+              <text x="0" y="16" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#38bdf8" text-anchor="middle" font-weight="600">STREAK</text>
             </g>
             <g transform="translate(125, 42)">
               <rect x="0" y="0" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1"/>
               <rect x="8" y="5" width="12" height="12" rx="3" fill="#38bdf8"/>
               <path d="M 11 11 L 13 13 L 17 9" fill="none" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="26" y="15" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Morning Workout</text>
+              <text x="26" y="15" font-family="'Monda', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Morning Workout</text>
               <rect x="116" y="5" width="26" height="12" rx="3" fill="rgba(56, 189, 248, 0.15)"/>
-              <text x="129" y="14" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
+              <text x="129" y="14" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
               
               <rect x="0" y="27" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(129, 140, 248, 0.25)" stroke-width="1"/>
               <rect x="8" y="32" width="12" height="12" rx="3" fill="#818cf8"/>
               <path d="M 11 38 L 13 40 L 17 36" fill="none" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="26" y="42" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Algorithm Practice</text>
+              <text x="26" y="42" font-family="'Monda', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Algorithm Practice</text>
               <rect x="116" y="32" width="26" height="12" rx="3" fill="rgba(129, 140, 248, 0.15)"/>
-              <text x="129" y="41" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#818cf8" text-anchor="middle">DONE</text>
+              <text x="129" y="41" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#818cf8" text-anchor="middle">DONE</text>
 
               <rect x="0" y="54" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
               <rect x="8" y="59" width="12" height="12" rx="3" fill="#38bdf8"/>
               <path d="M 11 65 L 13 67 L 17 63" fill="none" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="26" y="69" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Read 30 Mins</text>
+              <text x="26" y="69" font-family="'Monda', sans-serif" font-size="9" font-weight="600" fill="#e2e8f0">Read 30 Mins</text>
               <rect x="116" y="59" width="26" height="12" rx="3" fill="rgba(56, 189, 248, 0.15)"/>
-              <text x="129" y="68" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
+              <text x="129" y="68" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#38bdf8" text-anchor="middle">DONE</text>
 
               <rect x="0" y="81" width="150" height="22" rx="6" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
               <rect x="8" y="86" width="12" height="12" rx="3" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5"/>
-              <text x="26" y="96" font-family="'Manrope', sans-serif" font-size="9" font-weight="600" fill="#94a3b8">Deep Work Block</text>
+              <text x="26" y="96" font-family="'Monda', sans-serif" font-size="9" font-weight="600" fill="#94a3b8">Deep Work Block</text>
               <rect x="116" y="86" width="26" height="12" rx="3" fill="rgba(255, 255, 255, 0.05)"/>
-              <text x="129" y="95" font-family="'DM Mono', monospace" font-size="7" font-weight="600" fill="#94a3b8" text-anchor="middle">0/1</text>
+              <text x="129" y="95" font-family="'Monda', sans-serif, monospace" font-size="7" font-weight="600" fill="#94a3b8" text-anchor="middle">0/1</text>
             </g>
             <g transform="translate(290, 48)">
               <rect x="0" y="0" width="68" height="38" rx="6" fill="rgba(56, 189, 248, 0.08)" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1"/>
-              <text x="34" y="15" font-family="'DM Mono', monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">ACTIVE</text>
-              <text x="34" y="30" font-family="'Syne', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">14 Days</text>
+              <text x="34" y="15" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">ACTIVE</text>
+              <text x="34" y="30" font-family="'Riking', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">14 Days</text>
               
               <rect x="0" y="44" width="68" height="38" rx="6" fill="rgba(129, 140, 248, 0.08)" stroke="rgba(129, 140, 248, 0.2)" stroke-width="1"/>
-              <text x="34" y="59" font-family="'DM Mono', monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">TOTAL</text>
-              <text x="34" y="74" font-family="'Syne', sans-serif" font-size="13" font-weight="700" fill="#818cf8" text-anchor="middle">8 Habits</text>
+              <text x="34" y="59" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">TOTAL</text>
+              <text x="34" y="74" font-family="'Riking', sans-serif" font-size="13" font-weight="700" fill="#818cf8" text-anchor="middle">8 Habits</text>
             </g>
           </g>
         </svg>
@@ -3189,10 +3901,10 @@ body:not(.landing-active) header.nav {
 
           <g transform="translate(30, 16)">
             <rect x="0" y="0" width="400" height="24" rx="6" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(192, 132, 252, 0.3)" stroke-width="1"/>
-            <text x="14" y="16" font-family="'DM Mono', monospace" font-size="9" fill="#c084fc" font-weight="600" letter-spacing="1">SCORE: 002840</text>
-            <text x="155" y="16" font-family="'DM Mono', monospace" font-size="9" fill="#38bdf8" font-weight="600" letter-spacing="1">SURVIVAL: 02:45</text>
-            <text x="290" y="16" font-family="'DM Mono', monospace" font-size="9" fill="#ef4444" font-weight="600" letter-spacing="1">SHIELDS: ♥ ♥ ♥</text>
-            <text x="365" y="16" font-family="'DM Mono', monospace" font-size="8.5" fill="#4ade80" font-weight="600">60 FPS</text>
+            <text x="14" y="16" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#c084fc" font-weight="600" letter-spacing="1">SCORE: 002840</text>
+            <text x="155" y="16" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#38bdf8" font-weight="600" letter-spacing="1">SURVIVAL: 02:45</text>
+            <text x="290" y="16" font-family="'Monda', sans-serif, monospace" font-size="9" fill="#ef4444" font-weight="600" letter-spacing="1">SHIELDS: ♥ ♥ ♥</text>
+            <text x="365" y="16" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#4ade80" font-weight="600">60 FPS</text>
           </g>
 
           <g transform="translate(100, 95)">
@@ -3258,15 +3970,15 @@ body:not(.landing-active) header.nav {
           </defs>
           <g transform="translate(25, 20)">
             <rect x="0" y="0" width="410" height="22" rx="6" fill="rgba(13, 31, 30, 0.85)" stroke="rgba(20, 184, 166, 0.3)" stroke-width="1"/>
-            <text x="14" y="15" font-family="'DM Mono', monospace" font-size="8.5" fill="#2dd4bf" font-weight="600" letter-spacing="1">DATA ALCOTT AI PIPELINE · COMPREHENSIVE TEXT NLP</text>
-            <text x="345" y="15" font-family="'DM Mono', monospace" font-size="8.5" fill="#99f6e4" font-weight="600">TOKENS: 512</text>
+            <text x="14" y="15" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#2dd4bf" font-weight="600" letter-spacing="1">DATA ALCOTT AI PIPELINE · COMPREHENSIVE TEXT NLP</text>
+            <text x="345" y="15" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#99f6e4" font-weight="600">TOKENS: 512</text>
             
             <g transform="translate(10, 40)">
               <rect width="84" height="62" rx="8" fill="url(#nlp-node-bg)" stroke="rgba(20, 184, 166, 0.4)" stroke-width="1"/>
-              <text x="42" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#5eead4" text-anchor="middle" font-weight="600">INPUT TEXT</text>
+              <text x="42" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#5eead4" text-anchor="middle" font-weight="600">INPUT TEXT</text>
               <line x1="12" y1="26" x2="72" y2="26" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
-              <text x="42" y="38" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Tokenize &amp;</text>
-              <text x="42" y="50" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Stopwords</text>
+              <text x="42" y="38" font-family="'Monda', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Tokenize &amp;</text>
+              <text x="42" y="50" font-family="'Monda', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Stopwords</text>
             </g>
             
             <line x1="94" y1="71" x2="114" y2="71" stroke="url(#nlp-flow)" stroke-width="2" stroke-linecap="round"/>
@@ -3274,10 +3986,10 @@ body:not(.landing-active) header.nav {
 
             <g transform="translate(116, 40)">
               <rect width="86" height="62" rx="8" fill="url(#nlp-node-bg)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1"/>
-              <text x="43" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#22d3ee" text-anchor="middle" font-weight="600">TF-IDF MATRIX</text>
+              <text x="43" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#22d3ee" text-anchor="middle" font-weight="600">TF-IDF MATRIX</text>
               <line x1="12" y1="26" x2="74" y2="26" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
-              <text x="43" y="38" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">N-Gram Vectors</text>
-              <text x="43" y="50" font-family="'Manrope', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Weights (w_ij)</text>
+              <text x="43" y="38" font-family="'Monda', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">N-Gram Vectors</text>
+              <text x="43" y="50" font-family="'Monda', sans-serif" font-size="7.5" fill="#94a3b8" text-anchor="middle">Weights (w_ij)</text>
             </g>
 
             <line x1="202" y1="71" x2="222" y2="71" stroke="url(#nlp-flow)" stroke-width="2" stroke-linecap="round"/>
@@ -3285,7 +3997,7 @@ body:not(.landing-active) header.nav {
 
             <g transform="translate(224, 40)">
               <rect width="86" height="62" rx="8" fill="url(#nlp-node-bg)" stroke="rgba(59, 130, 246, 0.4)" stroke-width="1"/>
-              <text x="43" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#60a5fa" text-anchor="middle" font-weight="600">CLASSIFIER</text>
+              <text x="43" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#60a5fa" text-anchor="middle" font-weight="600">CLASSIFIER</text>
               <line x1="12" y1="26" x2="74" y2="26" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
               <circle cx="25" cy="40" r="3.5" fill="#2dd4bf"/>
               <circle cx="25" cy="50" r="3.5" fill="#2dd4bf"/>
@@ -3299,21 +4011,21 @@ body:not(.landing-active) header.nav {
 
             <g transform="translate(332, 40)">
               <rect width="68" height="62" rx="8" fill="rgba(20, 184, 166, 0.12)" stroke="rgba(45, 212, 191, 0.5)" stroke-width="1"/>
-              <text x="34" y="18" font-family="'DM Mono', monospace" font-size="8" fill="#2dd4bf" text-anchor="middle" font-weight="600">RESULT</text>
+              <text x="34" y="18" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#2dd4bf" text-anchor="middle" font-weight="600">RESULT</text>
               <line x1="10" y1="26" x2="58" y2="26" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1"/>
-              <text x="34" y="39" font-family="'Syne', sans-serif" font-size="10" font-weight="700" fill="#f8fafc" text-anchor="middle">POSITIVE</text>
-              <text x="34" y="51" font-family="'DM Mono', monospace" font-size="8" font-weight="600" fill="#2dd4bf" text-anchor="middle">98.4% CONF</text>
+              <text x="34" y="39" font-family="'Riking', sans-serif" font-size="10" font-weight="700" fill="#f8fafc" text-anchor="middle">POSITIVE</text>
+              <text x="34" y="51" font-family="'Monda', sans-serif, monospace" font-size="8" font-weight="600" fill="#2dd4bf" text-anchor="middle">98.4% CONF</text>
             </g>
             
             <g transform="translate(10, 112)">
               <rect x="0" y="0" width="124" height="20" rx="5" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
-              <text x="62" y="14" font-family="'DM Mono', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">PRECISION: 0.982</text>
+              <text x="62" y="14" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#94a3b8" text-anchor="middle">PRECISION: 0.982</text>
               
               <rect x="134" y="0" width="124" height="20" rx="5" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
-              <text x="196" y="14" font-family="'DM Mono', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">RECALL: 0.976</text>
+              <text x="196" y="14" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#94a3b8" text-anchor="middle">RECALL: 0.976</text>
 
               <rect x="268" y="0" width="132" height="20" rx="5" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.08)"/>
-              <text x="334" y="14" font-family="'DM Mono', monospace" font-size="8" fill="#2dd4bf" text-anchor="middle">F1-SCORE: 0.979</text>
+              <text x="334" y="14" font-family="'Monda', sans-serif, monospace" font-size="8" fill="#2dd4bf" text-anchor="middle">F1-SCORE: 0.979</text>
             </g>
           </g>
         </svg>
@@ -3357,8 +4069,8 @@ body:not(.landing-active) header.nav {
           </defs>
           <g transform="translate(35, 18)">
             <rect x="0" y="0" width="390" height="154" rx="12" fill="url(#ml-chart-bg)" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1"/>
-            <text x="16" y="21" font-family="'DM Mono', monospace" font-size="8.5" fill="#fbbf24" font-weight="600" letter-spacing="1">REGRESSION &amp; EDA OPTIMIZATION MATRIX</text>
-            <text x="374" y="21" font-family="'DM Mono', monospace" font-size="8.5" fill="#4ade80" font-weight="600" text-anchor="end">R²: 0.942 · 5-FOLD CV</text>
+            <text x="16" y="21" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#fbbf24" font-weight="600" letter-spacing="1">REGRESSION &amp; EDA OPTIMIZATION MATRIX</text>
+            <text x="374" y="21" font-family="'Monda', sans-serif, monospace" font-size="8.5" fill="#4ade80" font-weight="600" text-anchor="end">R²: 0.942 · 5-FOLD CV</text>
             <line x1="0" y1="32" x2="390" y2="32" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
 
             <g transform="translate(30, 44)">
@@ -3384,21 +4096,21 @@ body:not(.landing-active) header.nav {
               <circle cx="140" cy="65" r="2.5" fill="#f87171" opacity="0.6"/>
 
               <path d="M 5,72 Q 90,48 215,8" fill="none" stroke="url(#ml-curve-grad)" stroke-width="2.5" stroke-linecap="round"/>
-              <text x="110" y="93" font-family="'DM Mono', monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">FEATURE DIMENSIONS (X)</text>
+              <text x="110" y="93" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#94a3b8" text-anchor="middle">FEATURE DIMENSIONS (X)</text>
             </g>
 
             <g transform="translate(265, 46)">
-              <text x="0" y="8" font-family="'DM Mono', monospace" font-size="7.5" fill="#fbbf24" font-weight="600">FEATURE IMPORTANCE</text>
+              <text x="0" y="8" font-family="'Monda', sans-serif, monospace" font-size="7.5" fill="#fbbf24" font-weight="600">FEATURE IMPORTANCE</text>
               
-              <text x="0" y="24" font-family="'Manrope', sans-serif" font-size="7.5" fill="#cbd5e1">Variance Scale</text>
+              <text x="0" y="24" font-family="'Monda', sans-serif" font-size="7.5" fill="#cbd5e1">Variance Scale</text>
               <rect x="0" y="28" width="105" height="5" rx="2.5" fill="rgba(255, 255, 255, 0.08)"/>
               <rect x="0" y="28" width="92" height="5" rx="2.5" fill="#fbbf24"/>
               
-              <text x="0" y="46" font-family="'Manrope', sans-serif" font-size="7.5" fill="#cbd5e1">Coeff Correlation</text>
+              <text x="0" y="46" font-family="'Monda', sans-serif" font-size="7.5" fill="#cbd5e1">Coeff Correlation</text>
               <rect x="0" y="50" width="105" height="5" rx="2.5" fill="rgba(255, 255, 255, 0.08)"/>
               <rect x="0" y="50" width="78" height="5" rx="2.5" fill="#f59e0b"/>
 
-              <text x="0" y="68" font-family="'Manrope', sans-serif" font-size="7.5" fill="#cbd5e1">Hyperparam Tuning</text>
+              <text x="0" y="68" font-family="'Monda', sans-serif" font-size="7.5" fill="#cbd5e1">Hyperparam Tuning</text>
               <rect x="0" y="72" width="105" height="5" rx="2.5" fill="rgba(255, 255, 255, 0.08)"/>
               <rect x="0" y="72" width="86" height="5" rx="2.5" fill="#10b981"/>
             </g>
@@ -3900,10 +4612,17 @@ body:not(.landing-active) header.nav {
   <a href="https://www.youtube.com/@OldHopes" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
   <a href="https://www.instagram.com/aadix_99" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
 </div>
-<div class="contact-meta" style="margin-top:24px; font:500 11px 'DM Mono'; color:var(--muted); letter-spacing:0.08em;">
+<div class="contact-meta" style="margin-top:24px; font:500 11px 'Monda', sans-serif; color:var(--muted); letter-spacing:0.08em;">
   📍 KOLHAPUR, MAHARASHTRA, INDIA · TIMEZONE: IST (UTC+5:30)
 </div>
 </section>
+</main>
+<footer class="shell">
+<span>© 2026 ADITYA WALVEKAR</span>
+<span>DESIGNED WITH INTENT · BUILT FOR WHAT’S NEXT</span>
+</footer>
+
+<!-- Lightbox Modal Document Viewer (Direct body child to prevent stacking-context isolation) -->
 <div class="cert-modal" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="modal-doc-title" hidden>
   <div class="cert-modal-backdrop" id="cert-modal-backdrop"></div>
   <div class="cert-modal-dialog">
@@ -3926,11 +4645,6 @@ body:not(.landing-active) header.nav {
     </div>
   </div>
 </div>
-</main>
-<footer class="shell">
-<span>© 2026 ADITYA WALVEKAR</span>
-<span>DESIGNED WITH INTENT · BUILT FOR WHAT’S NEXT</span>
-</footer>
 <script>
 // 1. Theme Controller
 const theme = document.querySelector('#theme');
@@ -4589,11 +5303,15 @@ document.addEventListener('keydown', (e) => {
   // Choreographed auto-transition after 3.4s
   const autoTimer = setTimeout(enterPortfolio, 3400);
 
-  // Click anywhere to transition immediately
+  // Click or tap anywhere to transition immediately
   portal.addEventListener('click', () => {
     clearTimeout(autoTimer);
     enterPortfolio();
   });
+  portal.addEventListener('touchstart', () => {
+    clearTimeout(autoTimer);
+    enterPortfolio();
+  }, { passive: true });
 
   // Keyboard accessibility: ESC, Space, Enter
   document.addEventListener('keydown', (e) => {
