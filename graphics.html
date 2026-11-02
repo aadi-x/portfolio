@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Security & Privacy Hardening -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), accelerometer=(), vr=(), interest-cohort=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <meta name="description" content="Graphic design portfolio by Aditya Walvekar at Suyash Graphics — product visualisations, social media creatives, posters and flyers.">
 <meta name="author" content="Aditya Walvekar">
 <meta name="theme-color" content="#090909">
@@ -478,6 +484,7 @@ h1 span.accent {
 }
 
 .lightbox button {
+  z-index: 1005;
   position: absolute;
   top: 20px;
   right: 22px;
@@ -714,6 +721,13 @@ h1 span.accent {
   .agency-ig-button {
     width: 100%;
     justify-content: center;
+  }
+  .lightbox button {
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
   .lightbox-meta {
     flex-direction: column;

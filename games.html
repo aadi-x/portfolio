@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Security & Privacy Hardening -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), accelerometer=(), vr=(), interest-cohort=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 <meta name="description" content="Personal archive of games, movies, Marvel Cinematic Universe releases, web series, and anime enjoyed by Aditya Walvekar.">
 <meta name="author" content="Aditya Walvekar">
 <meta name="theme-color" content="#090909">
@@ -217,9 +223,11 @@ body {
 .coverflow-wrap {
   position: relative;
   width: 100%;
-  margin: 20px 0 40px;
+  margin: 16px 0 32px;
   perspective: 1200px;
   user-select: none;
+  overflow: hidden;
+  padding: 8px 0 16px;
 }
 
 .coverflow-header {
@@ -792,28 +800,45 @@ h1 {
 .feature {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 18px;
+  margin: 24px 0 28px;
 }
 
 .panel {
+  position: relative;
   padding: 28px;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  box-shadow: var(--glass-shadow);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+              0 20px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease,
               box-shadow 0.35s ease,
               background-color 0.35s ease;
 }
 
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  pointer-events: none;
+}
+
 .panel:hover {
-  border-color: var(--glass-border-hover);
-  background: var(--glass-bg-hover);
-  box-shadow: var(--glass-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.42),
+              0 24px 60px rgba(0, 0, 0, 0.55),
+              0 0 28px rgba(255, 255, 255, 0.08);
   transform: translateY(-3px);
 }
 
@@ -821,12 +846,13 @@ h1 {
   font: 600 24px 'Plus Jakarta Sans', sans-serif;
   letter-spacing: -0.01em;
   margin: 8px 0 14px;
+  color: #ffffff;
 }
 
 .panel p {
   color: var(--m);
   line-height: 1.7;
-  font-size: 13px;
+  font-size: 13.5px;
 }
 
 .chips {
@@ -836,33 +862,53 @@ h1 {
 }
 
 .chip {
-  padding: 10px 14px;
+  padding: 8px 14px;
   min-height: 38px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--s);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   font-size: 12px;
-  color: var(--m);
-  transition: 0.25s;
+  color: var(--ink);
+  transition: all 0.25s ease;
 }
 
 .chip:hover {
-  border-color: var(--ink);
-  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(2, 8, 12, 0.46);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 8px 20px rgba(0, 0, 0, 0.46);
 }
 
 .fav {
-  background: linear-gradient(145deg, #222222, #141414);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(26px) saturate(200%);
+  -webkit-backdrop-filter: blur(26px) saturate(200%);
   border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+              0 24px 54px rgba(0, 0, 0, 0.5);
+}
+
+.fav:hover {
+  background: rgba(255, 255, 255, 0.095);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .fav .chip {
-  border-color: rgba(255, 255, 255, 0.2);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.fav .chip:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .list-title {
@@ -897,8 +943,17 @@ h1 {
   .hero {
     padding-top: 40px;
   }
+  .feature {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
   .panel {
-    padding: 20px;
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .nav {
+    height: 56px;
+    margin: 8px auto;
   }
 }
 
